@@ -1,0 +1,5 @@
+This file was created to test Cloudflare Pages auto-deployment.
+If you can see this file on the live site, auto-deployment is working!
+
+Created: 2025-12-25
+

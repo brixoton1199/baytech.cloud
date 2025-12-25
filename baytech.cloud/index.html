@@ -38,7 +38,11 @@
     <div class="container">
         <h1>baytech.cloud</h1>
         <p>Welcome to baytech.cloud</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">Last updated: <span id="timestamp"></span></p>
     </div>
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
 </body>
 </html>
 

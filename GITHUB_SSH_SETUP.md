@@ -35,12 +35,14 @@ Run this command to test your SSH connection:
 ssh -T git@github.com
 ```
 
+**Note:** The first time you connect, you may be prompted to verify GitHub's host key. Type `yes` to continue.
+
 You should see a message like:
 ```
-Hi YOUR_USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+Hi brixoton1199! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-If you see this, your SSH key is working correctly!
+If you see this, your SSH key is working correctly! (The exit code 1 is normal - GitHub doesn't provide shell access, but authentication succeeded.)
 
 ## Step 3: Update Git Remote to Use SSH
 

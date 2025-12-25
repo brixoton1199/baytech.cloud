@@ -1,0 +1,13 @@
+{
+  "build": {
+    "command": "",
+    "cwd": "",
+    "outputDirectory": "baytech.cloud"
+  },
+  "deployment": {
+    "production": {
+      "branch": "main"
+    }
+  }
+}
+

@@ -16,6 +16,13 @@ out/
 node_modules/
 .vite/
 
+# Vite build output (generated files)
+baytech.cloud/assets/
+baytech.cloud/*.html
+baytech.cloud/*.js
+baytech.cloud/*.css
+!baytech.cloud/.gitkeep
+
 # Environment variables
 .env
 .env.local

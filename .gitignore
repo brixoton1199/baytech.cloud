@@ -13,6 +13,8 @@ build/
 .vercel/
 .next/
 out/
+node_modules/
+.vite/
 
 # Environment variables
 .env

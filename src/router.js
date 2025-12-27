@@ -1,6 +1,7 @@
 // SPA Router - handles client-side navigation with MD3 Container Transform
 import { renderHome } from './pages/home.js'
 import { renderServices } from './pages/services.js'
+import { renderApproach } from './pages/approach.js'
 import { renderSolutions } from './pages/solutions.js'
 import { renderCase } from './pages/case.js'
 import { renderInsights } from './pages/insights.js'
@@ -13,6 +14,8 @@ const routes = {
   '/index.html': renderHome,
   '/services': renderServices,
   '/services.html': renderServices,
+  '/approach': renderApproach,
+  '/approach.html': renderApproach,
   '/solutions': renderSolutions,
   '/solutions.html': renderSolutions,
   '/case': renderCase,
@@ -31,6 +34,7 @@ let currentPath = null
 const pageNames = {
   '/': 'Home',
   '/services': 'Services',
+  '/approach': 'Our Approach',
   '/solutions': 'Solutions',
   '/case': 'Case Studies',
   '/insights': 'Insights',

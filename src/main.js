@@ -37,6 +37,15 @@ navRail.innerHTML = `
       <span class="rail-item-label">Services</span>
     </a>
     
+    <a href="/approach" class="rail-item" data-nav="approach" aria-label="Our Approach">
+      <span class="rail-item-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </span>
+      <span class="rail-item-label">Approach</span>
+    </a>
+    
     <a href="/solutions" class="rail-item" data-nav="solutions" aria-label="Solutions">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -48,7 +57,7 @@ navRail.innerHTML = `
       <span class="rail-item-label">Solutions</span>
     </a>
     
-    <a href="/case" class="rail-item" data-nav="case" aria-label="Case Studies">
+    <span class="rail-item rail-item-disabled" aria-label="Case Studies (Coming Soon)" title="Coming Soon">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -57,7 +66,7 @@ navRail.innerHTML = `
         </svg>
       </span>
       <span class="rail-item-label">Case</span>
-    </a>
+    </span>
     
     <a href="/insights" class="rail-item" data-nav="insights" aria-label="Insights">
       <span class="rail-item-icon">
@@ -168,8 +177,8 @@ footer.innerHTML = `
     <div class="footer-column">
       <h4>Company</h4>
       <ul class="footer-links">
+        <li><a href="/approach">Our Approach</a></li>
         <li><a href="/about">About Us</a></li>
-        <li><a href="/case">Case Studies</a></li>
         <li><a href="/insights">Insights</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
@@ -238,9 +247,9 @@ sideSheet.innerHTML = `
   <div class="sheet-card">
     <h4 class="sheet-card-title">Resources</h4>
     <div class="sheet-links">
-      <a href="/case" class="sheet-link">
-        <span class="sheet-link-icon">📊</span>
-        Case Studies
+      <a href="/approach" class="sheet-link">
+        <span class="sheet-link-icon">📈</span>
+        Our Approach
       </a>
       <a href="/insights" class="sheet-link">
         <span class="sheet-link-icon">📰</span>
@@ -279,6 +288,12 @@ mobileNav.innerHTML = `
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
       </svg>
       <span>Services</span>
+    </a>
+    <a href="/approach" class="mobile-nav-item" data-nav="approach">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+      </svg>
+      <span>Approach</span>
     </a>
     <a href="/solutions" class="mobile-nav-item" data-nav="solutions">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -424,12 +439,79 @@ const animationObserver = new IntersectionObserver((entries) => {
   })
 }, observerOptions)
 
+// ============================================
+// ANIMATED NUMBER COUNTER (Phase 3)
+// ============================================
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target
+      
+      // Add animation class for CSS reveal
+      el.classList.add('animate-count')
+      
+      // Get target number from text content
+      const text = el.textContent.trim()
+      const match = text.match(/^([\d,]+)(.*)$/)
+      
+      if (match) {
+        const targetNum = parseInt(match[1].replace(/,/g, ''), 10)
+        const suffix = match[2] || ''
+        
+        // Respect reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          el.textContent = targetNum.toLocaleString() + suffix
+        } else {
+          // Animate the number counting up
+          animateCounter(el, 0, targetNum, suffix, 1200)
+        }
+      }
+      
+      counterObserver.unobserve(el)
+    }
+  })
+}, {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3
+})
+
+// Counter animation function
+const animateCounter = (element, start, end, suffix, duration) => {
+  const startTime = performance.now()
+  const range = end - start
+  
+  const updateCounter = (currentTime) => {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    
+    // Easing function (ease-out-cubic)
+    const easeOut = 1 - Math.pow(1 - progress, 3)
+    const current = Math.floor(start + (range * easeOut))
+    
+    element.textContent = current.toLocaleString() + suffix
+    
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter)
+    } else {
+      element.textContent = end.toLocaleString() + suffix
+    }
+  }
+  
+  requestAnimationFrame(updateCounter)
+}
+
 // Observe elements when they're added to the DOM
 window.observeScrollAnimations = () => {
   // Wait for DOM to update
   requestAnimationFrame(() => {
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
       animationObserver.observe(el)
+    })
+    
+    // Observe stat values for counter animation
+    document.querySelectorAll('.stat-value').forEach(el => {
+      counterObserver.observe(el)
     })
   })
 }
@@ -459,6 +541,54 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = `${scrollPercent}%`
   }
 }, { passive: true })
+
+// ============================================
+// PARALLAX SCROLLING EFFECTS (Phase 4)
+// ============================================
+// Lightweight parallax that respects reduced motion
+const initParallax = () => {
+  // Check for reduced motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return // Skip parallax for users who prefer reduced motion
+  }
+
+  let ticking = false
+  
+  const updateParallax = () => {
+    const scrollY = window.scrollY
+    
+    // Apply parallax to section backgrounds
+    document.querySelectorAll('.section-parallax-bg').forEach(el => {
+      const speed = parseFloat(el.dataset.parallaxSpeed) || 0.3
+      const yOffset = scrollY * speed
+      el.style.transform = `translateY(${yOffset}px)`
+    })
+    
+    // Subtle parallax on hero spotlight
+    const hero = document.querySelector('.hero')
+    if (hero) {
+      const heroRect = hero.getBoundingClientRect()
+      if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
+        // Only animate when hero is visible
+        const progress = Math.max(0, Math.min(1, -heroRect.top / heroRect.height))
+        const pseudoShift = progress * 30
+        hero.style.setProperty('--parallax-shift', `${pseudoShift}px`)
+      }
+    }
+    
+    ticking = false
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax)
+      ticking = true
+    }
+  }, { passive: true })
+}
+
+// Initialize parallax after DOM is ready
+initParallax()
 
 // ============================================
 // INITIALIZE ROUTER

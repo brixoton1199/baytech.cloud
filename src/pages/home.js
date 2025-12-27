@@ -12,77 +12,23 @@ export function renderHome() {
   hero.className = 'hero'
   hero.id = 'home'
   hero.innerHTML = `
-    <div class="hero-content">
-      <span class="hero-label">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-        Cloud Excellence Partner
-      </span>
-      <h1>Reduce Cloud Costs by <em>40%</em>. Migrate in 30 Days.</h1>
-      <p class="hero-subtitle">Enterprise cloud consulting with guaranteed results. Join 50+ Irish businesses who've transformed their infrastructure with expert guidance.</p>
+    <div class="hero-content-centered">
+      <h1>Technology Strategy, Realized.</h1>
+      <h2 style="font-family: var(--md-font-brand); font-size: var(--md-headline-large); font-weight: 400; color: var(--md-on-surface-variant); margin: var(--space-4) 0;">Align Your Infrastructure with Ambition.</h2>
+      <p class="hero-subtitle">We are your dedicated technology consultants. We architect secure, scalable foundations and provide the strategic guidance Irish businesses need to innovate and grow.</p>
       <div class="hero-actions">
         <a href="/contact" class="btn btn-filled">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
-          Book Consultation
+          Schedule a Strategic Consultation
         </a>
         <a href="/services" class="btn btn-outlined">View Services</a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-visual-shapes">
-        <div class="hero-shape hero-shape-1"></div>
-        <div class="hero-shape hero-shape-2"></div>
-        <div class="hero-shape hero-shape-3"></div>
-      </div>
-      <div class="hero-visual-content">
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-value">-40%</span>
-            <span class="hero-stat-label">Cloud Costs</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-value">30</span>
-            <span class="hero-stat-label">Day Migration</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-value">99.9%</span>
-            <span class="hero-stat-label">Uptime</span>
-          </div>
-        </div>
-      </div>
-    </div>
   `
 
-  // ============================================
-  // TRUST BAR
-  // ============================================
-  const trustBar = document.createElement('section')
-  trustBar.className = 'trust-section'
-  trustBar.innerHTML = `
-    <p class="trust-label">Trusted by leading Irish businesses</p>
-    <div class="trust-items">
-      <div class="trust-item">
-        <span class="trust-icon">☁️</span>
-        <span>AWS Partner</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🔒</span>
-        <span>ISO 27001</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🏆</span>
-        <span>50+ Projects</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">⚡</span>
-        <span>24/7 Support</span>
-      </div>
-    </div>
-  `
 
   // ============================================
   // SERVICE CHIPS (Quick Filters)
@@ -90,77 +36,49 @@ export function renderHome() {
   const chipsSection = document.createElement('section')
   chipsSection.className = 'services-section animate-on-scroll'
   chipsSection.innerHTML = `
-    <div class="section-header">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">Our Core Services</h2>
-      <p class="section-subtitle">Strategic cloud adoption and robust infrastructure solutions designed for growth.</p>
+    <div class="section-header animate-slide-left" style="--delay: 0ms;">
+      <p class="section-label">How We Partner With You</p>
+      <h2 class="section-title">From Strategy to Execution</h2>
+      <p class="section-subtitle">Comprehensive technology consulting that bridges business objectives with scalable infrastructure.</p>
     </div>
     
-    <div class="chips-container" style="margin-bottom: var(--space-8);">
-      <button class="chip active">
-        <span class="chip-icon">☁️</span>
-        All Services
-      </button>
-      <button class="chip">
-        <span class="chip-icon">🔧</span>
-        Consulting
-      </button>
-      <button class="chip">
-        <span class="chip-icon">🔗</span>
-        Network
-      </button>
-      <button class="chip">
-        <span class="chip-icon">🖥️</span>
-        Infrastructure
-      </button>
-      <button class="chip">
-        <span class="chip-icon">⚙️</span>
-        Automation
-      </button>
-    </div>
-    
-    <div class="services-grid">
+    <div class="services-grid stagger-children animate-on-scroll" style="margin-top: var(--space-10);">
       <div class="service-card card-elevated">
         <span class="service-number">01</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
         </div>
-        <h3>Cloud Consulting</h3>
-        <p>Cloud costs spiraling out of control? We help you navigate the complexities of cloud transformation with expert guidance, ensuring optimal performance and guaranteed cost savings.</p>
-        <a href="/services#cloud-consulting" class="service-link">Learn More →</a>
+        <h3>1. Technology Strategy & Advisory</h3>
+        <p>Your business goals, translated into a resilient technology roadmap. We provide vendor-agnostic analysis, future-state architecture design, and ongoing governance to ensure your investments drive growth.</p>
+        <a href="/services#strategy-advisory" class="service-link">Learn More →</a>
       </div>
 
       <div class="service-card card-elevated">
         <span class="service-number">02</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="2" width="6" height="6" rx="1"></rect>
-            <rect x="16" y="2" width="6" height="6" rx="1"></rect>
-            <rect x="9" y="16" width="6" height="6" rx="1"></rect>
-            <path d="M5 8v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"></path>
-            <path d="M12 13v3"></path>
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
           </svg>
         </div>
-        <h3>Network Architecture</h3>
-        <p>Network bottlenecks causing downtime? Design and implement robust network infrastructure that scales with your business. From planning to deployment.</p>
-        <a href="/services#network-architecture" class="service-link">Learn More →</a>
+        <h3>2. Cloud & Infrastructure Architecture</h3>
+        <p>Beyond migration. We design, secure, and optimize cloud environments (AWS, Azure, GCP) to be the scalable, efficient foundation for your applications and data.</p>
+        <a href="/services#cloud-architecture" class="service-link">Learn More →</a>
       </div>
 
       <div class="service-card card-elevated">
         <span class="service-number">03</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
-            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
-            <circle cx="6" cy="6" r="1"></circle>
-            <circle cx="6" cy="18" r="1"></circle>
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
         </div>
-        <h3>Server Solutions</h3>
-        <p>Server outages costing you customers? High-performance server deployment and management with 99.9% uptime guarantee. Reliable, secure, optimized.</p>
-        <a href="/services#server-solutions" class="service-link">Learn More →</a>
+        <h3>3. Enterprise Network & Security</h3>
+        <p>Architect resilient, zero-trust network infrastructures. From SD-WAN design to identity management and compliance frameworks—security by design, not afterthought.</p>
+        <a href="/services#network-security" class="service-link">Learn More →</a>
       </div>
 
       <div class="service-card card-elevated">
@@ -172,99 +90,39 @@ export function renderHome() {
             <line x1="12" y1="22.08" x2="12" y2="12"></line>
           </svg>
         </div>
-        <h3>DevOps & Automation</h3>
-        <p>Deployment taking too long? Accelerate your development pipeline with modern DevOps practices. CI/CD, infrastructure as code, automated workflows.</p>
-        <a href="/services#devops-automation" class="service-link">Learn More →</a>
+        <h3>4. DevOps & Operational Excellence</h3>
+        <p>Transform deployment into a competitive advantage. CI/CD pipelines, infrastructure as code, observability, and SRE best practices—accelerate delivery without sacrificing reliability.</p>
+        <a href="/services#devops-operational" class="service-link">Learn More →</a>
       </div>
     </div>
   `
 
   // ============================================
-  // STATS SECTION
+  // INSIGHTS ON TECHNOLOGY LEADERSHIP
   // ============================================
-  const statsSection = document.createElement('section')
-  statsSection.className = 'stats-section animate-on-scroll'
-  statsSection.innerHTML = `
-    <div class="stats-grid">
-      <div class="stat-item">
-        <span class="stat-value">50+</span>
-        <span class="stat-label">Projects Delivered</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-value">€2M+</span>
-        <span class="stat-label">Client Savings</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-value">99.9%</span>
-        <span class="stat-label">Uptime Guarantee</span>
-      </div>
+  const insightsSection = document.createElement('section')
+  insightsSection.className = 'insights-section animate-on-scroll'
+  insightsSection.innerHTML = `
+    <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto var(--space-10);">
+      <p class="section-label">Expert Perspectives</p>
+      <h2 class="section-title">Insights on Technology Leadership</h2>
+      <p class="section-subtitle">Understanding the strategic value of technology consulting</p>
     </div>
-  `
-
-  // ============================================
-  // TESTIMONIAL
-  // ============================================
-  const testimonialSection = document.createElement('section')
-  testimonialSection.className = 'testimonial-section animate-on-scroll'
-  testimonialSection.innerHTML = `
-    <div class="testimonial-content">
-      <p class="testimonial-quote">"baytech.cloud transformed our outdated infrastructure into a lean, cost-effective powerhouse. Their expertise and dedication are unmatched."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">JD</div>
-        <div class="testimonial-info">
-          <h4>Jane Doe</h4>
-          <p>CTO, Global Corp</p>
-        </div>
+    
+    <div class="insights-list stagger-children" style="max-width: 900px; margin: 0 auto;">
+      <div class="insight-card">
+        <h4 class="insight-question">Q: What's the difference between a technology consultant and an IT service provider?</h4>
+        <p class="insight-answer"><strong>A:</strong> An IT provider executes tasks. A consultant, like baytech.cloud, first defines the right strategy and architecture to ensure those tasks deliver measurable business outcomes. We are your strategic partner in navigating technology decisions.</p>
       </div>
-    </div>
-  `
-
-  // ============================================
-  // FAQ SECTION
-  // ============================================
-  const faqSection = document.createElement('section')
-  faqSection.className = 'faq-section animate-on-scroll'
-  faqSection.innerHTML = `
-    <div class="section-header" style="text-align: center;">
-      <p class="section-label">Quick Answers</p>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">
-          How long does a typical cloud migration take?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p class="faq-answer-content">Most migrations are completed within 30-90 days, depending on complexity. We provide a detailed timeline after our initial assessment.</p>
-        </div>
+      
+      <div class="insight-card">
+        <h4 class="insight-question">Q: How do you approach technology strategy for a business with legacy systems?</h4>
+        <p class="insight-answer"><strong>A:</strong> We assess legacy systems not as obstacles, but as part of the evolution. Our strategy focuses on incremental modernization, risk mitigation, and building bridges to new platforms, ensuring business continuity while enabling innovation.</p>
       </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          What cost savings can we expect?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p class="faq-answer-content">Our clients typically see a 30-50% reduction in operational costs within the first year due to optimized resource utilization and strategic planning.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          Do you provide ongoing support after migration?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p class="faq-answer-content">Yes, we offer 24/7 managed services and support packages to ensure your infrastructure runs smoothly post-migration.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          Which cloud platforms do you work with?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p class="faq-answer-content">We specialize in AWS, Azure, and Google Cloud Platform, providing multi-cloud and hybrid-cloud solutions tailored to your needs.</p>
-        </div>
+      
+      <div class="insight-card">
+        <h4 class="insight-question">Q: Why is vendor-agnostic advice important?</h4>
+        <p class="insight-answer"><strong>A:</strong> Technology decisions should be driven by your business needs, not vendor marketing. Our vendor-agnostic approach ensures you get the best fit solution—whether that's AWS, Azure, GCP, or a hybrid architecture—based on objective analysis.</p>
       </div>
     </div>
   `
@@ -287,32 +145,9 @@ export function renderHome() {
 
   // Build page
   container.appendChild(hero)
-  container.appendChild(trustBar)
   container.appendChild(chipsSection)
-  container.appendChild(statsSection)
-  container.appendChild(testimonialSection)
-  container.appendChild(faqSection)
+  container.appendChild(insightsSection)
   container.appendChild(ctaSection)
-
-  // Add FAQ accordion functionality
-  container.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const faqItem = button.closest('.faq-item')
-      // Close other open items
-      container.querySelectorAll('.faq-item.active').forEach(item => {
-        if (item !== faqItem) item.classList.remove('active')
-      })
-      faqItem.classList.toggle('active')
-    })
-  })
-
-  // Add chip filter functionality (visual only for now)
-  container.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'))
-      chip.classList.add('active')
-    })
-  })
 
   return container
 }

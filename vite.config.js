@@ -8,6 +8,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'baytech.cloud',
-    emptyOutDir: true
-  }
+    emptyOutDir: true,
+    copyPublicDir: true
+  },
+  publicDir: 'public'
 })

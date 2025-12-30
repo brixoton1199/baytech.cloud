@@ -1,0 +1,9 @@
+# Cloudflare Pages Build Configuration
+
+[build]
+  command = "npm install && npm run build"
+  publish = "baytech.cloud"
+
+[build.environment]
+  NODE_VERSION = "18"
+

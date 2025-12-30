@@ -28,7 +28,6 @@ export function renderServices() {
   mainContent.innerHTML = `
     <div class="services-grid">
       <div class="service-card card-elevated" id="cloud-consulting">
-        <span class="service-number">01</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
@@ -40,7 +39,6 @@ export function renderServices() {
       </div>
 
       <div class="service-card card-elevated" id="network-architecture">
-        <span class="service-number">02</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <rect x="2" y="2" width="6" height="6" rx="1"></rect>
@@ -56,7 +54,6 @@ export function renderServices() {
       </div>
 
       <div class="service-card card-elevated" id="server-solutions">
-        <span class="service-number">03</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <rect x="2" y="2" width="20" height="8" rx="2"></rect>
@@ -71,7 +68,6 @@ export function renderServices() {
       </div>
 
       <div class="service-card card-elevated" id="devops-automation">
-        <span class="service-number">04</span>
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>

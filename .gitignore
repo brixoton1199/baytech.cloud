@@ -1,51 +1,39 @@
-# Dependencies
+# Node modules
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-yarn.lock
 
-# Build outputs
+# Build output
+baytech.cloud/
 dist/
-build/
-.output/
-.vercel/
-.next/
-out/
-node_modules/
-.vite/
 
-# Vite build output (generated files)
-baytech.cloud/assets/
-baytech.cloud/*.html
-baytech.cloud/*.js
-baytech.cloud/*.css
-!baytech.cloud/.gitkeep
+# Development
+.vite/
+.cache/
 
 # Environment variables
 .env
 .env.local
 .env.*.local
-.env.production
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Logs
-logs/
 *.log
-
-# Cloudflare
-.wrangler/
-.dev.vars
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS
 Thumbs.db
 .DS_Store
 
+# Wrangler
+.wrangler/

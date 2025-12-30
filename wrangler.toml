@@ -1,7 +1,0 @@
-name = "baytech-cloud"
-compatibility_date = "2024-12-30"
-pages_build_output_dir = "baytech.cloud"
-
-[site]
-bucket = "./baytech.cloud"
-

@@ -14,6 +14,9 @@ export function renderHome() {
   hero.innerHTML = `
     <div class="hero-split-container">
       <div class="hero-content-left">
+        <div class="hero-logo">
+          <img src="/assets/baytech logo.png" alt="Baytech Logo" class="hero-logo-image" />
+        </div>
         <h1>Technology Strategy, Realized.</h1>
         <h2 style="font-family: var(--md-font-brand); font-size: var(--md-headline-large); font-weight: 400; color: var(--md-on-surface-variant); margin: var(--space-4) 0;">Align Your Infrastructure with Ambition.</h2>
         <p class="hero-subtitle">We are your dedicated technology consultants. We architect secure, scalable foundations and provide the strategic guidance Irish businesses need to innovate and grow.</p>
@@ -97,7 +100,7 @@ export function renderHome() {
             <line x1="12" y1="22.08" x2="12" y2="12"></line>
           </svg>
         </div>
-        <h3>DevOps & Operational Excellence</h3>
+        <h3>DevOps & Operational</h3>
         <p>Transform deployment into a competitive advantage. CI/CD pipelines, infrastructure as code, observability, and SRE best practices—accelerate delivery without sacrificing reliability.</p>
         <a href="/services#devops-operational" class="service-link">Learn More →</a>
       </div>

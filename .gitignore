@@ -1,39 +1,37 @@
-# Node modules
+# Dependencies
 node_modules/
 
 # Build output
-baytech.cloud/
 dist/
-
-# Development
-.vite/
-.cache/
+build/
+*.local
 
 # Environment variables
 .env
 .env.local
-.env.*.local
+.env.production
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
 
 # Logs
+logs/
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# OS
-Thumbs.db
-.DS_Store
+# Temporary files
+*.tmp
+.cache/
 
-# Wrangler
-.wrangler/
+# Screenshots
+*.png
+*.jpg
+*.jpeg

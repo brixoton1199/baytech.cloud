@@ -7,6 +7,7 @@ import { renderCase } from './pages/case.js'
 import { renderInsights } from './pages/insights.js'
 import { renderAbout } from './pages/about.js'
 import { renderContact } from './pages/contact.js'
+import { CompanyProfilePage } from './pages/company-profile.js'
 
 // Route definitions
 const routes = {
@@ -26,6 +27,8 @@ const routes = {
   '/about.html': renderAbout,
   '/contact': renderContact,
   '/contact.html': renderContact,
+  '/company-profile': CompanyProfilePage,
+  '/company-profile.html': CompanyProfilePage,
 }
 
 let currentPath = null
@@ -39,7 +42,8 @@ const pageNames = {
   '/case': 'Case Studies',
   '/insights': 'Insights',
   '/about': 'About',
-  '/contact': 'Contact'
+  '/contact': 'Contact',
+  '/company-profile': 'Company Profile'
 }
 
 // Create MD3-styled breadcrumb element

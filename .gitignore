@@ -2,6 +2,7 @@
 node_modules/
 
 # Build output
+baytech.cloud/
 dist/
 build/
 *.local
@@ -30,8 +31,14 @@ npm-debug.log*
 # Temporary files
 *.tmp
 .cache/
+.codex-tmp/
 
-# Screenshots
-*.png
-*.jpg
-*.jpeg
+# Local QA and browser artifacts
+qa/
+.playwright-mcp/
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.mp4
+/*.webm

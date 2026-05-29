@@ -306,7 +306,7 @@ a {
 }
 
 /* ===== IMAGES ===== */
-img, svg {
+img, svg, picture, video, iframe {
   display: block;
   max-width: 100%;
 }
@@ -331,6 +331,7 @@ button {
 #app {
   display: flex;
   min-height: 100vh;
+  min-width: 0;
 }
 
 /* ===== NAVIGATION RAIL ===== */
@@ -632,6 +633,7 @@ button {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 0;
   /* NO transition - content stays static, nav overlays */
 }
 
@@ -643,6 +645,7 @@ button {
   /* Transparent to allow global gradient background to show through */
   background: transparent;
   padding: var(--space-6);
+  min-width: 0;
   /* Ensure content sits above the ::before pattern overlay */
   position: relative;
   z-index: 1;
@@ -722,6 +725,7 @@ button {
 /* Page Content transitions - Clean Sequential Fade */
 .page-content {
   position: relative;
+  min-width: 0;
   /* Smooth opacity transition for page changes */
   transition: opacity 150ms ease-out;
 }
@@ -928,20 +932,21 @@ button {
   right: 0;
   top: 0;
   bottom: 0;
-  width: var(--side-sheet-width);
+  width: min(var(--side-sheet-width), calc(100vw - var(--space-4)));
+  max-width: calc(100vw - var(--space-4));
   background: var(--md-surface-container);
   border-left: 1px solid var(--md-outline-variant);
   padding: var(--space-6);
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: var(--space-6);
   z-index: 900;
-  transform: translateX(100%);
-  transition: transform var(--md-duration-medium2) var(--md-easing-emphasized);
+  overflow-y: auto;
+  box-shadow: var(--md-elevation-4);
 }
 
 .side-sheet.visible {
-  transform: translateX(0);
+  display: flex;
 }
 
 body.sheet-open .main-pane {
@@ -1143,11 +1148,11 @@ body.sheet-open .main-pane {
 @keyframes overlayFadeIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(0, -50%) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(0, -50%) scale(1);
   }
 }
 
@@ -1906,6 +1911,7 @@ body.sheet-open .main-pane {
 
 .section-header {
   margin-bottom: var(--space-10);
+  min-width: 0;
 }
 
 .section-label {
@@ -1930,12 +1936,34 @@ body.sheet-open .main-pane {
   color: var(--md-on-surface-variant);
   max-width: 600px;
   text-align: right;
+  min-width: 0;
+}
+
+.approach-page-header {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.approach-page-header h1 {
+  font-size: var(--md-display-large);
+  margin: var(--space-4) 0;
+}
+
+.approach-page-header .section-subtitle {
+  margin-inline: auto;
+  text-align: center;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
+  min-width: 0;
+}
+
+.about-workflow-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* ===== SERVICE CARD: Glass Morphism + Micro-Interactions ===== */
@@ -2226,7 +2254,7 @@ body.sheet-open .main-pane {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: var(--space-8);
 }
 
@@ -2476,6 +2504,7 @@ body.sheet-open .main-pane {
   justify-content: center;
   gap: var(--space-4);
   flex-wrap: wrap;
+  margin-top: var(--space-6);
 }
 
 /* ============================================
@@ -2491,7 +2520,7 @@ body.sheet-open .main-pane {
 
 .approach-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-8);
   max-width: var(--main-content-max);
   margin: 0 auto;
@@ -2546,7 +2575,7 @@ body.sheet-open .main-pane {
 
 .methodology-steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: var(--space-6);
   max-width: var(--main-content-max);
   margin: 0 auto;
@@ -2658,7 +2687,7 @@ body.sheet-open .main-pane {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: var(--space-8);
   max-width: var(--main-content-max);
   margin: 0 auto;
@@ -2827,6 +2856,7 @@ body.sheet-open .main-pane {
 .page-header {
   padding: var(--space-6) var(--space-6) var(--space-4);
   margin-bottom: var(--space-4);
+  min-width: 0;
 }
 
 .header-logo {
@@ -2863,6 +2893,7 @@ body.sheet-open .main-pane {
 .breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-2);
   padding: var(--space-4) 0;
   font-size: var(--md-body-small);
@@ -2889,9 +2920,10 @@ body.sheet-open .main-pane {
 /* Two Column Layout with Sidebar */
 .page-with-sidebar {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
   gap: var(--space-8);
   padding: var(--space-8) 0;
+  min-width: 0;
 }
 
 .page-main {
@@ -2902,12 +2934,14 @@ body.sheet-open .main-pane {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .sidebar-card {
   background: var(--md-surface-container);
   border-radius: var(--md-corner-large);
   padding: var(--space-5);
+  min-width: 0;
 }
 
 .sidebar-card h3 {
@@ -2971,8 +3005,9 @@ body.sheet-open .main-pane {
 /* Solutions Grid */
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .solution-card {
@@ -3096,6 +3131,7 @@ body.sheet-open .main-pane {
 
 .case-stats {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-6);
   padding-top: var(--space-4);
   border-top: 1px solid var(--md-outline-variant);
@@ -3134,6 +3170,7 @@ body.sheet-open .main-pane {
 .insight-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-3);
   margin-bottom: var(--space-3);
 }
@@ -3174,8 +3211,9 @@ body.sheet-open .main-pane {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-12);
+  min-width: 0;
 }
 
 .contact-info h2 {
@@ -3203,6 +3241,7 @@ body.sheet-open .main-pane {
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .contact-icon {
@@ -3233,6 +3272,7 @@ body.sheet-open .main-pane {
   background: var(--md-surface-container);
   border-radius: var(--md-corner-extra-large);
   padding: var(--space-8);
+  min-width: 0;
 }
 
 .form-header {
@@ -3294,7 +3334,7 @@ body.sheet-open .main-pane {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
 }
 
@@ -3740,13 +3780,15 @@ body.sheet-open .main-pane {
   right: 0;
   background: var(--md-surface-container);
   border-top: 1px solid var(--md-outline-variant);
-  padding: var(--space-2) 0;
+  padding: var(--space-2) 0 calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
   z-index: 1000;
 }
 
 .mobile-nav-items {
   display: flex;
   justify-content: space-around;
+  gap: var(--space-1);
+  padding: 0 var(--space-1);
 }
 
 .mobile-nav-item {
@@ -3754,9 +3796,14 @@ body.sheet-open .main-pane {
   flex-direction: column;
   align-items: center;
   gap: var(--space-1);
-  padding: var(--space-2) var(--space-3);
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 56px;
+  padding: var(--space-2);
   color: var(--md-on-surface-variant);
   font-size: var(--md-label-small);
+  line-height: 1.2;
+  text-align: center;
   transition: color var(--md-duration-short3) var(--md-easing-standard);
 }
 
@@ -3828,11 +3875,11 @@ body.sheet-open .main-pane {
   
   .sidebar-card {
     flex: 1;
-    min-width: 200px;
+    min-width: min(100%, 200px);
   }
   
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   }
 }
 
@@ -3847,12 +3894,23 @@ body.sheet-open .main-pane {
   
   .main-pane {
     margin-left: 0;
-    padding-bottom: 80px;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.sheet-open .main-pane {
+    margin-right: 0;
+  }
+
+  .main-content {
+    padding: var(--space-4);
   }
   
   .hero {
     min-height: auto;
-    padding: var(--space-12) 0;
+    padding: var(--space-8) 0;
+    margin-left: calc(-1 * var(--space-4));
+    margin-right: calc(-1 * var(--space-4));
+    width: calc(100% + 2 * var(--space-4));
   }
   
   .hero h1 {
@@ -3862,12 +3920,30 @@ body.sheet-open .main-pane {
   /* Hero Split Container - Mobile overlay layout */
   .hero-split-container {
     padding: 0 var(--space-4);
+    flex-direction: column;
+    gap: var(--space-6);
   }
   
   .hero-content-left {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
     text-align: center;
     padding: var(--space-4);
-    max-width: 90%;
+    max-width: 100%;
+    width: 100%;
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-logo {
+    margin-bottom: calc(var(--space-4) * -4);
+  }
+
+  .hero-logo-image {
+    height: clamp(220px, 58vw, 300px);
+    margin: 0 auto;
   }
   
   .hero-content-left h1 {
@@ -3887,11 +3963,18 @@ body.sheet-open .main-pane {
   
   .hero-map-container {
     max-width: 100%;
+    transform: none;
+    animation: none;
+    opacity: 1;
   }
   
   .europe-map,
   .map-glow-wrapper {
     max-width: 100%;
+  }
+
+  .ireland-map-image {
+    transform: scale(1.18);
   }
   
   .services-grid,
@@ -3939,6 +4022,12 @@ body.sheet-open .main-pane {
   .cta-buttons {
     flex-direction: column;
   }
+
+  .cta-buttons .btn,
+  .hero-actions .btn,
+  .hero-actions .btn-text {
+    width: min(100%, 320px);
+  }
   
   .page-sidebar {
     flex-direction: column;
@@ -3946,6 +4035,36 @@ body.sheet-open .main-pane {
   
   .sidebar-card {
     min-width: 100%;
+  }
+
+  .page-header {
+    padding: var(--space-5) 0 var(--space-3);
+  }
+
+  .section-header,
+  .page-header,
+  .company-profile-header {
+    text-align: center;
+  }
+
+  .section-subtitle,
+  .page-header p,
+  .company-profile-header .section-subtitle {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contact-form,
+  .service-card,
+  .solution-card,
+  .case-card,
+  .insight-card {
+    padding: var(--space-5);
+  }
+
+  .back-to-top {
+    bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+    right: var(--space-4);
   }
   
   /* ===== MOBILE: Simplified Background for Performance ===== */
@@ -4110,6 +4229,11 @@ body.sheet-open .main-pane {
   padding: 0 var(--space-4);
 }
 
+.company-profile-header .section-subtitle {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .company-profile-header h1 {
   font-family: var(--md-font-brand);
   font-size: clamp(var(--md-headline-large), 5vw, var(--md-display-small));
@@ -4128,6 +4252,8 @@ body.sheet-open .main-pane {
   border-radius: var(--md-radius-large);
   box-shadow: var(--md-shadow-2);
   background: var(--md-surface-container);
+  width: 100%;
+  max-width: 100%;
   min-height: 600px;
   display: block;
   margin-bottom: var(--space-4);

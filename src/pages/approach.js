@@ -8,9 +8,9 @@ export function renderApproach() {
   const header = document.createElement('section')
   header.className = 'page-header animate-on-scroll'
   header.innerHTML = `
-    <div class="section-header" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <div class="section-header approach-page-header">
       <span class="section-label">Our Methodology</span>
-      <h1 style="font-size: var(--md-display-large); margin: var(--space-4) 0;">Technology Strategy Approach</h1>
+      <h1>Technology Strategy Approach</h1>
       <p class="section-subtitle">We don't just execute projects. We partner with you to align technology with business objectives, architect scalable solutions, and build strategic roadmaps for sustainable growth.</p>
     </div>
   `
@@ -53,7 +53,7 @@ export function renderApproach() {
     <div class="cta-content">
       <h2>Ready to Align Technology with Business Strategy?</h2>
       <p>Let's discuss how our strategic approach can transform your technology landscape.</p>
-      <div style="display: flex; gap: var(--space-4); justify-content: center; margin-top: var(--space-6);">
+      <div class="cta-buttons">
         <a href="/contact" class="btn btn-filled">Schedule Consultation</a>
         <a href="/services" class="btn btn-outlined">Explore Services</a>
       </div>

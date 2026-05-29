@@ -57,7 +57,7 @@ export function renderAbout() {
       <h2 class="section-title">Our Consulting Approach</h2>
       <p class="section-subtitle" style="margin: var(--space-4) auto 0;">A structured methodology that transforms strategy into measurable results</p>
     </div>
-    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="services-grid about-workflow-grid">
       <div class="service-card card-elevated">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">

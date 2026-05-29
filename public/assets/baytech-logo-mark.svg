@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238 173" role="img" aria-labelledby="baytech-logo-mark-title" style="color:#e6e1e5;--baytech-logo-accent:#7bc144">
+  <title id="baytech-logo-mark-title">Baytech mark</title>
+  <style>
+    .baytech-logo-main { fill: currentColor; }
+  </style>
+  <defs>
+    <mask id="baytech-logo-mark-main-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="238" height="173" style="mask-type: alpha;">
+      <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAACtCAYAAAC3IkPgAAAEvklEQVR4Ae3Bz6umZR3H8ff1mbt0mIixyH5B0MJFWrjWVa6FaBMyBkESUYtWLV0ILvwDWhQF4yZMF22E/oA22d7QhEJ36YTaQMzhmaaZK4bD9MwZzpnjgXPu5/re9/v1ar13JNUSJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUTJJUzcXY60tl4G3iMFZuQ6nkU6Gy9CjzLikxI9V0CLrHvMeBtFm5CWpa32GosVJCWqwO/ZIHC2WlIu/dToLMwQVqHDnQWIkjr0lmAIK1PBz5HYUFap4+ATlFBWrdOQeFsNaTxdYoJZ68hja9TSJhHQxrfyxQR5tOQxvZDigjzakhj6xQQ5teQxtYZXNiNLyCN7QEGFnbjQ+BRpHFtGFjYnb8CzyONqzOosFsvAe8j6UTC7n0FaVydAYUxNCR9YmEcDWlMncGEsTQkHWtiPI2ti8CXgK8B54DzQICbwHXgJtDZdw24DuwB/2XfBvgPsGFrAzzIvltAOOgCBwU4z/GusdWADdCATwN7wANs3QAuAhvgHAfdZN81DrfhoPNs7bHvFls3OFuf4qAbnI5HgN8A32YMfwG+xSAmxnYVuAq8w+nacLSrzOMjTseG3brB2fgb8BQHdXbnmwwkSHU0oCGCVE8Dvsf8nmYQQarp90BjXn9gEEGq7YusUJBq+ycrFKT6GisTpGX4LPP4BQMI0jL8m3n8jAEESeUEaTkaKxEklRMklRMklRMklRMklROk5XiNlQjScjzDSgRJJ3GFAQRJJ/FzBhCkZejM4xUGEKT6fs3KBKm+H7MyQaqts0JBqqszrwsMYkKq5zLwHPPbYxATUi0dMSGNr7N7jYFMnJ6vA+8i6cyF0/Mu0jI9y2CCpOO8ymCCpPtpDChIKidIOkpjUEFSOUHSYRoDC5Lu1RhckHS3P1NAkHS3JykgSLqjUUSQdFujkCCpUUyQ1CkmSLqtU0iQdEeniCDpbp0CgqR7vcHggqR7PcHggqTDdAYWJB3lYwYVJB3lIQYVJN1PZ0BBUjlB0nGuMJiJehpai4vAv9i9hxnMhDSuq0Bjq7M7TwJvMIgg1dGAxm78iYEEqZ4GXGPFglTTZ4BvMK/vMIgg1fUO8CLzeZ1BBKm2F1ihINXXWJkgqZwgLUNjHj9hAEHSSfyKAQRpOf7OSgRpOR5hJYKkcoKkcoKkcoKkcoK0HM+xEkFajsusRJBUTpBUTpCWoTOP9xhAkHQSTzCAINXXmc8VBhCk2jorFKS6Ois1IdXzEPAx83ueQUxItXR25yUGMSGN70Pg8+j/JurpSCsXJH0SjYEESeUESce5wGCCpOPsMZgg6X4aAwqSygmSjtIYVJB0mNcYWJB0mEsMLEi6V2NwQdLdGgUESXf8gCKCpNteB35LEUHSLeC7FBIknaOYCWm9rgMPUtCEtE5PAX+kqAlpfRrFBWldGgswIa1DY0EmpGV7E3ichZmQlukfwFdZqAlpWb4MfMDCTUj1fR/4HSsyIdVzGfgRKzZxehqSZhEklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklRMklfM/lYWGqYgbRoIAAAAASUVORK5CYII=" x="0" y="0" width="238" height="173"/>
+    </mask>
+    <symbol id="baytech-logo-mark" viewBox="0 0 238 173">
+      <rect class="baytech-logo-main" fill="currentColor" width="238" height="173" mask="url(#baytech-logo-mark-main-mask)"/>
+    </symbol>
+  </defs>
+  <use href="#baytech-logo-mark"/>
+</svg>

@@ -18,9 +18,10 @@ test('homepage keeps the original map hero structure while shifting to silver co
 })
 
 test('light theme tokens define white silver surfaces with restrained Baytech green accents', () => {
-  assert.match(styleSource, /--md-surface:\s*#f8fafc;/)
+  assert.match(styleSource, /--md-surface:\s*#fbfcfe;/)
+  assert.match(styleSource, /--md-surface-container:\s*#f7fafd;/)
   assert.match(styleSource, /--md-on-surface:\s*#202225;/)
-  assert.match(styleSource, /--baytech-silver-grid:\s*rgba\(87,\s*98,\s*115,\s*0\.12\);/)
+  assert.match(styleSource, /--baytech-silver-grid:\s*rgba\(87,\s*98,\s*115,\s*0\.08\);/)
   assert.match(styleSource, /--baytech-signal:\s*#26b86a;/)
   assert.match(styleSource, /\.hero-with-map/)
   assert.match(styleSource, /\.hero-map-container/)
@@ -28,6 +29,14 @@ test('light theme tokens define white silver surfaces with restrained Baytech gr
   assert.match(styleSource, /\.map-glow-main/)
   assert.match(styleSource, /invert\(1\)/)
   assert.doesNotMatch(styleSource, /\.hero-infrastructure-panel/)
+})
+
+test('hero map fades into a lower-gray page background', () => {
+  assert.match(styleSource, /linear-gradient\(180deg,\s*#ffffff 0%,\s*#fbfdff 54%,\s*#f7fbfe 100%\)/)
+  assert.match(styleSource, /\.hero-with-map[\s\S]*linear-gradient\(135deg,\s*#ffffff 0%,\s*#fbfdff 52%,\s*#f8fbfe 100%\)/)
+  assert.match(styleSource, /\.hero-with-map::after[\s\S]*rgba\(251,\s*253,\s*255,\s*0\.94\)/)
+  assert.match(styleSource, /\.hero-with-map \.map-glow-wrapper::after[\s\S]*rgba\(255,\s*255,\s*255,\s*0\.98\)/)
+  assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*opacity:\s*0\.46;/)
 })
 
 test('app shell keeps sensitive business contact content unchanged', () => {

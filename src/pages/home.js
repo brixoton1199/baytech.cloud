@@ -36,10 +36,10 @@ export function renderHome() {
       
       <div class="hero-map-container">
         <div class="map-glow-wrapper">
-          <img src="/assets/ireland-map.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-main" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-main" />
         </div>
       </div>
     </div>

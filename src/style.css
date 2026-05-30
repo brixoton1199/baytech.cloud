@@ -3876,7 +3876,7 @@ body.sheet-open .main-pane {
   
   .nav-rail.expanded,
   .nav-rail:hover {
-    width: var(--rail-width-collapsed);
+    width: min(var(--rail-width-expanded), calc(100vw - var(--space-6)));
   }
   
   .main-pane {

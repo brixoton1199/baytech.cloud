@@ -75,3 +75,8 @@ test('app shell keeps sensitive business contact content unchanged', () => {
   assert.match(mainSource, /support@baytech\.cloud/)
   assert.match(mainSource, /\+44 7886 066968/)
 })
+
+test('tablet navigation rail expands as an overlay instead of staying collapsed', () => {
+  assert.match(styleSource, /@media \(max-width:\s*1200px\)[\s\S]*\.nav-rail\.expanded,\s*\.nav-rail:hover\s*{[\s\S]*width:\s*min\(var\(--rail-width-expanded\),\s*calc\(100vw - var\(--space-6\)\)\);/)
+  assert.doesNotMatch(styleSource, /@media \(max-width:\s*1200px\)[\s\S]{0,260}\.nav-rail\.expanded,\s*\.nav-rail:hover\s*{[\s\S]{0,120}width:\s*var\(--rail-width-collapsed\);/)
+})

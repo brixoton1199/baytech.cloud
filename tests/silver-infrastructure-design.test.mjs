@@ -183,3 +183,10 @@ test('tablet navigation rail expands as an overlay instead of staying collapsed'
   assert.match(styleSource, /@media \(max-width:\s*1200px\)[\s\S]*\.nav-rail\.expanded,\s*\.nav-rail:hover\s*{[\s\S]*width:\s*min\(var\(--rail-width-expanded\),\s*calc\(100vw - var\(--space-6\)\)\);/)
   assert.doesNotMatch(styleSource, /@media \(max-width:\s*1200px\)[\s\S]{0,260}\.nav-rail\.expanded,\s*\.nav-rail:hover\s*{[\s\S]{0,120}width:\s*var\(--rail-width-collapsed\);/)
 })
+
+test('collapsed navigation rail centers icons without hidden label gap', () => {
+  assert.match(styleSource, /\.rail-item\s*{[\s\S]*gap:\s*0;/)
+  assert.match(styleSource, /\.nav-rail\.expanded \.rail-item,\s*\.nav-rail:hover \.rail-item\s*{[\s\S]*gap:\s*var\(--space-3\);/)
+  assert.match(styleSource, /\.rail-fab\s*{[\s\S]*gap:\s*0;/)
+  assert.match(styleSource, /\.nav-rail\.expanded \.rail-fab,\s*\.nav-rail:hover \.rail-fab\s*{[\s\S]*gap:\s*var\(--space-2\);/)
+})

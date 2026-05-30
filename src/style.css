@@ -479,12 +479,13 @@ button {
   color: var(--md-on-surface-variant);
   transition: background-color 150ms ease, color 150ms ease;
   cursor: pointer;
-  gap: var(--space-3);
+  gap: 0;
 }
 
 .nav-rail.expanded .rail-item,
 .nav-rail:hover .rail-item {
   justify-content: flex-start;
+  gap: var(--space-3);
 }
 
 .rail-item::before {
@@ -581,7 +582,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: 0;
   padding: var(--space-3);
   background: var(--md-primary-container);
   color: var(--md-on-primary-container);
@@ -596,6 +597,7 @@ button {
 .nav-rail.expanded .rail-fab,
 .nav-rail:hover .rail-fab {
   justify-content: flex-start;
+  gap: var(--space-2);
 }
 
 .rail-fab:hover {

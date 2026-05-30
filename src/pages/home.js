@@ -6,10 +6,10 @@ export function renderHome() {
   container.className = 'page-home'
 
   // ============================================
-  // HERO SECTION - Silver Infrastructure Layout
+  // HERO SECTION - Two Pane Layout with Map
   // ============================================
   const hero = document.createElement('section')
-  hero.className = 'hero hero-silver-infrastructure'
+  hero.className = 'hero hero-with-map'
   hero.id = 'home'
   hero.innerHTML = `
     <div class="hero-split-container">
@@ -34,26 +34,12 @@ export function renderHome() {
         </div>
       </div>
       
-      <div class="hero-infrastructure-panel" aria-hidden="true">
-        <div class="infrastructure-grid"></div>
-        <div class="infrastructure-plane"></div>
-        <div class="infrastructure-prism infrastructure-prism-main"></div>
-        <div class="infrastructure-prism infrastructure-prism-small"></div>
-        <div class="infrastructure-signal-line"></div>
-        <div class="infrastructure-orbit-card card-strategy">
-          <span class="orbit-signal"></span>
-          <strong>Strategy</strong>
-          <span>Roadmap</span>
-        </div>
-        <div class="infrastructure-orbit-card card-cloud">
-          <span class="orbit-signal"></span>
-          <strong>Cloud</strong>
-          <span>Architecture</span>
-        </div>
-        <div class="infrastructure-orbit-card card-security">
-          <span class="orbit-signal"></span>
-          <strong>Security</strong>
-          <span>Governance</span>
+      <div class="hero-map-container">
+        <div class="map-glow-wrapper">
+          <img src="/assets/ireland-map.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
+          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
+          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
+          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-main" />
         </div>
       </div>
     </div>

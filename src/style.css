@@ -4540,10 +4540,10 @@ body::before {
   --baytech-logo-accent: var(--baytech-signal);
 }
 
-.hero-silver-infrastructure {
-  min-height: min(760px, calc(100vh - 28px));
-  align-items: stretch;
-  padding: var(--space-20) var(--space-6) var(--space-16);
+.hero-with-map {
+  min-height: calc(51vh - 41px);
+  align-items: center;
+  padding: calc(var(--space-16) * 0.8) 0;
   margin: 0 calc(-1 * var(--space-6)) var(--space-10);
   width: calc(100% + 2 * var(--space-6));
   -webkit-mask-image: none;
@@ -4555,7 +4555,7 @@ body::before {
   border-bottom: 1px solid rgba(154, 165, 177, 0.22);
 }
 
-.hero-silver-infrastructure::before {
+.hero-with-map::before {
   inset: 0;
   width: auto;
   height: auto;
@@ -4569,7 +4569,7 @@ body::before {
   -webkit-mask-image: radial-gradient(ellipse at 72% 50%, #000 0%, transparent 66%);
 }
 
-.hero-silver-infrastructure::after {
+.hero-with-map::after {
   inset: auto 0 0;
   width: auto;
   height: 160px;
@@ -4577,36 +4577,35 @@ body::before {
   animation: none;
 }
 
-.hero-silver-infrastructure .hero-split-container {
-  display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(360px, 1.04fr);
+.hero-with-map .hero-split-container {
+  display: flex;
   align-items: center;
-  gap: clamp(32px, 6vw, 88px);
-  max-width: 1220px;
-  margin: 0 auto;
-  padding: 0;
+  justify-content: center;
+  max-width: none;
+  padding: 0 var(--space-6);
 }
 
-.hero-silver-infrastructure .hero-content-left {
-  position: relative;
-  left: auto;
-  top: auto;
-  max-width: 620px;
-  padding: 0;
+.hero-with-map .hero-content-left {
+  position: absolute;
+  left: 22%;
+  top: 30%;
+  z-index: 10;
+  max-width: 700px;
+  padding: var(--space-8);
   opacity: 1;
-  transform: none;
+  transform: translate(0, -50%);
   animation: none;
 }
 
-.hero-silver-infrastructure .hero-logo {
+.hero-with-map .hero-logo {
   margin-bottom: var(--space-8);
 }
 
-.hero-silver-infrastructure .hero-logo-image {
-  width: min(340px, 72vw);
+.hero-with-map .hero-logo-image {
+  width: clamp(320px, 42vw, 640px);
 }
 
-.hero-silver-infrastructure .hero-content-left h1 {
+.hero-with-map .hero-content-left h1 {
   max-width: 620px;
   color: var(--baytech-ink);
   font-size: clamp(3rem, 6.7vw, 5.6rem);
@@ -4628,7 +4627,7 @@ body::before {
   letter-spacing: 0;
 }
 
-.hero-silver-infrastructure .hero-subtitle {
+.hero-with-map .hero-subtitle {
   max-width: 560px;
   margin-bottom: var(--space-8);
   padding: 0;
@@ -4639,166 +4638,72 @@ body::before {
   text-shadow: none;
 }
 
-.hero-silver-infrastructure .hero-actions {
+.hero-with-map .hero-actions {
   gap: var(--space-3);
 }
 
-.hero-infrastructure-panel {
-  position: relative;
-  min-height: 520px;
-  border: 1px solid rgba(154, 165, 177, 0.28);
-  border-radius: var(--md-corner-small);
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 78% 26%, rgba(70, 183, 255, 0.15), transparent 9rem),
-    radial-gradient(circle at 68% 76%, rgba(38, 184, 106, 0.12), transparent 8rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(231, 237, 243, 0.82));
-  box-shadow: 0 34px 90px rgba(31, 41, 55, 0.13);
+.hero-with-map .hero-map-container {
+  opacity: 0.94;
+  animation: none;
+  transform: translateX(20%);
+  filter: drop-shadow(0 28px 54px rgba(87, 98, 115, 0.12));
+}
+
+.hero-with-map .map-glow-wrapper {
   isolation: isolate;
 }
 
-.infrastructure-grid {
-  position: absolute;
-  inset: 10% -8% -10% 18%;
-  background:
-    linear-gradient(90deg, rgba(87, 98, 115, 0.14) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(87, 98, 115, 0.14) 1px, transparent 1px);
-  background-size: 34px 34px;
-  transform: perspective(720px) rotateX(62deg) rotateZ(-16deg);
-  transform-origin: center;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 72%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 72%, transparent 100%);
-  opacity: 0.78;
-}
-
-.infrastructure-plane {
-  position: absolute;
-  right: 12%;
-  bottom: 18%;
-  width: min(46%, 310px);
-  aspect-ratio: 1;
-  transform: rotateX(58deg) rotateZ(43deg);
-  transform-style: preserve-3d;
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(201, 211, 222, 0.78)),
-    repeating-linear-gradient(45deg, rgba(87, 98, 115, 0.14) 0 1px, transparent 1px 17px);
-  box-shadow: -36px 36px 72px rgba(87, 98, 115, 0.22);
-  z-index: 2;
-}
-
-.infrastructure-plane::before,
-.infrastructure-plane::after {
+.hero-with-map .map-glow-wrapper::before {
   content: '';
   position: absolute;
-  background: linear-gradient(135deg, rgba(235, 240, 245, 0.94), rgba(174, 187, 201, 0.74));
-}
-
-.infrastructure-plane::before {
-  left: -34px;
-  top: 17px;
-  width: 34px;
-  height: 100%;
-  transform: skewY(-45deg);
-  transform-origin: right top;
-}
-
-.infrastructure-plane::after {
-  left: 16px;
-  top: -34px;
-  width: 100%;
-  height: 34px;
-  transform: skewX(-45deg);
-  transform-origin: left bottom;
-}
-
-.infrastructure-prism {
-  position: absolute;
-  border: 1px solid rgba(154, 165, 177, 0.22);
+  inset: 8% 2% 2% 22%;
+  z-index: 0;
   border-radius: var(--md-corner-small);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(224, 232, 240, 0.62));
-  box-shadow: 0 24px 70px rgba(87, 98, 115, 0.13);
-  backdrop-filter: blur(8px);
+  background:
+    linear-gradient(90deg, rgba(87, 98, 115, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(87, 98, 115, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px;
+  transform: perspective(720px) rotateX(62deg) rotateZ(-14deg);
+  opacity: 0.36;
 }
 
-.infrastructure-prism-main {
-  top: 15%;
-  right: 14%;
-  width: 34%;
-  height: 25%;
-  transform: skewY(-9deg) rotate(-3deg);
-}
-
-.infrastructure-prism-small {
-  left: 12%;
-  bottom: 16%;
-  width: 22%;
-  height: 16%;
-  transform: skewY(10deg) rotate(5deg);
-}
-
-.infrastructure-signal-line {
+.hero-with-map .map-glow-wrapper::after {
+  content: '';
   position: absolute;
-  left: 12%;
-  right: 10%;
-  bottom: 17%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--baytech-signal), rgba(70, 183, 255, 0.8), transparent);
-  z-index: 3;
-}
-
-.infrastructure-orbit-card {
-  position: absolute;
+  inset: -10% -4%;
   z-index: 4;
-  width: 164px;
-  min-height: 86px;
-  padding: var(--space-4);
-  border: 1px solid rgba(154, 165, 177, 0.24);
-  border-radius: var(--md-corner-small);
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 18px 48px rgba(31, 41, 55, 0.12);
-  backdrop-filter: blur(14px);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.72) 36%,
+    rgba(255, 255, 255, 0.18) 62%,
+    rgba(248, 250, 252, 0.28) 100%
+  );
 }
 
-.infrastructure-orbit-card strong,
-.infrastructure-orbit-card span {
-  display: block;
-  letter-spacing: 0;
+.hero-with-map .map-glow-layer-1 {
+  filter: invert(1) grayscale(1) blur(3px) contrast(0.42) brightness(1.42) saturate(0.25);
+  opacity: 0.22;
+  mix-blend-mode: multiply;
 }
 
-.infrastructure-orbit-card strong {
-  color: var(--baytech-ink);
-  font-size: var(--md-title-small);
-  font-weight: 650;
+.hero-with-map .map-glow-layer-2 {
+  filter: invert(1) grayscale(1) blur(8px) contrast(0.4) brightness(1.48) saturate(0.22);
+  opacity: 0.16;
+  mix-blend-mode: multiply;
 }
 
-.infrastructure-orbit-card span:last-child {
-  margin-top: var(--space-1);
-  color: var(--baytech-muted);
-  font-size: var(--md-label-medium);
+.hero-with-map .map-glow-layer-3 {
+  filter: invert(1) grayscale(1) blur(16px) contrast(0.36) brightness(1.58) saturate(0.2);
+  opacity: 0.12;
+  mix-blend-mode: multiply;
 }
 
-.orbit-signal {
-  width: 30px;
-  height: 5px;
-  margin-bottom: var(--space-3);
-  border-radius: var(--md-corner-full);
-  background: var(--baytech-signal);
-}
-
-.card-strategy {
-  top: 16%;
-  left: 9%;
-}
-
-.card-cloud {
-  top: 36%;
-  right: 7%;
-}
-
-.card-security {
-  bottom: 10%;
-  left: 22%;
+.hero-with-map .map-glow-main {
+  filter: invert(1) grayscale(1) contrast(0.46) brightness(1.34) saturate(0.24);
+  opacity: 0.62;
+  mix-blend-mode: multiply;
 }
 
 .btn {
@@ -5009,17 +4914,12 @@ body::before {
 }
 
 @media (max-width: 1200px) {
-  .hero-silver-infrastructure .hero-split-container {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 900px;
+  .hero-with-map .hero-content-left {
+    max-width: 600px;
   }
 
-  .hero-silver-infrastructure .hero-content-left {
-    max-width: 760px;
-  }
-
-  .hero-infrastructure-panel {
-    min-height: 430px;
+  .hero-with-map .hero-map-container {
+    max-width: 700px;
   }
 }
 
@@ -5039,72 +4939,72 @@ body::before {
     opacity: 0.32;
   }
 
-  .hero-silver-infrastructure {
+  .hero-with-map {
     min-height: auto;
-    padding: var(--space-10) var(--space-4) var(--space-8);
+    padding: var(--space-8) 0;
     margin-left: calc(-1 * var(--space-4));
     margin-right: calc(-1 * var(--space-4));
     width: calc(100% + 2 * var(--space-4));
   }
 
-  .hero-silver-infrastructure .hero-split-container {
-    gap: var(--space-8);
-    padding: 0;
+  .hero-with-map .hero-split-container {
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: 0 var(--space-4);
   }
 
-  .hero-silver-infrastructure .hero-content-left {
-    text-align: left;
+  .hero-with-map .hero-content-left {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    padding: var(--space-4);
+    text-align: center;
+    transform: none;
   }
 
-  .hero-silver-infrastructure .hero-logo-image {
-    width: min(300px, 82vw);
-    margin: 0;
+  .hero-with-map .hero-logo {
+    margin-bottom: var(--space-5);
   }
 
-  .hero-silver-infrastructure .hero-content-left h1 {
-    font-size: clamp(2.7rem, 15vw, 4rem);
+  .hero-with-map .hero-logo-image {
+    width: min(100%, 360px);
+    margin: 0 auto;
+  }
+
+  .hero-with-map .hero-content-left h1 {
+    font-size: var(--md-headline-medium);
+    line-height: 1.08;
   }
 
   .hero-supporting-title {
     font-size: 1.35rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .hero-silver-infrastructure .hero-actions {
+  .hero-with-map .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-with-map .hero-actions {
     align-items: stretch;
   }
 
-  .hero-silver-infrastructure .hero-actions .btn {
+  .hero-with-map .hero-actions .btn {
     width: 100%;
   }
 
-  .hero-infrastructure-panel {
-    min-height: 360px;
+  .hero-with-map .hero-map-container {
+    max-width: 100%;
+    opacity: 0.72;
+    transform: none;
   }
 
-  .infrastructure-orbit-card {
-    width: 138px;
-    min-height: 74px;
-    padding: var(--space-3);
-  }
-
-  .card-strategy {
-    top: 10%;
-    left: 7%;
-  }
-
-  .card-cloud {
-    top: 32%;
-    right: 5%;
-  }
-
-  .card-security {
-    bottom: 8%;
-    left: 14%;
-  }
-
-  .infrastructure-plane {
-    right: 7%;
-    width: 52%;
+  .hero-with-map .map-glow-main {
+    opacity: 0.58;
   }
 
   .cta-content {
@@ -5113,13 +5013,9 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-silver-infrastructure::before,
-  .hero-silver-infrastructure::after,
-  .infrastructure-grid,
-  .infrastructure-plane,
-  .infrastructure-prism,
-  .infrastructure-orbit-card,
-  .infrastructure-signal-line {
+  .hero-with-map::before,
+  .hero-with-map::after,
+  .hero-with-map .hero-map-container {
     animation: none !important;
   }
 }

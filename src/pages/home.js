@@ -20,7 +20,7 @@ export function renderHome() {
           </svg>
         </div>
         <h1>Technology Strategy, Realized.</h1>
-        <h2 style="font-family: var(--md-font-brand); font-size: var(--md-headline-large); font-weight: 400; color: var(--md-on-surface-variant); margin: var(--space-4) 0;">Align Your Infrastructure with Ambition.</h2>
+        <h2 class="hero-supporting-title">Align Your Infrastructure with Ambition.</h2>
         <p class="hero-subtitle">We are your dedicated technology consultants. We architect secure, scalable foundations and provide the strategic guidance Irish businesses need to innovate and grow.</p>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-filled">
@@ -36,10 +36,10 @@ export function renderHome() {
       
       <div class="hero-map-container">
         <div class="map-glow-wrapper">
-          <img src="/assets/ireland-map.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-main" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
+          <img src="/assets/ireland-map-hero-linework.png" alt="" class="ireland-map-image map-glow-main" />
         </div>
       </div>
     </div>

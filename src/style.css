@@ -5039,3 +5039,299 @@ body::before {
     animation: none !important;
   }
 }
+
+/* ===== GPU CLOUD PAGE ===== */
+.page-gpu-cloud {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding-bottom: var(--space-16);
+}
+
+.gpu-cloud-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+  gap: clamp(var(--space-8), 6vw, var(--space-16));
+  align-items: center;
+  min-height: min(680px, calc(100svh - 120px));
+  padding: var(--space-12) 0 var(--space-8);
+}
+
+.gpu-cloud-hero-content {
+  min-width: 0;
+}
+
+.gpu-cloud-hero h1 {
+  max-width: 720px;
+  margin: 0 0 var(--space-5);
+  color: var(--baytech-ink);
+  font-family: var(--md-font-brand);
+  font-size: clamp(2.75rem, 6vw, 5.25rem);
+  font-weight: 520;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.gpu-cloud-subtitle {
+  max-width: 620px;
+  margin-bottom: var(--space-8);
+  color: var(--baytech-muted);
+  font-size: clamp(1rem, 1.45vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.gpu-cloud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.gpu-cloud-visual {
+  position: relative;
+  min-height: 430px;
+  border: 1px solid rgba(154, 165, 177, 0.24);
+  border-radius: var(--md-corner-small);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(38, 184, 106, 0.14), transparent 24%),
+    linear-gradient(90deg, rgba(84, 113, 92, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(84, 113, 92, 0.07) 1px, transparent 1px),
+    linear-gradient(135deg, #ffffff 0%, #f7faf2 100%);
+  background-size: auto, 36px 36px, 36px 36px, auto;
+  box-shadow: 0 24px 70px rgba(31, 41, 55, 0.08);
+  isolation: isolate;
+}
+
+.gpu-cloud-visual::before {
+  content: '';
+  position: absolute;
+  inset: 12% -8% auto 26%;
+  height: 160px;
+  background: linear-gradient(90deg, transparent, rgba(38, 184, 106, 0.18), transparent);
+  transform: rotate(-18deg);
+  opacity: 0.65;
+}
+
+.gpu-visual-plane {
+  position: absolute;
+  border: 1px solid rgba(21, 23, 25, 0.14);
+  border-radius: var(--md-corner-small);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 54px rgba(31, 41, 55, 0.12);
+  transform: skewY(-12deg) rotate(-2deg);
+}
+
+.gpu-visual-plane-main {
+  width: 46%;
+  height: 34%;
+  right: 13%;
+  top: 22%;
+}
+
+.gpu-visual-plane-small {
+  width: 30%;
+  height: 22%;
+  left: 14%;
+  bottom: 18%;
+}
+
+.gpu-visual-signal {
+  position: absolute;
+  left: 18%;
+  top: 22%;
+  width: 46%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--baytech-signal), transparent);
+  transform: rotate(-24deg);
+}
+
+.gpu-visual-module {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  min-height: 38px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid rgba(38, 184, 106, 0.24);
+  border-radius: var(--md-corner-small);
+  color: #10623a;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 14px 34px rgba(31, 41, 55, 0.1);
+  font-size: var(--md-label-large);
+  font-weight: 700;
+}
+
+.module-h100 {
+  left: 12%;
+  top: 18%;
+}
+
+.module-h200 {
+  right: 10%;
+  bottom: 26%;
+}
+
+.module-rtx {
+  left: 34%;
+  bottom: 12%;
+}
+
+.gpu-cloud-section,
+.gpu-discovery-section {
+  padding: var(--space-12) 0;
+}
+
+.gpu-card-grid,
+.gpu-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+
+.gpu-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-6);
+}
+
+.gpu-card-header {
+  margin-bottom: var(--space-4);
+}
+
+.gpu-card-label {
+  display: inline-flex;
+  margin-bottom: var(--space-3);
+  color: var(--baytech-signal);
+  font-size: var(--md-label-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gpu-card h3,
+.gpu-trust-card h3 {
+  color: var(--baytech-ink);
+  font-size: var(--md-title-large);
+  letter-spacing: 0;
+}
+
+.gpu-card p,
+.gpu-trust-card p {
+  color: var(--baytech-muted);
+}
+
+.gpu-spec-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 var(--space-6);
+}
+
+.gpu-spec-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--baytech-muted);
+  font-size: var(--md-body-medium);
+}
+
+.gpu-spec-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--baytech-signal);
+}
+
+.gpu-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.gpu-trust-card {
+  min-width: 0;
+  padding: var(--space-6);
+  border: 1px solid rgba(154, 165, 177, 0.24);
+  border-radius: var(--md-corner-small);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 48px rgba(31, 41, 55, 0.06);
+}
+
+.gpu-trust-card h3 {
+  margin-bottom: var(--space-3);
+}
+
+.gpu-cloud-cta {
+  padding: var(--space-8) 0 var(--space-4);
+}
+
+.gpu-discovery-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  border: 1px solid rgba(154, 165, 177, 0.24);
+  border-radius: var(--md-corner-small);
+  background:
+    radial-gradient(circle at 84% 12%, rgba(38, 184, 106, 0.12), transparent 20%),
+    rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 48px rgba(31, 41, 55, 0.07);
+}
+
+.gpu-discovery-content .section-subtitle {
+  max-width: 720px;
+}
+
+@media (max-width: 768px) {
+  .page-gpu-cloud {
+    gap: var(--space-8);
+  }
+
+  .gpu-cloud-hero,
+  .gpu-card-grid,
+  .gpu-trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gpu-cloud-hero {
+    min-height: auto;
+    padding-top: var(--space-8);
+  }
+
+  .gpu-cloud-hero h1 {
+    font-size: var(--md-display-small);
+    line-height: 1.05;
+  }
+
+  .gpu-cloud-actions,
+  .gpu-discovery-content {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .gpu-cloud-actions .btn,
+  .gpu-discovery-content .btn {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .gpu-cloud-visual {
+    min-height: 300px;
+  }
+
+  .gpu-cloud-section,
+  .gpu-discovery-section {
+    padding: var(--space-8) 0;
+  }
+
+  .gpu-card,
+  .gpu-trust-card,
+  .gpu-discovery-content {
+    padding: var(--space-5);
+  }
+}

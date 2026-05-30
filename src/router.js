@@ -3,6 +3,7 @@ import { renderHome } from './pages/home.js'
 import { renderServices } from './pages/services.js'
 import { renderApproach } from './pages/approach.js'
 import { renderSolutions } from './pages/solutions.js'
+import { renderGpuCloud } from './pages/gpu-cloud.js'
 import { renderCase } from './pages/case.js'
 import { renderInsights } from './pages/insights.js'
 import { renderAbout } from './pages/about.js'
@@ -19,6 +20,8 @@ const routes = {
   '/approach.html': renderApproach,
   '/solutions': renderSolutions,
   '/solutions.html': renderSolutions,
+  '/gpu-cloud': renderGpuCloud,
+  '/gpu-cloud.html': renderGpuCloud,
   '/case': renderCase,
   '/case.html': renderCase,
   '/insights': renderInsights,
@@ -39,6 +42,7 @@ const pageNames = {
   '/services': 'Services',
   '/approach': 'Our Approach',
   '/solutions': 'Solutions',
+  '/gpu-cloud': 'GPU Cloud',
   '/case': 'Case Studies',
   '/insights': 'Insights',
   '/about': 'About',

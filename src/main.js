@@ -60,7 +60,25 @@ navRail.innerHTML = `
       </span>
       <span class="rail-item-label">Solutions</span>
     </a>
-    
+
+    <a href="/gpu-cloud" class="rail-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
+      <span class="rail-item-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+          <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+          <path d="M9 1v3"></path>
+          <path d="M15 1v3"></path>
+          <path d="M9 20v3"></path>
+          <path d="M15 20v3"></path>
+          <path d="M1 9h3"></path>
+          <path d="M1 15h3"></path>
+          <path d="M20 9h3"></path>
+          <path d="M20 15h3"></path>
+        </svg>
+      </span>
+      <span class="rail-item-label">GPU Cloud</span>
+    </a>
+
     <span class="rail-item rail-item-disabled" aria-label="Case Studies (Coming Soon)" title="Coming Soon">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -155,6 +173,7 @@ footer.innerHTML = `
         <li><a href="/services">Cloud Consulting</a></li>
         <li><a href="/services">Network Architecture</a></li>
         <li><a href="/services">Server Solutions</a></li>
+        <li><a href="/gpu-cloud">GPU Cloud</a></li>
         <li><a href="/services">DevOps & Automation</a></li>
       </ul>
     </div>
@@ -406,6 +425,7 @@ window.updateActiveNav = (path) => {
     '/services': 'services',
     '/approach': 'approach',
     '/solutions': 'solutions',
+    '/gpu-cloud': 'gpu-cloud',
     '/case': 'case',
     '/insights': 'insights',
     '/about': 'about',

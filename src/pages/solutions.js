@@ -74,6 +74,18 @@ export function renderSolutions() {
         </ul>
         <a href="/contact" class="btn btn-outlined">Learn More</a>
       </div>
+
+      <div class="solution-card card-elevated">
+        <span class="solution-tag">AI Infrastructure</span>
+        <h3>GPU Cloud Capacity</h3>
+        <p>Inquiry-led access to H100, H200, and RTX Pro 6000 capacity with architecture, security, and deployment guidance from Baytech.</p>
+        <ul class="feature-list">
+          <li>GPU capacity planning</li>
+          <li>AI infrastructure architecture</li>
+          <li>Secure deployment readiness</li>
+        </ul>
+        <a href="/gpu-cloud" class="btn btn-outlined">Explore GPU Cloud</a>
+      </div>
     </div>
   `
 
@@ -97,6 +109,7 @@ export function renderSolutions() {
         <a href="/services">☁️ Cloud Consulting</a>
         <a href="/services">🔗 Network Architecture</a>
         <a href="/services">🖥️ Server Solutions</a>
+        <a href="/gpu-cloud">▦ GPU Cloud</a>
       </div>
     </div>
     

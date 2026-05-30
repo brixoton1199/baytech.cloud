@@ -110,6 +110,22 @@ export function renderHome() {
   `
 
   // ============================================
+  // GPU CLOUD DISCOVERY
+  // ============================================
+  const gpuDiscoverySection = document.createElement('section')
+  gpuDiscoverySection.className = 'gpu-discovery-section animate-on-scroll'
+  gpuDiscoverySection.innerHTML = `
+    <div class="gpu-discovery-content">
+      <div>
+        <p class="section-label">GPU Cloud</p>
+        <h2 class="section-title">High-performance AI capacity, planned with Baytech.</h2>
+        <p class="section-subtitle">Explore H100, H200, and RTX Pro 6000 options for training, inference, rendering, and applied AI infrastructure.</p>
+      </div>
+      <a href="/gpu-cloud" class="btn btn-filled">View GPU Cloud</a>
+    </div>
+  `
+
+  // ============================================
   // INSIGHTS ON TECHNOLOGY LEADERSHIP
   // ============================================
   const insightsSection = document.createElement('section')
@@ -158,6 +174,7 @@ export function renderHome() {
   // Build page
   container.appendChild(hero)
   container.appendChild(chipsSection)
+  container.appendChild(gpuDiscoverySection)
   container.appendChild(insightsSection)
   container.appendChild(ctaSection)
 

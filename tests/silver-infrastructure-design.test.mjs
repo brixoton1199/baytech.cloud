@@ -1,11 +1,103 @@
 import assert from 'node:assert/strict'
 import { readFile, stat } from 'node:fs/promises'
 import { test } from 'node:test'
+import { inflateSync } from 'node:zlib'
 
 const homeSource = await readFile(new URL('../src/pages/home.js', import.meta.url), 'utf8')
 const styleSource = await readFile(new URL('../src/style.css', import.meta.url), 'utf8')
 const mainSource = await readFile(new URL('../src/main.js', import.meta.url), 'utf8')
 const processedHeroMap = new URL('../public/assets/ireland-map-hero-linework.png', import.meta.url)
+
+function readPngStats(buffer) {
+  assert.equal(buffer.toString('hex', 0, 8), '89504e470d0a1a0a')
+
+  let offset = 8
+  let width = 0
+  let height = 0
+  let colorType = 0
+  const idatChunks = []
+
+  while (offset < buffer.length) {
+    const length = buffer.readUInt32BE(offset)
+    const type = buffer.toString('ascii', offset + 4, offset + 8)
+    const dataStart = offset + 8
+    const dataEnd = dataStart + length
+    const data = buffer.subarray(dataStart, dataEnd)
+
+    if (type === 'IHDR') {
+      width = data.readUInt32BE(0)
+      height = data.readUInt32BE(4)
+      assert.equal(data[8], 8)
+      colorType = data[9]
+    } else if (type === 'IDAT') {
+      idatChunks.push(data)
+    } else if (type === 'IEND') {
+      break
+    }
+
+    offset = dataEnd + 4
+  }
+
+  assert.equal(colorType, 6)
+
+  const bytesPerPixel = 4
+  const stride = width * bytesPerPixel
+  const raw = inflateSync(Buffer.concat(idatChunks))
+  let rawOffset = 0
+  let maxAlpha = 0
+  let visiblePixels = 0
+  let brightGreenPixels = 0
+  let previousRow = Buffer.alloc(stride)
+
+  for (let y = 0; y < height; y += 1) {
+    const filter = raw[rawOffset]
+    rawOffset += 1
+    const row = Buffer.from(raw.subarray(rawOffset, rawOffset + stride))
+    rawOffset += stride
+
+    for (let x = 0; x < stride; x += 1) {
+      const left = x >= bytesPerPixel ? row[x - bytesPerPixel] : 0
+      const up = previousRow[x]
+      const upLeft = x >= bytesPerPixel ? previousRow[x - bytesPerPixel] : 0
+
+      if (filter === 1) {
+        row[x] = (row[x] + left) & 0xff
+      } else if (filter === 2) {
+        row[x] = (row[x] + up) & 0xff
+      } else if (filter === 3) {
+        row[x] = (row[x] + Math.floor((left + up) / 2)) & 0xff
+      } else if (filter === 4) {
+        const p = left + up - upLeft
+        const pa = Math.abs(p - left)
+        const pb = Math.abs(p - up)
+        const pc = Math.abs(p - upLeft)
+        const predictor = pa <= pb && pa <= pc ? left : pb <= pc ? up : upLeft
+        row[x] = (row[x] + predictor) & 0xff
+      }
+    }
+
+    for (let x = 0; x < stride; x += bytesPerPixel) {
+      const red = row[x]
+      const green = row[x + 1]
+      const alpha = row[x + 3]
+      maxAlpha = Math.max(maxAlpha, alpha)
+      if (alpha > 20) {
+        visiblePixels += 1
+        if (red < 90 && green > 180) brightGreenPixels += 1
+      }
+    }
+
+    previousRow = row
+  }
+
+  return {
+    width,
+    height,
+    maxAlpha,
+    visiblePixels,
+    brightGreenRatio: brightGreenPixels / visiblePixels,
+  }
+}
 
 test('homepage keeps the original map hero structure while using the processed hero map asset', async () => {
   const assetInfo = await stat(processedHeroMap)
@@ -48,12 +140,23 @@ test('hero map is integrated as a sharper processed right-side texture', () => {
   assert.match(styleSource, /\.hero-with-map \.hero-map-container[\s\S]*transform:\s*none;/)
   assert.match(styleSource, /\.hero-with-map \.hero-map-container[\s\S]*width:\s*min\(54vw,\s*700px\);/)
   assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*filter:\s*none;/)
-  assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*opacity:\s*0\.58;/)
+  assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*opacity:\s*0\.7;/)
 })
 
-test('desktop hero keeps a first-screen composition before the services content', () => {
-  assert.match(styleSource, /\.hero-with-map\s*{[\s\S]*min-height:\s*calc\(100svh - 24px\);/)
+test('desktop hero starts flush with the viewport while preserving first-screen composition', () => {
+  assert.match(styleSource, /\.hero-with-map\s*{[\s\S]*min-height:\s*100svh;/)
+  assert.match(styleSource, /\.hero-with-map\s*{[\s\S]*margin:\s*calc\(-1 \* var\(--space-6\)\) calc\(-1 \* var\(--space-6\)\) 0;/)
   assert.match(styleSource, /\.hero-with-map \.hero-split-container\s*{[\s\S]*min-height:\s*calc\(100svh - 128px\);/)
+  assert.doesNotMatch(styleSource, /\.hero-with-map\s*{[\s\S]{0,260}min-height:\s*calc\(100svh - 24px\);/)
+})
+
+test('processed hero map asset uses restrained modern linework instead of neon-heavy opacity', async () => {
+  const stats = readPngStats(await readFile(processedHeroMap))
+
+  assert.deepEqual({ width: stats.width, height: stats.height }, { width: 1200, height: 1536 })
+  assert.ok(stats.visiblePixels > 50000)
+  assert.ok(stats.maxAlpha <= 220)
+  assert.ok(stats.brightGreenRatio < 0.18)
 })
 
 test('mobile hero constrains logo, title, and actions to avoid clipping', () => {

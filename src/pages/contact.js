@@ -66,10 +66,7 @@ export function renderContact() {
         </div>
         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
           <!-- Web3Forms Access Key -->
-          <input type="hidden" name="access_key" value="24891696-7646-4113-8bc6-4f06e8f71204">
-          
-          <!-- Optional: Redirect after submission -->
-          <input type="hidden" name="redirect" value="https://baytech.cloud/contact?success=true">
+          <input type="hidden" name="access_key" value="0b606e81-3506-4d22-96e7-eaddf4219e38">
           
           <!-- Optional: Custom subject line -->
           <input type="hidden" name="subject" value="New Contact Form Submission from Baytech.cloud">

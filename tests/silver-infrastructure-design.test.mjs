@@ -18,10 +18,10 @@ test('homepage keeps the original map hero structure while shifting to silver co
 })
 
 test('light theme tokens define white silver surfaces with restrained Baytech green accents', () => {
-  assert.match(styleSource, /--md-surface:\s*#fbfcfe;/)
-  assert.match(styleSource, /--md-surface-container:\s*#f7fafd;/)
+  assert.match(styleSource, /--md-surface:\s*#f8faf4;/)
+  assert.match(styleSource, /--md-surface-container:\s*#fbfcf7;/)
   assert.match(styleSource, /--md-on-surface:\s*#202225;/)
-  assert.match(styleSource, /--baytech-silver-grid:\s*rgba\(87,\s*98,\s*115,\s*0\.08\);/)
+  assert.match(styleSource, /--baytech-silver-grid:\s*rgba\(84,\s*113,\s*92,\s*0\.045\);/)
   assert.match(styleSource, /--baytech-signal:\s*#26b86a;/)
   assert.match(styleSource, /\.hero-with-map/)
   assert.match(styleSource, /\.hero-map-container/)
@@ -31,12 +31,18 @@ test('light theme tokens define white silver surfaces with restrained Baytech gr
   assert.doesNotMatch(styleSource, /\.hero-infrastructure-panel/)
 })
 
-test('hero map fades into a lower-gray page background', () => {
-  assert.match(styleSource, /linear-gradient\(180deg,\s*#ffffff 0%,\s*#fbfdff 54%,\s*#f7fbfe 100%\)/)
-  assert.match(styleSource, /\.hero-with-map[\s\S]*linear-gradient\(135deg,\s*#ffffff 0%,\s*#fbfdff 52%,\s*#f8fbfe 100%\)/)
-  assert.match(styleSource, /\.hero-with-map::after[\s\S]*rgba\(251,\s*253,\s*255,\s*0\.94\)/)
-  assert.match(styleSource, /\.hero-with-map \.map-glow-wrapper::after[\s\S]*rgba\(255,\s*255,\s*255,\s*0\.98\)/)
-  assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*opacity:\s*0\.46;/)
+test('hero map is integrated as a low-contrast right-side texture', () => {
+  assert.match(styleSource, /linear-gradient\(180deg,\s*#fbfcf7 0%,\s*#f8faf4 52%,\s*#f4f8ef 100%\)/)
+  assert.match(styleSource, /\.hero-with-map[\s\S]*linear-gradient\(135deg,\s*#fbfcf7 0%,\s*#f8faf4 52%,\s*#f4f8ef 100%\)/)
+  assert.match(styleSource, /\.hero-with-map::before[\s\S]*radial-gradient\(ellipse at 74% 38%,\s*rgba\(38,\s*184,\s*106,\s*0\.08\),\s*transparent 62%\)/)
+  assert.match(styleSource, /\.hero-with-map \.hero-map-container[\s\S]*position:\s*absolute;[\s\S]*right:\s*clamp\(-220px,\s*-14vw,\s*-120px\);/)
+  assert.match(styleSource, /\.hero-with-map \.map-glow-main[\s\S]*opacity:\s*0\.32;/)
+})
+
+test('bright theme removes center-line technical crosshair textures', () => {
+  assert.match(styleSource, /\.services-section::before,\s*\.cta-section::before\s*{\s*display:\s*none;/)
+  assert.doesNotMatch(styleSource, /\.hero-with-map::before[\s\S]{0,260}linear-gradient\(90deg,\s*rgba\(87,\s*98,\s*115/)
+  assert.doesNotMatch(styleSource, /\.hero-with-map \.map-glow-wrapper::before[\s\S]{0,300}linear-gradient\(90deg,\s*rgba\(87,\s*98,\s*115/)
 })
 
 test('app shell keeps sensitive business contact content unchanged', () => {

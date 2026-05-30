@@ -39,16 +39,14 @@ const trustItems = [
 
 function renderGpuCard(card) {
   return `
-    <article class="gpu-card card-elevated">
-      <div class="gpu-card-header">
-        <span class="gpu-card-label">${card.label}</span>
-        <h3>${card.name}</h3>
-      </div>
+    <article class="gpu-card solution-card card-elevated">
+      <span class="solution-tag">${card.label}</span>
+      <h3>${card.name}</h3>
       <p>${card.description}</p>
-      <ul class="gpu-spec-list">
+      <ul class="feature-list">
         ${card.specs.map((spec) => `<li>${spec}</li>`).join('')}
       </ul>
-      <a href="/contact" class="btn btn-tonal">Request availability</a>
+      <a href="/contact" class="btn btn-outlined">Request availability</a>
     </article>
   `
 }
@@ -60,52 +58,42 @@ export function renderGpuCloud() {
   const breadcrumb = createBreadcrumb('GPU Cloud')
   container.appendChild(breadcrumb)
 
-  const hero = document.createElement('section')
-  hero.className = 'gpu-cloud-hero'
-  hero.innerHTML = `
-    <div class="gpu-cloud-hero-content">
-      <p class="section-label">GPU Cloud</p>
-      <h1>AI infrastructure capacity, planned with confidence.</h1>
-      <p class="gpu-cloud-subtitle">Baytech helps teams source and plan high-performance GPU capacity across H100, H200, and RTX Pro 6000 infrastructure without turning the first conversation into a self-serve transaction.</p>
-      <div class="gpu-cloud-actions">
-        <a href="/contact" class="btn btn-filled">Request GPU Availability</a>
-        <a href="/services" class="btn btn-outlined">Discuss Infrastructure</a>
-      </div>
-    </div>
-    <div class="gpu-cloud-visual" aria-hidden="true">
-      <div class="gpu-visual-plane gpu-visual-plane-main"></div>
-      <div class="gpu-visual-plane gpu-visual-plane-small"></div>
-      <div class="gpu-visual-signal"></div>
-      <div class="gpu-visual-module module-h100">H100</div>
-      <div class="gpu-visual-module module-h200">H200</div>
-      <div class="gpu-visual-module module-rtx">RTX Pro</div>
+  const pageHeader = document.createElement('section')
+  pageHeader.className = 'page-header'
+  pageHeader.innerHTML = `
+    <p class="section-label">AI Infrastructure</p>
+    <h1>GPU Cloud</h1>
+    <p>Inquiry-led access to H100, H200, and RTX Pro 6000 capacity with architecture, security, and deployment guidance from Baytech.</p>
+    <div class="page-header-actions">
+      <a href="/contact" class="btn btn-filled">Request GPU Availability</a>
+      <a href="/services" class="btn btn-outlined">Discuss Infrastructure</a>
     </div>
   `
 
   const cardsSection = document.createElement('section')
-  cardsSection.className = 'gpu-cloud-section animate-on-scroll'
+  cardsSection.className = 'services-section animate-on-scroll'
   cardsSection.innerHTML = `
     <div class="section-header">
       <p class="section-label">Available GPU Cards</p>
       <h2 class="section-title">Capacity for demanding AI workloads</h2>
       <p class="section-subtitle">Start with the GPU profile that fits your workload, then talk with Baytech about timing, architecture, and deployment readiness.</p>
     </div>
-    <div class="gpu-card-grid">
+    <div class="solutions-grid gpu-card-grid">
       ${gpuCards.map(renderGpuCard).join('')}
     </div>
   `
 
   const trustSection = document.createElement('section')
-  trustSection.className = 'gpu-cloud-section animate-on-scroll'
+  trustSection.className = 'services-section animate-on-scroll'
   trustSection.innerHTML = `
     <div class="section-header">
       <p class="section-label">Why Baytech</p>
       <h2 class="section-title">GPU infrastructure is more than hardware</h2>
       <p class="section-subtitle">We connect capacity conversations with cloud architecture, security, networking, and operational planning.</p>
     </div>
-    <div class="gpu-trust-grid">
+    <div class="solutions-grid gpu-trust-grid">
       ${trustItems.map((item) => `
-        <article class="gpu-trust-card">
+        <article class="gpu-trust-card solution-card card-elevated">
           <h3>${item.title}</h3>
           <p>${item.text}</p>
         </article>
@@ -114,7 +102,7 @@ export function renderGpuCloud() {
   `
 
   const cta = document.createElement('section')
-  cta.className = 'gpu-cloud-cta animate-on-scroll'
+  cta.className = 'cta-section animate-on-scroll'
   cta.innerHTML = `
     <div class="cta-content">
       <h2>Discuss GPU capacity</h2>
@@ -126,7 +114,7 @@ export function renderGpuCloud() {
     </div>
   `
 
-  container.appendChild(hero)
+  container.appendChild(pageHeader)
   container.appendChild(cardsSection)
   container.appendChild(trustSection)
   container.appendChild(cta)

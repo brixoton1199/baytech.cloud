@@ -6,10 +6,10 @@ export function renderHome() {
   container.className = 'page-home'
 
   // ============================================
-  // HERO SECTION - Two Pane Layout with Map
+  // HERO SECTION - Silver Infrastructure Layout
   // ============================================
   const hero = document.createElement('section')
-  hero.className = 'hero hero-with-map'
+  hero.className = 'hero hero-silver-infrastructure'
   hero.id = 'home'
   hero.innerHTML = `
     <div class="hero-split-container">
@@ -20,7 +20,7 @@ export function renderHome() {
           </svg>
         </div>
         <h1>Technology Strategy, Realized.</h1>
-        <h2 style="font-family: var(--md-font-brand); font-size: var(--md-headline-large); font-weight: 400; color: var(--md-on-surface-variant); margin: var(--space-4) 0;">Align Your Infrastructure with Ambition.</h2>
+        <h2 class="hero-supporting-title">Align Your Infrastructure with Ambition.</h2>
         <p class="hero-subtitle">We are your dedicated technology consultants. We architect secure, scalable foundations and provide the strategic guidance Irish businesses need to innovate and grow.</p>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-filled">
@@ -34,12 +34,26 @@ export function renderHome() {
         </div>
       </div>
       
-      <div class="hero-map-container">
-        <div class="map-glow-wrapper">
-          <img src="/assets/ireland-map.png" alt="Map of Ireland with Dublin highlighted" class="ireland-map-image map-glow-layer-1" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-2" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-layer-3" aria-hidden="true" />
-          <img src="/assets/ireland-map.png" alt="" class="ireland-map-image map-glow-main" />
+      <div class="hero-infrastructure-panel" aria-hidden="true">
+        <div class="infrastructure-grid"></div>
+        <div class="infrastructure-plane"></div>
+        <div class="infrastructure-prism infrastructure-prism-main"></div>
+        <div class="infrastructure-prism infrastructure-prism-small"></div>
+        <div class="infrastructure-signal-line"></div>
+        <div class="infrastructure-orbit-card card-strategy">
+          <span class="orbit-signal"></span>
+          <strong>Strategy</strong>
+          <span>Roadmap</span>
+        </div>
+        <div class="infrastructure-orbit-card card-cloud">
+          <span class="orbit-signal"></span>
+          <strong>Cloud</strong>
+          <span>Architecture</span>
+        </div>
+        <div class="infrastructure-orbit-card card-security">
+          <span class="orbit-signal"></span>
+          <strong>Security</strong>
+          <span>Governance</span>
         </div>
       </div>
     </div>

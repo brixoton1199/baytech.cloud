@@ -51,8 +51,23 @@ test('homepage, Solutions page, and footer link users to GPU Cloud', () => {
 
 test('GPU Cloud styles are scoped and responsive', () => {
   assert.match(styleSource, /\.page-gpu-cloud/)
-  assert.match(styleSource, /\.gpu-cloud-hero/)
-  assert.match(styleSource, /\.gpu-card-grid/)
   assert.match(styleSource, /\.gpu-card/)
-  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.gpu-card-grid/)
+  assert.match(styleSource, /\.page-gpu-cloud \.page-header-actions/)
+  assert.match(gpuPageSource, /class="solutions-grid gpu-card-grid"/)
+  assert.match(gpuPageSource, /class="solutions-grid gpu-trust-grid"/)
+  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.page-gpu-cloud \.page-header-actions/)
+  assert.doesNotMatch(styleSource, /\.gpu-cloud-hero|\.gpu-cloud-visual|\.gpu-spec-list/)
+})
+
+test('GPU Cloud page follows peer subpage header, card, button, and CTA rhythm', () => {
+  assert.match(styleSource, /\.page-content > \.page-gpu-cloud/)
+  assert.match(gpuPageSource, /pageHeader\.className = 'page-header'/)
+  assert.match(gpuPageSource, /<h1>GPU Cloud<\/h1>/)
+  assert.doesNotMatch(gpuPageSource, /gpu-cloud-hero|gpu-cloud-visual|gpu-visual-/)
+  assert.match(gpuPageSource, /class="gpu-card solution-card card-elevated"/)
+  assert.match(gpuPageSource, /class="solution-tag"/)
+  assert.match(gpuPageSource, /class="feature-list"/)
+  assert.match(gpuPageSource, /class="btn btn-outlined">Request availability/)
+  assert.match(gpuPageSource, /cta\.className = 'cta-section animate-on-scroll'/)
+  assert.match(mainSource, /href="\/gpu-cloud" class="sheet-link"[\s\S]*GPU Cloud/)
 })

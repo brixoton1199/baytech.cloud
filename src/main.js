@@ -266,6 +266,10 @@ sideSheet.innerHTML = `
         <span class="sheet-link-icon">🖥️</span>
         Server Solutions
       </a>
+      <a href="/gpu-cloud" class="sheet-link">
+        <span class="sheet-link-icon">▦</span>
+        GPU Cloud
+      </a>
       <a href="/services#devops-automation" class="sheet-link">
         <span class="sheet-link-icon">⚙️</span>
         DevOps & Automation

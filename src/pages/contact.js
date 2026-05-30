@@ -110,7 +110,7 @@ export function renderContact() {
           <div id="form-status" class="form-status" style="display: none;"></div>
           
           <button type="submit" id="submit-btn" class="btn btn-filled" style="width: 100%;">
-            <span class="btn-text">Send Message</span>
+            <span class="btn-label">Send Message</span>
             <span class="btn-loader" style="display: none;">Sending...</span>
           </button>
         </form>
@@ -141,10 +141,44 @@ export function renderContact() {
     const form = document.getElementById('contact-form')
     const submitBtn = document.getElementById('submit-btn')
     const formStatus = document.getElementById('form-status')
-    const btnText = submitBtn?.querySelector('.btn-text')
+    const btnText = submitBtn?.querySelector('.btn-label')
     const btnLoader = submitBtn?.querySelector('.btn-loader')
 
     if (form) {
+      const validationMessages = {
+        name: {
+          valueMissing: 'Please enter your name.'
+        },
+        email: {
+          valueMissing: 'Please enter your email address.',
+          typeMismatch: 'Please enter a valid email address.'
+        },
+        message: {
+          valueMissing: 'Please tell us about your project or question...'
+        }
+      }
+
+      const getValidationMessage = (field) => {
+        const messages = validationMessages[field.id]
+        if (!messages) return ''
+        if (field.validity.valueMissing) return messages.valueMissing
+        if (field.validity.typeMismatch) return messages.typeMismatch
+        return ''
+      }
+
+      const updateValidationMessage = (field) => {
+        field.setCustomValidity('')
+        field.setCustomValidity(getValidationMessage(field))
+      }
+
+      const validationFields = form.querySelectorAll('input[required], textarea[required]')
+      validationFields.forEach((field) => {
+        updateValidationMessage(field)
+        field.addEventListener('invalid', () => updateValidationMessage(field))
+        field.addEventListener('input', () => updateValidationMessage(field))
+        field.addEventListener('blur', () => updateValidationMessage(field))
+      })
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault()
         
@@ -175,6 +209,7 @@ export function renderContact() {
               formStatus.style.display = 'block'
             }
             form.reset()
+            validationFields.forEach((field) => updateValidationMessage(field))
           } else {
             throw new Error(data.message || 'Something went wrong')
           }

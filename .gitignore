@@ -42,3 +42,6 @@ qa/
 /*.webp
 /*.mp4
 /*.webm
+
+# Local project agent skills
+.agents/

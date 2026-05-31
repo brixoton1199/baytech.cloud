@@ -18,18 +18,22 @@ export function renderHome() {
         <div class="hero-logo">
           ${renderBaytechLogo({ className: 'hero-logo-image', label: 'Baytech Logo' })}
         </div>
-        <h1>Technology Strategy, Realized.</h1>
-        <h2 class="hero-supporting-title">Align Your Infrastructure with Ambition.</h2>
-        <p class="hero-subtitle">We are your dedicated technology consultants. We architect secure, scalable foundations and provide the strategic guidance Irish businesses need to innovate and grow.</p>
+        <h1>Your <span class="hero-slogan-nowrap">One-Stop</span> AI Plus</h1>
+        <p class="hero-subtitle">Baytech helps you plan, build, and run AI-ready cloud systems, from strategy to deployment, security, and ongoing support.</p>
+        <div class="hero-service-tags" aria-label="Baytech focus areas">
+          <span>AI Strategy</span>
+          <span>GPU Cloud</span>
+          <span>Cloud &amp; Security</span>
+        </div>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-filled">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            Schedule a Strategic Consultation
+            Talk to Baytech
           </a>
-          <a href="/services" class="btn btn-outlined">View Services</a>
+          <a href="/services" class="btn btn-outlined">Explore Services</a>
         </div>
       </div>
       

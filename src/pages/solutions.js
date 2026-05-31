@@ -78,7 +78,7 @@ export function renderSolutions() {
       <div class="solution-card card-elevated">
         <span class="solution-tag">AI Infrastructure</span>
         <h3>GPU Cloud Capacity</h3>
-        <p>Inquiry-led access to H100, H200, and RTX Pro 6000 capacity with architecture, security, and deployment guidance from Baytech.</p>
+        <p>Inquiry-led access to configurable Nvidia and AMD GPU systems with architecture, security, and deployment guidance from Baytech.</p>
         <ul class="feature-list">
           <li>GPU capacity planning</li>
           <li>AI infrastructure architecture</li>

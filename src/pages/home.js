@@ -123,7 +123,7 @@ export function renderHome() {
       <div>
         <p class="section-label">GPU Cloud</p>
         <h2 class="section-title">High-performance AI capacity, planned with Baytech.</h2>
-        <p class="section-subtitle">Explore H100, H200, and RTX Pro 6000 options for training, inference, rendering, and applied AI infrastructure.</p>
+        <p class="section-subtitle">Explore configurable Nvidia and AMD GPU systems for training, rendering, inference, and applied AI infrastructure.</p>
       </div>
       <a href="/gpu-cloud" class="btn btn-filled">View GPU Cloud</a>
     </div>

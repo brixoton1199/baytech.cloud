@@ -20,7 +20,7 @@ const gpuPageSource = await readSource('../src/pages/gpu-cloud.js')
 const expectedGpuSystems = [
   {
     name: 'Nvidia H100',
-    workloads: 'Rendering, inference',
+    workloads: ['Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 8468 48C 2.1GHz * 2' },
       { label: 'Mem', value: '64GB 4800MHz * 32' },
@@ -30,7 +30,7 @@ const expectedGpuSystems = [
   },
   {
     name: 'Nvidia H200',
-    workloads: 'Rendering, inference',
+    workloads: ['Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 8558 48C 2.1GHz * 2' },
       { label: 'Mem', value: '64GB 5600MHz * 32' },
@@ -40,7 +40,7 @@ const expectedGpuSystems = [
   },
   {
     name: 'Nvidia B200',
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6960P 72C 2.7GHz * 2' },
       { label: 'Mem', value: '128GB 6400MHz * 16' },
@@ -50,7 +50,7 @@ const expectedGpuSystems = [
   },
   {
     name: 'Nvidia B300',
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6776P 64C 2.3GHz' },
       { label: 'Mem', value: '96GB 6400MHz * 32' },
@@ -60,7 +60,7 @@ const expectedGpuSystems = [
   },
   {
     name: 'AMD MI350X',
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'EPYC 9575F 64C 3.3GHz' },
       { label: 'Mem', value: '128GB 64MHz * 24' },
@@ -70,7 +70,7 @@ const expectedGpuSystems = [
   },
   {
     name: 'Nvidia RTX Pro 6000',
-    workloads: 'Inference',
+    workloads: ['Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6740P 48C 2.1GHz' },
       { label: 'Mem', value: '64GB 5600MHz * 16' },
@@ -92,7 +92,9 @@ function gpuSystemBlock(name) {
   const nextSystemStarts = expectedGpuSystems
     .map((system) => gpuPageSource.indexOf(`name: '${system.name}'`, start + nameToken.length))
     .filter((index) => index !== -1)
-  const end = nextSystemStarts.length > 0 ? Math.min(...nextSystemStarts) : gpuPageSource.indexOf(']', start)
+  const gpuSystemsEndMatch = /\r?\n]\r?\n\r?\nconst trustItems/.exec(gpuPageSource.slice(start))
+  const gpuSystemsEnd = gpuSystemsEndMatch ? start + gpuSystemsEndMatch.index : -1
+  const end = nextSystemStarts.length > 0 ? Math.min(...nextSystemStarts) : gpuSystemsEnd
 
   assert.notEqual(end, -1, `${name} source object end is missing`)
   return gpuPageSource.slice(start, end)
@@ -145,7 +147,10 @@ test('GPU Cloud page presents the approved configurable SKU rows', () => {
     const systemBlock = gpuSystemBlock(system.name)
 
     assert.match(systemBlock, escapedPattern(`name: '${system.name}'`))
-    assert.match(systemBlock, escapedPattern(`workloads: '${system.workloads}'`))
+    assert.match(systemBlock, /workloads: \[/)
+    for (const workload of system.workloads) {
+      assert.match(systemBlock, escapedPattern(`'${workload}'`))
+    }
     for (const spec of system.specs) {
       assert.match(systemBlock, specPairPattern(spec))
     }
@@ -156,7 +161,12 @@ test('GPU Cloud page presents the approved configurable SKU rows', () => {
   assert.match(gpuPageSource, /Request for availability/)
   assert.match(gpuPageSource, /gpuSystems/)
   assert.match(gpuPageSource, /gpu-system-row/)
+  assert.match(gpuPageSource, /gpu-system-subtitle/)
+  assert.match(gpuPageSource, /System specification/)
+  assert.match(gpuPageSource, /Baseline configuration/)
   assert.match(gpuPageSource, /\/contact/)
+  assert.doesNotMatch(gpuPageSource, /Deployment attributes|Baseline profile/)
+  assert.doesNotMatch(gpuPageSource, /Availability|Scoped by workload and deployment window/)
   assert.doesNotMatch(gpuPageSource, /Request GPU Availability|Request availability/)
   assert.doesNotMatch(gpuPageSource, /Deploy now|Pricing|Checkout|Buy now|# GPUs|Price per GPU|inventory|quantity|notify/i)
 })
@@ -176,6 +186,9 @@ test('GPU Cloud styles are scoped and responsive', () => {
   assert.match(styleSource, /\.gpu-card/)
   assert.match(styleSource, /\.gpu-system-grid/)
   assert.match(styleSource, /\.gpu-system-row/)
+  assert.match(styleSource, /\.gpu-system-subtitle/)
+  assert.match(styleSource, /\.gpu-system-summary-actions/)
+  assert.match(styleSource, /\.gpu-system-workload-tag/)
   assert.match(styleSource, /\.gpu-system-specs/)
   assert.match(styleSource, /\.gpu-system-configurable/)
   assert.match(styleSource, /\.gpu-system-action/)
@@ -195,7 +208,9 @@ test('GPU Cloud page follows peer subpage header, card, button, and CTA rhythm',
   assert.match(gpuPageSource, /class="gpu-card solution-card card-elevated"/)
   assert.match(gpuPageSource, /class="solution-tag"/)
   assert.match(gpuPageSource, /class="gpu-system-specs"/)
-  assert.match(gpuPageSource, /class="btn btn-outlined gpu-system-action">Request for availability/)
+  assert.match(gpuPageSource, /class="gpu-system-summary-actions"/)
+  assert.match(gpuPageSource, /class="btn btn-tonal gpu-system-action"/)
+  assert.match(gpuPageSource, /class="gpu-system-action-arrow"/)
   assert.match(gpuPageSource, /cta\.className = 'cta-section animate-on-scroll'/)
   assert.match(mainSource, /href="\/gpu-cloud" class="sheet-link"[\s\S]*GPU Cloud/)
 })

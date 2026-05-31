@@ -7,7 +7,7 @@ const gpuSystems = [
     vendor: 'Nvidia',
     vendorMark: 'NV',
     configurable: true,
-    workloads: 'Rendering, inference',
+    workloads: ['Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 8468 48C 2.1GHz * 2' },
       { label: 'Mem', value: '64GB 4800MHz * 32' },
@@ -20,7 +20,7 @@ const gpuSystems = [
     vendor: 'Nvidia',
     vendorMark: 'NV',
     configurable: true,
-    workloads: 'Rendering, inference',
+    workloads: ['Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 8558 48C 2.1GHz * 2' },
       { label: 'Mem', value: '64GB 5600MHz * 32' },
@@ -33,7 +33,7 @@ const gpuSystems = [
     vendor: 'Nvidia',
     vendorMark: 'NV',
     configurable: true,
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6960P 72C 2.7GHz * 2' },
       { label: 'Mem', value: '128GB 6400MHz * 16' },
@@ -46,7 +46,7 @@ const gpuSystems = [
     vendor: 'Nvidia',
     vendorMark: 'NV',
     configurable: true,
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6776P 64C 2.3GHz' },
       { label: 'Mem', value: '96GB 6400MHz * 32' },
@@ -59,7 +59,7 @@ const gpuSystems = [
     vendor: 'AMD',
     vendorMark: 'AMD',
     configurable: true,
-    workloads: 'Training, rendering, inference',
+    workloads: ['Training', 'Rendering', 'Inference'],
     specs: [
       { label: 'CPU', value: 'EPYC 9575F 64C 3.3GHz' },
       { label: 'Mem', value: '128GB 64MHz * 24' },
@@ -72,7 +72,7 @@ const gpuSystems = [
     vendor: 'Nvidia',
     vendorMark: 'NV',
     configurable: true,
-    workloads: 'Inference',
+    workloads: ['Inference'],
     specs: [
       { label: 'CPU', value: 'Intel 6740P 48C 2.1GHz' },
       { label: 'Mem', value: '64GB 5600MHz * 16' },
@@ -113,6 +113,12 @@ function renderSpec(spec) {
   `
 }
 
+function renderWorkloadTags(workloads) {
+  return workloads
+    .map((workload) => `<span class="gpu-system-workload-tag">${workload}</span>`)
+    .join('')
+}
+
 // Preserve peer-card source contract: class="gpu-card solution-card card-elevated"
 function renderGpuSystem(system) {
   return `
@@ -126,26 +132,25 @@ function renderGpuSystem(system) {
           </div>
         </div>
         <div class="gpu-system-meta">
-          <span class="gpu-system-workloads">${system.workloads}</span>
+          ${renderWorkloadTags(system.workloads)}
           ${system.configurable ? '<span class="gpu-system-configurable"><span class="solution-tag">Configurable</span></span>' : ''}
         </div>
+        <div class="gpu-system-summary-actions">
+          <a href="/contact" class="btn btn-tonal gpu-system-action">
+            <span>Request for availability</span>
+            <span class="gpu-system-action-arrow" aria-hidden="true">&gt;</span>
+          </a>
+        </div>
       </header>
-      <section class="gpu-system-profile" aria-label="${system.name} deployment attributes">
+      <section class="gpu-system-profile" aria-label="${system.name} system specification">
         <div class="gpu-system-profile-header">
-          <span>Deployment attributes</span>
-          <span>Baseline profile</span>
+          <span>System specification</span>
+          <span>Baseline configuration</span>
         </div>
         <dl class="gpu-system-specs">
           ${system.specs.map(renderSpec).join('')}
         </dl>
       </section>
-      <aside class="gpu-system-request">
-        <div class="gpu-system-request-copy">
-          <span class="gpu-system-request-label">Availability</span>
-          <span class="gpu-system-request-note">Scoped by workload and deployment window.</span>
-        </div>
-        <a href="/contact" class="btn btn-outlined gpu-system-action">Request for availability</a>
-      </aside>
     </article>
   `
 }
@@ -175,7 +180,7 @@ export function renderGpuCloud() {
     <div class="section-header">
       <p class="section-label">GPU Systems</p>
       <h2 class="section-title">Configurable systems for demanding AI workloads</h2>
-      <p class="section-subtitle">Compare deployment-ready GPU system profiles by compute host, memory, local NVMe storage, and network fabric, then scope availability with Baytech.</p>
+      <p class="section-subtitle gpu-system-subtitle">Compare configurable GPU system profiles by compute, memory, storage, and network.</p>
     </div>
     <div class="solutions-grid gpu-card-grid">
       ${gpuSystems.map(renderGpuSystem).join('')}

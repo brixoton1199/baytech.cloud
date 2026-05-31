@@ -97,10 +97,17 @@ const trustItems = [
   },
 ]
 
+const specLabels = {
+  Mem: 'Memory',
+  Data: 'Local NVMe',
+}
+
 function renderSpec(spec) {
+  const label = specLabels[spec.label] || spec.label
+
   return `
     <div class="gpu-system-spec">
-      <dt>${spec.label}</dt>
+      <dt>${label}</dt>
       <dd>${spec.value}</dd>
     </div>
   `
@@ -110,18 +117,35 @@ function renderSpec(spec) {
 function renderGpuSystem(system) {
   return `
     <article class="gpu-card solution-card card-elevated gpu-system-row">
-      <div class="gpu-system-summary">
+      <header class="gpu-system-summary">
         <div class="gpu-system-title-line">
           <span class="gpu-system-vendor" aria-hidden="true">${system.vendorMark}</span>
-          <h3>${system.name}</h3>
+          <div>
+            <span class="gpu-system-kicker">GPU system</span>
+            <h3>${system.name}</h3>
+          </div>
         </div>
-        <p class="gpu-system-workloads">${system.workloads}</p>
-        ${system.configurable ? '<span class="gpu-system-configurable"><span class="solution-tag">Configurable</span></span>' : ''}
-      </div>
-      <dl class="gpu-system-specs">
-        ${system.specs.map(renderSpec).join('')}
-      </dl>
-      <a href="/contact" class="btn btn-outlined gpu-system-action">Request for availability</a>
+        <div class="gpu-system-meta">
+          <span class="gpu-system-workloads">${system.workloads}</span>
+          ${system.configurable ? '<span class="gpu-system-configurable"><span class="solution-tag">Configurable</span></span>' : ''}
+        </div>
+      </header>
+      <section class="gpu-system-profile" aria-label="${system.name} deployment attributes">
+        <div class="gpu-system-profile-header">
+          <span>Deployment attributes</span>
+          <span>Baseline profile</span>
+        </div>
+        <dl class="gpu-system-specs">
+          ${system.specs.map(renderSpec).join('')}
+        </dl>
+      </section>
+      <aside class="gpu-system-request">
+        <div class="gpu-system-request-copy">
+          <span class="gpu-system-request-label">Availability</span>
+          <span class="gpu-system-request-note">Scoped by workload and deployment window.</span>
+        </div>
+        <a href="/contact" class="btn btn-outlined gpu-system-action">Request for availability</a>
+      </aside>
     </article>
   `
 }
@@ -151,7 +175,7 @@ export function renderGpuCloud() {
     <div class="section-header">
       <p class="section-label">GPU Systems</p>
       <h2 class="section-title">Configurable systems for demanding AI workloads</h2>
-      <p class="section-subtitle">Start with the system profile that fits your workload, then talk with Baytech about timing, architecture, and deployment readiness.</p>
+      <p class="section-subtitle">Compare deployment-ready GPU system profiles by compute host, memory, local NVMe storage, and network fabric, then scope availability with Baytech.</p>
     </div>
     <div class="solutions-grid gpu-card-grid">
       ${gpuSystems.map(renderGpuSystem).join('')}

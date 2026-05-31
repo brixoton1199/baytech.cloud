@@ -15,9 +15,7 @@ export function renderHome() {
     <div class="hero-split-container">
       <div class="hero-content-left">
         <div class="hero-logo">
-          <svg viewBox="0 0 1626 173" role="img" aria-label="Baytech Logo" class="hero-logo-image baytech-logo-svg">
-            <use href="/assets/baytech-logo.svg#baytech-logo"></use>
-          </svg>
+          <img src="/assets/baytech-logo.svg" alt="Baytech Logo" class="hero-logo-image baytech-logo-svg">
         </div>
         <h1>Technology Strategy, Realized.</h1>
         <h2 class="hero-supporting-title">Align Your Infrastructure with Ambition.</h2>

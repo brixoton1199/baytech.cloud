@@ -9,7 +9,7 @@ export function renderHome() {
   // HERO SECTION - Two Pane Layout with Map
   // ============================================
   const hero = document.createElement('section')
-  hero.className = 'hero hero-with-map'
+  hero.className = 'hero hero-with-map hero-motion-stage'
   hero.id = 'home'
   hero.innerHTML = `
     <div class="hero-split-container">
@@ -51,6 +51,7 @@ export function renderHome() {
   // ============================================
   const chipsSection = document.createElement('section')
   chipsSection.className = 'services-section animate-on-scroll'
+  chipsSection.id = 'home-next'
   chipsSection.innerHTML = `
     <div class="section-header animate-slide-left" style="--delay: 0ms;">
       <p class="section-label">How We Partner With You</p>

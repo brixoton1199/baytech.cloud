@@ -599,15 +599,17 @@ const initParallax = () => {
       el.style.transform = `translateY(${yOffset}px)`
     })
     
-    // Subtle parallax on hero spotlight
-    const hero = document.querySelector('.hero')
+    // Subtle handoff from the homepage hero into the first content section.
+    const hero = document.querySelector('.hero-motion-stage')
     if (hero) {
       const heroRect = hero.getBoundingClientRect()
       if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
-        // Only animate when hero is visible
-        const progress = Math.max(0, Math.min(1, -heroRect.top / heroRect.height))
-        const pseudoShift = progress * 30
+        const progress = Math.max(0, Math.min(1, -heroRect.top / (heroRect.height * 0.72)))
+        const pseudoShift = progress * 24
         hero.style.setProperty('--parallax-shift', `${pseudoShift}px`)
+        hero.style.setProperty('--hero-copy-y', `${Math.round(progress * -18)}px`)
+        hero.style.setProperty('--hero-map-y', `${Math.round(progress * 28)}px`)
+        hero.style.setProperty('--hero-fade', `${(1 - progress * 0.16).toFixed(3)}`)
       }
     }
     
@@ -624,6 +626,59 @@ const initParallax = () => {
 
 // Initialize parallax after DOM is ready
 initParallax()
+
+// ============================================
+// HOMEPAGE HERO SOFT SNAP
+// ============================================
+const initHomeHeroSnap = () => {
+  let isSnapping = false
+  const snapDuration = 620
+
+  const animateHomeHeroSnap = (nextSection) => {
+    const startY = window.scrollY
+    const targetY = startY + nextSection.getBoundingClientRect().top
+    const distance = targetY - startY
+    const startTime = performance.now()
+
+    const step = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / snapDuration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+
+      window.scrollTo({ top: startY + distance * eased, left: 0, behavior: 'auto' })
+
+      if (progress < 1) {
+        requestAnimationFrame(step)
+        return
+      }
+
+      isSnapping = false
+    }
+
+    requestAnimationFrame(step)
+  }
+
+  const handleHomeHeroWheel = (event) => {
+    if (event.defaultPrevented || event.deltaY <= 4 || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return
+    const target = event.target instanceof Element ? event.target : null
+    if (target?.closest('.nav-rail, .mobile-nav, .side-sheet')) return
+
+    const hero = document.querySelector('.hero-motion-stage')
+    const nextSection = document.querySelector('#home-next')
+    if (!hero || !nextSection || isSnapping) return
+
+    const heroRect = hero.getBoundingClientRect()
+    const isStillInFirstViewport = window.scrollY < hero.offsetHeight * 0.42 && heroRect.bottom > window.innerHeight * 0.62
+    if (!isStillInFirstViewport) return
+
+    event.preventDefault()
+    isSnapping = true
+    animateHomeHeroSnap(nextSection)
+  }
+
+  window.addEventListener('wheel', handleHomeHeroWheel, { passive: false })
+}
+
+initHomeHeroSnap()
 
 // ============================================
 // INITIALIZE ROUTER

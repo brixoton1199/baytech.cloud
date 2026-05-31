@@ -158,6 +158,12 @@
   --md-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --md-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
   --md-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* ===== BAYTECH MOTION LANGUAGE ===== */
+  --motion-card-lift: -4px;
+  --motion-card-duration: var(--md-duration-medium1);
+  --motion-card-shadow-rest: 0 18px 48px rgba(31, 41, 55, 0.07);
+  --motion-card-shadow-hover: 0 24px 68px rgba(31, 41, 55, 0.12);
 }
 
 /* ===== RESET ===== */
@@ -4168,12 +4174,32 @@ body.sheet-open .main-pane {
     /* Static pattern, no complexity */
     opacity: 0.3;
   }
-  
-  /* Disable all transform animations */
+
+  .hero-motion-stage {
+    --hero-copy-y: 0px !important;
+    --hero-map-y: 0px !important;
+    --hero-fade: 1 !important;
+  }
+
+  /* Disable card lift while keeping readable state changes */
+  .card-elevated,
   .service-card,
   .solution-card,
   .case-card,
   .insight-card,
+  .approach-card,
+  .sidebar-card,
+  .contact-form,
+  .contact-icon,
+  .company-profile-container {
+    transition: opacity 200ms ease,
+                color 200ms ease,
+                border-color 200ms ease,
+                background-color 200ms ease !important;
+    transform: none !important;
+  }
+
+  /* Disable all transform animations */
   .btn,
   .service-icon,
   .stat-value {
@@ -4700,6 +4726,25 @@ body::before {
   mix-blend-mode: multiply;
 }
 
+.hero-with-map.hero-motion-stage {
+  --hero-copy-y: 0px;
+  --hero-map-y: 0px;
+  --hero-fade: 1;
+}
+
+.hero-with-map.hero-motion-stage .hero-content-left {
+  opacity: var(--hero-fade, 1);
+  transform: translate3d(0, var(--hero-copy-y, 0px), 0);
+  transition: opacity 80ms linear, transform 80ms linear;
+  will-change: opacity, transform;
+}
+
+.hero-with-map.hero-motion-stage .hero-map-container {
+  transform: translate3d(0, var(--hero-map-y, 0px), 0);
+  transition: transform 80ms linear;
+  will-change: transform;
+}
+
 .btn {
   min-height: 44px;
   border-radius: var(--md-corner-full);
@@ -4745,7 +4790,10 @@ body::before {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(154, 165, 177, 0.24);
   border-radius: var(--md-corner-small);
-  box-shadow: 0 18px 48px rgba(31, 41, 55, 0.07);
+  box-shadow: var(--motion-card-shadow-rest);
+  transition: transform var(--motion-card-duration) var(--md-easing-emphasized),
+              border-color var(--motion-card-duration) var(--md-easing-emphasized),
+              box-shadow var(--motion-card-duration) var(--md-easing-emphasized);
 }
 
 .service-card {
@@ -4762,10 +4810,25 @@ body::before {
 .solution-card:hover,
 .case-card:hover,
 .insight-card:hover,
-.approach-card:hover {
-  transform: translateY(-4px);
+.approach-card:hover,
+.sidebar-card:hover,
+.contact-form:hover,
+.company-profile-container:hover {
+  transform: translateY(var(--motion-card-lift));
   border-color: rgba(38, 184, 106, 0.38);
-  box-shadow: 0 24px 68px rgba(31, 41, 55, 0.12);
+  box-shadow: var(--motion-card-shadow-hover);
+}
+
+.service-card:focus-visible,
+.solution-card:focus-visible,
+.case-card:focus-visible,
+.insight-card:focus-visible,
+.approach-card:focus-visible {
+  outline: 2px solid var(--baytech-signal);
+  outline-offset: 2px;
+  transform: translateY(var(--motion-card-lift));
+  border-color: rgba(38, 184, 106, 0.38);
+  box-shadow: var(--motion-card-shadow-hover);
 }
 
 .service-icon,

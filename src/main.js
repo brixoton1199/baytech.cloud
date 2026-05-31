@@ -12,12 +12,8 @@ navRail.className = 'nav-rail'
 navRail.innerHTML = `
   <div class="nav-rail-header">
     <a href="/" class="nav-rail-logo" aria-label="baytech.cloud home">
-      <svg viewBox="0 0 238 173" role="img" aria-label="Baytech Logo" class="logo-mark baytech-logo-svg">
-        <use href="/assets/baytech-logo-mark.svg#baytech-logo-mark"></use>
-      </svg>
-      <svg viewBox="0 0 1626 173" aria-hidden="true" class="logo-wordmark baytech-logo-svg">
-        <use href="/assets/baytech-logo.svg#baytech-logo"></use>
-      </svg>
+      <img src="/assets/baytech-logo-mark.svg" alt="" class="logo-mark baytech-logo-svg" aria-hidden="true">
+      <img src="/assets/baytech-logo.svg" alt="" class="logo-wordmark baytech-logo-svg" aria-hidden="true">
     </a>
   </div>
   
@@ -213,9 +209,7 @@ footer.innerHTML = `
   
   <div class="footer-brand-section">
     <div class="footer-brand">
-      <svg viewBox="0 0 1626 173" role="img" aria-label="Baytech Logo" class="footer-logo-image baytech-logo-svg">
-        <use href="/assets/baytech-logo.svg#baytech-logo"></use>
-      </svg>
+      <img src="/assets/baytech-logo.svg" alt="Baytech Logo" class="footer-logo-image baytech-logo-svg">
     </div>
     <div class="footer-description-full">
       <p class="footer-description">We specialize in transforming complex technology challenges into opportunities for growth. Our services span from Technology Strategy & Advisory and Cloud & Infrastructure Architecture to Enterprise Network Security and DevOps.</p>

@@ -5132,16 +5132,117 @@ body::before {
   margin-top: var(--space-6);
 }
 
+.gpu-system-grid,
+.page-gpu-cloud .gpu-card-grid {
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 32rem), 1fr));
+}
+
 .gpu-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.gpu-card .btn {
+.gpu-system-row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.8fr) minmax(18rem, 1.2fr);
+  gap: var(--space-6);
+  align-items: start;
+  min-width: 0;
+}
+
+.gpu-system-summary {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.gpu-system-title-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.gpu-system-title-line h3 {
+  margin: 0;
+  font-size: var(--md-title-large);
+  line-height: 1.25;
+}
+
+.gpu-system-vendor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 2.5rem;
+  min-height: 2rem;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid rgba(123, 193, 68, 0.32);
+  border-radius: var(--md-corner-small);
+  color: var(--md-primary);
+  background: rgba(123, 193, 68, 0.08);
+  font-size: var(--md-label-small);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.gpu-system-workloads {
+  margin: 0;
+  color: var(--md-on-surface-variant);
+}
+
+.gpu-system-configurable {
+  display: inline-flex;
   align-self: flex-start;
+}
+
+.gpu-system-specs {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+}
+
+.gpu-system-spec {
+  min-width: 0;
+  padding: var(--space-3);
+  border: 1px solid rgba(148, 143, 153, 0.18);
+  border-radius: var(--md-corner-small);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.gpu-system-spec dt {
+  margin-bottom: var(--space-1);
+  color: var(--md-on-surface-variant);
+  font-size: var(--md-label-small);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.gpu-system-spec dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--md-on-surface);
+  font-size: var(--md-body-medium);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.gpu-system-action {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  grid-column: 1 / -1;
+  justify-self: flex-start;
   margin-top: auto;
 }
 
@@ -5157,6 +5258,30 @@ body::before {
 
   .page-gpu-cloud .page-header-actions .btn {
     width: 100%;
+    white-space: normal;
+  }
+
+  .gpu-system-grid,
+  .page-gpu-cloud .gpu-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gpu-system-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .gpu-system-title-line {
+    align-items: flex-start;
+  }
+
+  .gpu-system-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .gpu-system-action {
+    width: 100%;
+    justify-self: stretch;
     white-space: normal;
   }
 }

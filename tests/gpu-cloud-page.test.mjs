@@ -138,7 +138,7 @@ test('desktop and mobile app shell prioritize GPU Cloud after Home', () => {
   assert.doesNotMatch(mainSource, /mobile-nav-item" data-nav="about"/)
 })
 
-test('GPU Cloud page presents the approved configurable SKU rows', () => {
+test('GPU Cloud page presents the approved configurable SKU table', () => {
   assert.match(gpuPageSource, /export function renderGpuCloud/)
 
   for (const system of expectedGpuSystems) {
@@ -155,8 +155,16 @@ test('GPU Cloud page presents the approved configurable SKU rows', () => {
   assert.match(gpuPageSource, /Configurable/)
   assert.match(gpuPageSource, /Request for availability/)
   assert.match(gpuPageSource, /gpuSystems/)
-  assert.match(gpuPageSource, /gpu-system-row/)
+  assert.match(gpuPageSource, /gpu-system-table/)
+  assert.match(gpuPageSource, /gpu-system-subtitle/)
+  assert.match(gpuPageSource, /Host CPU/)
+  assert.match(gpuPageSource, /System Memory/)
+  assert.match(gpuPageSource, /Local NVMe/)
+  assert.match(gpuPageSource, /Network Fabric/)
   assert.match(gpuPageSource, /\/contact/)
+  assert.doesNotMatch(gpuPageSource, /Deployment attributes|Baseline profile/)
+  assert.doesNotMatch(gpuPageSource, /Scoped by workload and deployment window/)
+  assert.doesNotMatch(gpuPageSource, /Request required/)
   assert.doesNotMatch(gpuPageSource, /Request GPU Availability|Request availability/)
   assert.doesNotMatch(gpuPageSource, /Deploy now|Pricing|Checkout|Buy now|# GPUs|Price per GPU|inventory|quantity|notify/i)
 })
@@ -173,28 +181,29 @@ test('homepage, Solutions page, and footer link users to GPU Cloud', () => {
 
 test('GPU Cloud styles are scoped and responsive', () => {
   assert.match(styleSource, /\.page-gpu-cloud/)
-  assert.match(styleSource, /\.gpu-card/)
-  assert.match(styleSource, /\.gpu-system-grid/)
-  assert.match(styleSource, /\.gpu-system-row/)
-  assert.match(styleSource, /\.gpu-system-specs/)
-  assert.match(styleSource, /\.gpu-system-configurable/)
+  assert.match(styleSource, /\.gpu-system-table-shell/)
+  assert.match(styleSource, /\.gpu-system-table/)
+  assert.match(styleSource, /\.gpu-system-subtitle/)
+  assert.match(styleSource, /\.gpu-system-use-cases/)
+  assert.match(styleSource, /\.gpu-system-chip/)
+  assert.match(styleSource, /\.gpu-system-availability/)
   assert.match(styleSource, /\.gpu-system-action/)
   assert.match(styleSource, /\.page-gpu-cloud \.page-header-actions/)
-  assert.match(gpuPageSource, /class="solutions-grid gpu-card-grid"/)
+  assert.match(gpuPageSource, /class="gpu-system-table-shell"/)
   assert.match(gpuPageSource, /class="solutions-grid gpu-trust-grid"/)
-  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.page-gpu-cloud \.page-header-actions/)
+  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.gpu-system-table thead/)
+  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.gpu-system-table td::before/)
   assert.doesNotMatch(styleSource, /\.gpu-cloud-hero|\.gpu-cloud-visual|\.gpu-spec-list/)
   assert.doesNotMatch(styleSource, /\.gpu-(?:[\w-]*(?:marketplace|pricing|quantity)[\w-]*)/)
 })
 
-test('GPU Cloud page follows peer subpage header, card, button, and CTA rhythm', () => {
+test('GPU Cloud page follows peer subpage header, table, button, and CTA rhythm', () => {
   assert.match(styleSource, /\.page-content > \.page-gpu-cloud/)
   assert.match(gpuPageSource, /pageHeader\.className = 'page-header'/)
   assert.match(gpuPageSource, /<h1>GPU Cloud<\/h1>/)
   assert.doesNotMatch(gpuPageSource, /gpu-cloud-hero|gpu-cloud-visual|gpu-visual-/)
-  assert.match(gpuPageSource, /class="gpu-card solution-card card-elevated"/)
-  assert.match(gpuPageSource, /class="solution-tag"/)
-  assert.match(gpuPageSource, /class="gpu-system-specs"/)
+  assert.match(gpuPageSource, /<table class="gpu-system-table"/)
+  assert.match(gpuPageSource, /data-label="Availability"/)
   assert.match(gpuPageSource, /class="btn btn-outlined gpu-system-action">Request for availability/)
   assert.match(gpuPageSource, /cta\.className = 'cta-section animate-on-scroll'/)
   assert.match(mainSource, /href="\/gpu-cloud" class="sheet-link"[\s\S]*GPU Cloud/)

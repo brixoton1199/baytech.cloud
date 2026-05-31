@@ -140,6 +140,7 @@
   --rail-width-expanded: 280px;
   --side-sheet-width: 320px;
   --main-content-max: 1200px;
+  --page-rail-max: var(--main-content-max);
   
   /* ===== TRANSITIONS ===== */
   --md-duration-short1: 50ms;
@@ -5222,21 +5223,32 @@ body::before {
   gap: var(--space-2);
 }
 
-.gpu-system-workloads {
+.gpu-system-workloads,
+.gpu-system-configurable .solution-tag {
   display: inline-flex;
   align-items: center;
-  min-height: 1.875rem;
-  padding: var(--space-1) var(--space-3);
-  border: 1px solid rgba(148, 143, 153, 0.18);
+  height: 1.875rem;
+  padding: 0 var(--space-3);
   border-radius: var(--md-corner-full);
-  color: var(--md-on-surface-variant);
-  background: rgba(255, 255, 255, 0.025);
   font-size: var(--md-label-medium);
   font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.gpu-system-workloads {
+  border: 1px solid rgba(148, 143, 153, 0.18);
+  color: var(--md-on-surface-variant);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.gpu-system-configurable .solution-tag {
+  margin: 0;
 }
 
 .gpu-system-configurable {
   display: inline-flex;
+  align-items: center;
   align-self: flex-start;
 }
 
@@ -5397,4 +5409,26 @@ body::before {
     justify-self: stretch;
     white-space: normal;
   }
+}
+
+/* ===== BAYTECH-13: WIDE SCREEN CONTENT RAIL ===== */
+.page-content > .page-services,
+.page-content > .page-approach,
+.page-content > .page-solutions,
+.page-content > .page-gpu-cloud,
+.page-content > .page-case,
+.page-content > .page-insights,
+.page-content > .page-about,
+.page-content > .page-contact,
+.page-content > .page-container,
+.page-home > .services-section,
+.page-home > .gpu-discovery-section,
+.page-home > .insights-section,
+.page-home > .cta-section {
+  width: min(100%, var(--page-rail-max));
+  margin-inline: auto;
+}
+
+.hero-with-map .hero-split-container {
+  max-width: var(--page-rail-max);
 }

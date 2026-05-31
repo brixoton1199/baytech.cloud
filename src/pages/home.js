@@ -1,5 +1,6 @@
 // Home Page - MD3 Panel Architecture
 // Two-Pane Hero, Elevated Cards, Service Chips, Trust Bar
+import { renderBaytechLogo } from '../logoMarkup.js'
 
 export function renderHome() {
   const container = document.createElement('div')
@@ -15,7 +16,7 @@ export function renderHome() {
     <div class="hero-split-container">
       <div class="hero-content-left">
         <div class="hero-logo">
-          <img src="/assets/baytech-logo.svg" alt="Baytech Logo" class="hero-logo-image baytech-logo-svg">
+          ${renderBaytechLogo({ className: 'hero-logo-image', label: 'Baytech Logo' })}
         </div>
         <h1>Technology Strategy, Realized.</h1>
         <h2 class="hero-supporting-title">Align Your Infrastructure with Ambition.</h2>

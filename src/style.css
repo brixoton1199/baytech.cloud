@@ -5133,228 +5133,174 @@ body::before {
   margin-top: var(--space-6);
 }
 
-.gpu-system-grid,
-.page-gpu-cloud .gpu-card-grid {
-  align-items: stretch;
-  gap: var(--space-4);
-  grid-template-columns: 1fr;
-}
-
-.gpu-card {
-  display: flex;
-  flex-direction: column;
+.gpu-system-table-shell {
   min-width: 0;
-}
-
-.gpu-system-row {
-  display: grid;
-  grid-template-columns: minmax(12rem, 0.66fr) minmax(26rem, 1.62fr) minmax(12rem, 0.5fr);
-  gap: var(--space-5);
-  align-items: stretch;
-  min-width: 0;
-  padding: var(--space-5);
+  overflow-x: auto;
   border: 1px solid rgba(148, 143, 153, 0.18);
-  border-left: 3px solid rgba(123, 193, 68, 0.72);
   border-radius: var(--md-corner-large);
   background:
-    linear-gradient(90deg, rgba(123, 193, 68, 0.055), transparent 28%),
+    linear-gradient(90deg, rgba(123, 193, 68, 0.045), transparent 32%),
     var(--md-surface-container-low);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), var(--md-elevation-1);
 }
 
-.gpu-system-summary {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: var(--space-5);
-  min-width: 0;
-  padding-right: var(--space-2);
+.gpu-system-table {
+  width: 100%;
+  min-width: 76rem;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
-.gpu-system-title-line {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-  min-width: 0;
+.gpu-system-subtitle {
+  max-width: 52rem;
+  text-align: left;
 }
 
-.gpu-system-kicker {
-  display: block;
-  margin-bottom: var(--space-1);
+.gpu-system-col-system {
+  width: 12%;
+}
+
+.gpu-system-col-use-case {
+  width: 14%;
+}
+
+.gpu-system-col-cpu {
+  width: 18%;
+}
+
+.gpu-system-col-memory {
+  width: 14%;
+}
+
+.gpu-system-col-nvme {
+  width: 10%;
+}
+
+.gpu-system-col-network {
+  width: 8%;
+}
+
+.gpu-system-col-config {
+  width: 9%;
+}
+
+.gpu-system-col-availability {
+  width: 15%;
+}
+
+.gpu-system-caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.gpu-system-table th {
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid rgba(148, 143, 153, 0.18);
   color: var(--md-on-surface-variant);
+  background: rgba(255, 255, 255, 0.035);
   font-size: var(--md-label-small);
   font-weight: 700;
   letter-spacing: 0;
+  line-height: 1.25;
+  text-align: left;
   text-transform: uppercase;
 }
 
-.gpu-system-title-line h3 {
-  margin: 0;
+.gpu-system-table td {
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid rgba(148, 143, 153, 0.13);
   color: var(--md-on-surface);
-  font-size: clamp(var(--md-title-large), 2.1vw, var(--md-headline-small));
-  font-weight: 650;
-  line-height: 1.16;
+  font-size: var(--md-body-medium);
+  font-weight: 560;
+  line-height: 1.4;
   overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.gpu-system-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.gpu-system-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.gpu-system-name {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.gpu-system-name strong {
+  color: var(--md-on-surface);
+  font-size: var(--md-title-small);
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .gpu-system-vendor {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: var(--space-1) var(--space-2);
-  border: 1px solid rgba(123, 193, 68, 0.32);
+  align-self: flex-start;
+  min-height: 1.5rem;
+  padding: 0 var(--space-2);
+  border: 1px solid rgba(123, 193, 68, 0.28);
   border-radius: var(--md-corner-small);
   color: var(--md-on-primary-container);
-  background: rgba(123, 193, 68, 0.12);
+  background: rgba(123, 193, 68, 0.11);
   font-size: var(--md-label-small);
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.gpu-system-meta {
+.gpu-system-use-cases {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
-.gpu-system-workloads,
-.gpu-system-configurable .solution-tag {
+.gpu-system-chip {
   display: inline-flex;
   align-items: center;
-  height: 1.875rem;
-  padding: 0 var(--space-3);
+  min-height: 1.625rem;
+  padding: 0 var(--space-2);
+  border: 1px solid rgba(148, 143, 153, 0.18);
   border-radius: var(--md-corner-full);
-  font-size: var(--md-label-medium);
-  font-weight: 600;
+  color: var(--md-on-surface-variant);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: var(--md-label-small);
+  font-weight: 700;
   line-height: 1;
   white-space: nowrap;
 }
 
-.gpu-system-workloads {
-  border: 1px solid rgba(148, 143, 153, 0.18);
-  color: var(--md-on-surface-variant);
-  background: rgba(255, 255, 255, 0.025);
+.gpu-system-chip-accent {
+  border-color: rgba(123, 193, 68, 0.34);
+  color: var(--md-on-primary-container);
+  background: rgba(123, 193, 68, 0.1);
 }
 
-.gpu-system-configurable .solution-tag {
-  margin: 0;
-}
-
-.gpu-system-configurable {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-}
-
-.gpu-system-profile {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  padding: var(--space-4);
-  border: 1px solid rgba(148, 143, 153, 0.18);
-  border-radius: var(--md-corner-medium);
-  background: rgba(255, 255, 255, 0.035);
-}
-
-.gpu-system-profile-header {
+.gpu-system-availability {
   display: flex;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid rgba(148, 143, 153, 0.16);
-  color: var(--md-on-surface-variant);
-  font-size: var(--md-label-small);
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.gpu-system-specs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(4.75rem, 1fr);
-  gap: var(--space-2);
+  align-items: flex-start;
   min-width: 0;
-  margin: 0;
-}
-
-.gpu-system-spec {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-  padding: var(--space-3) var(--space-3);
-  border: 1px solid rgba(148, 143, 153, 0.14);
-  border-radius: var(--md-corner-small);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.gpu-system-spec dt {
-  margin-bottom: var(--space-1);
-  color: var(--md-on-surface-variant);
-  font-size: var(--md-label-small);
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.gpu-system-spec dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-  color: var(--md-on-surface);
-  font-size: var(--md-body-large);
-  font-weight: 650;
-  line-height: 1.35;
-}
-
-.gpu-system-request {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-4);
-  min-width: 0;
-  padding-left: var(--space-5);
-  border-left: 1px solid rgba(148, 143, 153, 0.16);
-}
-
-.gpu-system-request-copy {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-3);
-  border: 1px solid rgba(148, 143, 153, 0.14);
-  border-radius: var(--md-corner-small);
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.gpu-system-request-label {
-  color: var(--md-on-surface);
-  font-size: var(--md-label-small);
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.gpu-system-request-note {
-  color: var(--md-on-surface-variant);
-  font-size: var(--md-body-small);
-  line-height: 1.45;
 }
 
 .gpu-system-action {
-  align-self: flex-end;
   justify-content: center;
   width: 100%;
   min-width: 0;
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--md-corner-small);
+  font-size: var(--md-label-medium);
+  font-weight: 650;
+  line-height: 1.2;
   white-space: normal;
   text-align: center;
 }
@@ -5374,34 +5320,73 @@ body::before {
     white-space: normal;
   }
 
-  .gpu-system-grid,
-  .page-gpu-cloud .gpu-card-grid {
+  .gpu-system-table-shell {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .gpu-system-table {
+    display: block;
+    min-width: 0;
+  }
+
+  .gpu-system-table thead {
+    display: none;
+  }
+
+  .gpu-system-table tbody {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .gpu-system-table tr {
+    display: grid;
+    padding: var(--space-4);
+    border: 1px solid rgba(148, 143, 153, 0.18);
+    border-left: 3px solid rgba(123, 193, 68, 0.72);
+    border-radius: var(--md-corner-large);
+    background:
+      linear-gradient(90deg, rgba(123, 193, 68, 0.055), transparent 34%),
+      var(--md-surface-container-low);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), var(--md-elevation-1);
+  }
+
+  .gpu-system-table td {
+    display: grid;
+    grid-template-columns: minmax(7.25rem, 0.76fr) minmax(0, 1.24fr);
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(148, 143, 153, 0.13);
+    font-size: var(--md-body-medium);
+  }
+
+  .gpu-system-table td::before {
+    content: attr(data-label);
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-label-small);
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .gpu-system-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .gpu-system-table .gpu-system-name-cell,
+  .gpu-system-table td[data-label="Availability"] {
     grid-template-columns: 1fr;
   }
 
-  .gpu-system-row {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-    padding: var(--space-5);
+  .gpu-system-table .gpu-system-name-cell::before {
+    display: none;
   }
 
-  .gpu-system-title-line {
-    align-items: flex-start;
-  }
-
-  .gpu-system-profile {
-    padding: var(--space-3);
-  }
-
-  .gpu-system-specs {
-    grid-template-columns: 1fr;
-  }
-
-  .gpu-system-request {
-    padding-left: 0;
-    padding-top: var(--space-4);
-    border-left: 0;
-    border-top: 1px solid rgba(148, 143, 153, 0.16);
+  .gpu-system-table td[data-label="Availability"]::before {
+    margin-bottom: calc(-1 * var(--space-1));
   }
 
   .gpu-system-action {

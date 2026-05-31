@@ -5,7 +5,6 @@ const gpuSystems = [
   {
     name: 'Nvidia H100',
     vendor: 'Nvidia',
-    vendorMark: 'NV',
     configurable: true,
     workloads: 'Rendering, inference',
     specs: [
@@ -18,7 +17,6 @@ const gpuSystems = [
   {
     name: 'Nvidia H200',
     vendor: 'Nvidia',
-    vendorMark: 'NV',
     configurable: true,
     workloads: 'Rendering, inference',
     specs: [
@@ -31,7 +29,6 @@ const gpuSystems = [
   {
     name: 'Nvidia B200',
     vendor: 'Nvidia',
-    vendorMark: 'NV',
     configurable: true,
     workloads: 'Training, rendering, inference',
     specs: [
@@ -44,7 +41,6 @@ const gpuSystems = [
   {
     name: 'Nvidia B300',
     vendor: 'Nvidia',
-    vendorMark: 'NV',
     configurable: true,
     workloads: 'Training, rendering, inference',
     specs: [
@@ -57,7 +53,6 @@ const gpuSystems = [
   {
     name: 'AMD MI350X',
     vendor: 'AMD',
-    vendorMark: 'AMD',
     configurable: true,
     workloads: 'Training, rendering, inference',
     specs: [
@@ -70,7 +65,6 @@ const gpuSystems = [
   {
     name: 'Nvidia RTX Pro 6000',
     vendor: 'Nvidia',
-    vendorMark: 'NV',
     configurable: true,
     workloads: 'Inference',
     specs: [
@@ -97,56 +91,46 @@ const trustItems = [
   },
 ]
 
-const specLabels = {
-  Mem: 'Memory',
-  Data: 'Local NVMe',
+function getSpecValue(system, label) {
+  return system.specs.find((spec) => spec.label === label)?.value || ''
 }
 
-function renderSpec(spec) {
-  const label = specLabels[spec.label] || spec.label
-
-  return `
-    <div class="gpu-system-spec">
-      <dt>${label}</dt>
-      <dd>${spec.value}</dd>
-    </div>
-  `
+function renderUseCases(workloads) {
+  return workloads
+    .split(',')
+    .map((workload) => workload.trim())
+    .filter(Boolean)
+    .map((workload) => `<span class="gpu-system-chip">${workload}</span>`)
+    .join('')
 }
 
-// Preserve peer-card source contract: class="gpu-card solution-card card-elevated"
-function renderGpuSystem(system) {
+function renderGpuSystemRow(system) {
   return `
-    <article class="gpu-card solution-card card-elevated gpu-system-row">
-      <header class="gpu-system-summary">
-        <div class="gpu-system-title-line">
-          <span class="gpu-system-vendor" aria-hidden="true">${system.vendorMark}</span>
-          <div>
-            <span class="gpu-system-kicker">GPU system</span>
-            <h3>${system.name}</h3>
-          </div>
+    <tr>
+      <td class="gpu-system-name-cell" data-label="System">
+        <div class="gpu-system-name">
+          <span class="gpu-system-vendor">${system.vendor}</span>
+          <strong>${system.name}</strong>
         </div>
-        <div class="gpu-system-meta">
-          <span class="gpu-system-workloads">${system.workloads}</span>
-          ${system.configurable ? '<span class="gpu-system-configurable"><span class="solution-tag">Configurable</span></span>' : ''}
+      </td>
+      <td data-label="Use case">
+        <div class="gpu-system-use-cases">
+          ${renderUseCases(system.workloads)}
         </div>
-      </header>
-      <section class="gpu-system-profile" aria-label="${system.name} deployment attributes">
-        <div class="gpu-system-profile-header">
-          <span>Deployment attributes</span>
-          <span>Baseline profile</span>
+      </td>
+      <td data-label="Host CPU">${getSpecValue(system, 'CPU')}</td>
+      <td data-label="System Memory">${getSpecValue(system, 'Mem')}</td>
+      <td data-label="Local NVMe">${getSpecValue(system, 'Data')}</td>
+      <td data-label="Network Fabric">${getSpecValue(system, 'Network')}</td>
+      <td data-label="Configuration">
+        ${system.configurable ? '<span class="gpu-system-chip gpu-system-chip-accent">Configurable</span>' : ''}
+      </td>
+      <td data-label="Availability">
+        <div class="gpu-system-availability">
+          <a href="/contact" class="btn btn-outlined gpu-system-action">Request for availability</a>
         </div>
-        <dl class="gpu-system-specs">
-          ${system.specs.map(renderSpec).join('')}
-        </dl>
-      </section>
-      <aside class="gpu-system-request">
-        <div class="gpu-system-request-copy">
-          <span class="gpu-system-request-label">Availability</span>
-          <span class="gpu-system-request-note">Scoped by workload and deployment window.</span>
-        </div>
-        <a href="/contact" class="btn btn-outlined gpu-system-action">Request for availability</a>
-      </aside>
-    </article>
+      </td>
+    </tr>
   `
 }
 
@@ -169,16 +153,43 @@ export function renderGpuCloud() {
     </div>
   `
 
-  const cardsSection = document.createElement('section')
-  cardsSection.className = 'services-section animate-on-scroll'
-  cardsSection.innerHTML = `
+  const systemsSection = document.createElement('section')
+  systemsSection.className = 'services-section animate-on-scroll'
+  systemsSection.innerHTML = `
     <div class="section-header">
       <p class="section-label">GPU Systems</p>
       <h2 class="section-title">Configurable systems for demanding AI workloads</h2>
-      <p class="section-subtitle">Compare deployment-ready GPU system profiles by compute host, memory, local NVMe storage, and network fabric, then scope availability with Baytech.</p>
+      <p class="section-subtitle gpu-system-subtitle">Compare CPU, memory, NVMe, and network across configurable GPU systems.</p>
     </div>
-    <div class="solutions-grid gpu-card-grid">
-      ${gpuSystems.map(renderGpuSystem).join('')}
+    <div class="gpu-system-table-shell">
+      <table class="gpu-system-table">
+        <caption class="gpu-system-caption">Configurable GPU system profiles</caption>
+        <colgroup>
+          <col class="gpu-system-col-system">
+          <col class="gpu-system-col-use-case">
+          <col class="gpu-system-col-cpu">
+          <col class="gpu-system-col-memory">
+          <col class="gpu-system-col-nvme">
+          <col class="gpu-system-col-network">
+          <col class="gpu-system-col-config">
+          <col class="gpu-system-col-availability">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">System</th>
+            <th scope="col">Use case</th>
+            <th scope="col">Host CPU</th>
+            <th scope="col">System Memory</th>
+            <th scope="col">Local NVMe</th>
+            <th scope="col">Network Fabric</th>
+            <th scope="col">Configuration</th>
+            <th scope="col">Availability</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gpuSystems.map(renderGpuSystemRow).join('')}
+        </tbody>
+      </table>
     </div>
   `
 
@@ -214,7 +225,7 @@ export function renderGpuCloud() {
   `
 
   container.appendChild(pageHeader)
-  container.appendChild(cardsSection)
+  container.appendChild(systemsSection)
   container.appendChild(trustSection)
   container.appendChild(cta)
 

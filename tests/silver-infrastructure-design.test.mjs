@@ -159,11 +159,11 @@ test('processed hero map asset uses restrained modern linework instead of neon-h
   assert.ok(stats.brightGreenRatio < 0.18)
 })
 
-test('mobile hero constrains logo, title, and actions to avoid clipping', () => {
+test('mobile hero constrains logo, title, summary, and actions to avoid clipping', () => {
   assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-with-map \.hero-logo-image\s*{[\s\S]*width:\s*min\(72vw,\s*280px\);/)
   assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-with-map \.hero-content-left h1\s*{[\s\S]*max-width:\s*280px;/)
-  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-supporting-title\s*{[\s\S]*width:\s*min\(100%,\s*260px\);/)
-  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-supporting-title\s*{[\s\S]*white-space:\s*normal;/)
+  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-with-map \.hero-subtitle\s*{[\s\S]*max-width:\s*300px;/)
+  assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-service-tags\s*{[\s\S]*width:\s*min\(100%,\s*280px\);/)
   assert.match(styleSource, /@media \(max-width:\s*768px\)[\s\S]*\.hero-with-map \.hero-actions\s*{[\s\S]*width:\s*min\(100%,\s*280px\);/)
 })
 

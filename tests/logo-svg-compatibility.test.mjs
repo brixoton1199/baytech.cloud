@@ -3,6 +3,8 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 
 const logoFiles = [
+  'src/assets/baytech-logo.svg',
+  'src/assets/baytech-logo-mark.svg',
   'public/assets/baytech-logo.svg',
   'public/assets/baytech-logo-mark.svg',
 ]
@@ -31,6 +33,11 @@ test('site logo markup does not use external SVG symbol references', async () =>
       source,
       /href="\/assets\/baytech-logo(?:-mark)?\.svg#/,
       `${file} should not render Baytech logos through external SVG <use> references`,
+    )
+    assert.doesNotMatch(
+      source,
+      /<img[^>]+src="\/assets\/baytech-logo(?:-mark)?\.svg"/,
+      `${file} should keep Baytech SVGs inline so logo colors inherit from site CSS`,
     )
   }
 })

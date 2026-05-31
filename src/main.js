@@ -1,5 +1,6 @@
 import './style.css'
 import { initRouter } from './router.js'
+import { renderBaytechLogo } from './logoMarkup.js'
 
 // Create app structure
 const app = document.querySelector('#app')
@@ -12,8 +13,8 @@ navRail.className = 'nav-rail'
 navRail.innerHTML = `
   <div class="nav-rail-header">
     <a href="/" class="nav-rail-logo" aria-label="baytech.cloud home">
-      <img src="/assets/baytech-logo-mark.svg" alt="" class="logo-mark baytech-logo-svg" aria-hidden="true">
-      <img src="/assets/baytech-logo.svg" alt="" class="logo-wordmark baytech-logo-svg" aria-hidden="true">
+      ${renderBaytechLogo({ variant: 'mark', className: 'logo-mark', decorative: true })}
+      ${renderBaytechLogo({ variant: 'wordmark', className: 'logo-wordmark', decorative: true })}
     </a>
   </div>
   
@@ -209,7 +210,7 @@ footer.innerHTML = `
   
   <div class="footer-brand-section">
     <div class="footer-brand">
-      <img src="/assets/baytech-logo.svg" alt="Baytech Logo" class="footer-logo-image baytech-logo-svg">
+      ${renderBaytechLogo({ className: 'footer-logo-image', label: 'Baytech Logo' })}
     </div>
     <div class="footer-description-full">
       <p class="footer-description">We specialize in transforming complex technology challenges into opportunities for growth. Our services span from Technology Strategy & Advisory and Cloud & Infrastructure Architecture to Enterprise Network Security and DevOps.</p>

@@ -25,11 +25,26 @@ test('router registers the GPU Cloud page route and breadcrumb name', () => {
   assert.match(routerSource, /'\/gpu-cloud': 'GPU Cloud'/)
 })
 
-test('desktop app shell exposes GPU Cloud after Solutions without adding it to mobile nav', () => {
-  assert.match(mainSource, /href="\/solutions" class="rail-item" data-nav="solutions"[\s\S]*href="\/gpu-cloud" class="rail-item" data-nav="gpu-cloud"/)
+test('desktop and mobile app shell prioritize GPU Cloud after Home', () => {
+  const desktopHomeIndex = mainSource.indexOf('class="rail-item" data-nav="home"')
+  const desktopGpuIndex = mainSource.indexOf('class="rail-item" data-nav="gpu-cloud"')
+  const desktopServicesIndex = mainSource.indexOf('class="rail-item" data-nav="services"')
+  const mobileHomeIndex = mainSource.indexOf('class="mobile-nav-item" data-nav="home"')
+  const mobileGpuIndex = mainSource.indexOf('class="mobile-nav-item" data-nav="gpu-cloud"')
+  const mobileServicesIndex = mainSource.indexOf('class="mobile-nav-item" data-nav="services"')
+
+  assert.ok(desktopHomeIndex < desktopGpuIndex)
+  assert.ok(desktopGpuIndex < desktopServicesIndex)
+  assert.ok(mobileHomeIndex < mobileGpuIndex)
+  assert.ok(mobileGpuIndex < mobileServicesIndex)
+  const mobileGpuBlock = mainSource.slice(mobileGpuIndex, mobileServicesIndex)
+
   assert.match(mainSource, /<span class="rail-item-label">GPU Cloud<\/span>/)
+  assert.match(mobileGpuBlock, /aria-label="GPU Cloud"/)
+  assert.match(mobileGpuBlock, /<span>GPUs<\/span>/)
+  assert.doesNotMatch(mobileGpuBlock, /<span>GPU Cloud<\/span>/)
   assert.match(mainSource, /'\/gpu-cloud': 'gpu-cloud'/)
-  assert.doesNotMatch(mainSource, /mobile-nav-item" data-nav="gpu-cloud"/)
+  assert.doesNotMatch(mainSource, /mobile-nav-item" data-nav="about"/)
 })
 
 test('GPU Cloud page presents the approved inquiry-led card list', () => {

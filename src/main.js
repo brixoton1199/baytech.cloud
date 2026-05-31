@@ -31,7 +31,25 @@ navRail.innerHTML = `
       </span>
       <span class="rail-item-label">Home</span>
     </a>
-    
+
+    <a href="/gpu-cloud" class="rail-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
+      <span class="rail-item-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+          <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+          <path d="M9 1v3"></path>
+          <path d="M15 1v3"></path>
+          <path d="M9 20v3"></path>
+          <path d="M15 20v3"></path>
+          <path d="M1 9h3"></path>
+          <path d="M1 15h3"></path>
+          <path d="M20 9h3"></path>
+          <path d="M20 15h3"></path>
+        </svg>
+      </span>
+      <span class="rail-item-label">GPU Cloud</span>
+    </a>
+
     <a href="/services" class="rail-item" data-nav="services" aria-label="Services">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -59,24 +77,6 @@ navRail.innerHTML = `
         </svg>
       </span>
       <span class="rail-item-label">Solutions</span>
-    </a>
-
-    <a href="/gpu-cloud" class="rail-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
-      <span class="rail-item-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="4" y="4" width="16" height="16" rx="3"></rect>
-          <rect x="9" y="9" width="6" height="6" rx="1"></rect>
-          <path d="M9 1v3"></path>
-          <path d="M15 1v3"></path>
-          <path d="M9 20v3"></path>
-          <path d="M15 20v3"></path>
-          <path d="M1 9h3"></path>
-          <path d="M1 15h3"></path>
-          <path d="M20 9h3"></path>
-          <path d="M20 15h3"></path>
-        </svg>
-      </span>
-      <span class="rail-item-label">GPU Cloud</span>
     </a>
 
     <span class="rail-item rail-item-disabled" aria-label="Case Studies (Coming Soon)" title="Coming Soon">
@@ -316,6 +316,21 @@ mobileNav.innerHTML = `
       </svg>
       <span>Home</span>
     </a>
+    <a href="/gpu-cloud" class="mobile-nav-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+        <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+        <path d="M9 1v3"></path>
+        <path d="M15 1v3"></path>
+        <path d="M9 20v3"></path>
+        <path d="M15 20v3"></path>
+        <path d="M1 9h3"></path>
+        <path d="M1 15h3"></path>
+        <path d="M20 9h3"></path>
+        <path d="M20 15h3"></path>
+      </svg>
+      <span>GPUs</span>
+    </a>
     <a href="/services" class="mobile-nav-item" data-nav="services">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
@@ -335,14 +350,6 @@ mobileNav.innerHTML = `
         <polyline points="2 12 12 17 22 12"></polyline>
       </svg>
       <span>Solutions</span>
-    </a>
-    <a href="/about" class="mobile-nav-item" data-nav="about">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M12 16v-4"></path>
-        <path d="M12 8h.01"></path>
-      </svg>
-      <span>About</span>
     </a>
     <a href="/contact" class="mobile-nav-item" data-nav="contact">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

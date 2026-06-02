@@ -15,7 +15,7 @@ test('homepage hero uses the approved Baytech slogan as the primary headline', (
 
 test('page metadata reflects the approved Baytech slogan and AI positioning', () => {
   assert.match(indexSource, new RegExp(`<title>Baytech \\| ${approvedSlogan}</title>`))
-  assert.match(indexSource, /<meta name="description" content="[^"]*Your One-Stop AI Plus[^"]*AI[^"]*cloud[^"]*infrastructure[^"]*">/)
+  assert.match(indexSource, /<meta name="description" content="[^"]*One-Stop AI Plus[^"]*model selection[^"]*private data[^"]*GPU platform[^"]*">/)
 })
 
 test('homepage keeps One-Stop together in responsive slogan wrapping', () => {
@@ -23,9 +23,11 @@ test('homepage keeps One-Stop together in responsive slogan wrapping', () => {
 })
 
 test('homepage hero explains Baytech in concise first-time visitor language', () => {
+  assert.match(homeSource, /<p class="section-label">Built For Real AI Workloads<\/p>/)
+  assert.doesNotMatch(homeSource, /<p class="section-label">One-Stop AI Plus<\/p>/)
   assert.match(
     homeSource,
-    /Baytech helps you plan, build, and run AI-ready cloud systems, from strategy to deployment, security, and ongoing support\./
+    /Model choice, private data, GPU platform, managed deployment, and business AI workflows in one path\./
   )
   assert.doesNotMatch(homeSource, /AI, cloud, and GPU infrastructure for growing teams\./)
   assert.doesNotMatch(homeSource, /class="hero-supporting-title"/)
@@ -34,12 +36,13 @@ test('homepage hero explains Baytech in concise first-time visitor language', ()
 })
 
 test('homepage hero gives simple concrete paths before deeper service content', () => {
-  assert.match(homeSource, /<a href="\/contact" class="btn btn-filled">[\s\S]*Talk to Baytech[\s\S]*<\/a>/)
-  assert.match(homeSource, /<a href="\/services" class="btn btn-outlined">Explore Services<\/a>/)
+  assert.match(homeSource, /<a href="\/contact" class="btn btn-filled">[\s\S]*Start an AI Plus Assessment[\s\S]*<\/a>/)
+  assert.match(homeSource, /<a href="\/gpu-cloud" class="btn btn-outlined">Discuss GPU Capacity<\/a>/)
   assert.doesNotMatch(homeSource, /Schedule a Strategic Consultation/)
   assert.match(homeSource, /class="hero-service-tags"/)
-  assert.match(homeSource, /<span>AI Strategy<\/span>/)
-  assert.match(homeSource, /<span>GPU Cloud<\/span>/)
-  assert.match(homeSource, /<span>Cloud &amp; Security<\/span>/)
+  assert.match(homeSource, /<span>Model Selection<\/span>/)
+  assert.match(homeSource, /<span>Private AI<\/span>/)
+  assert.match(homeSource, /<span>GPU Platform<\/span>/)
+  assert.match(homeSource, /<span>Managed Deployment<\/span>/)
   assert.match(styleSource, /\.hero-service-tags\s*{[\s\S]*display:\s*flex;/)
 })

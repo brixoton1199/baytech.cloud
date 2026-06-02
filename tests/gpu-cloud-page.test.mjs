@@ -92,7 +92,7 @@ function gpuSystemBlock(name) {
   const nextSystemStarts = expectedGpuSystems
     .map((system) => gpuPageSource.indexOf(`name: '${system.name}'`, start + nameToken.length))
     .filter((index) => index !== -1)
-  const gpuSystemsEndMatch = /\r?\n]\r?\n\r?\nconst trustItems/.exec(gpuPageSource.slice(start))
+  const gpuSystemsEndMatch = /\r?\n]\r?\n\r?\nconst workloadFit/.exec(gpuPageSource.slice(start))
   const gpuSystemsEnd = gpuSystemsEndMatch ? start + gpuSystemsEndMatch.index : -1
   const end = nextSystemStarts.length > 0 ? Math.min(...nextSystemStarts) : gpuSystemsEnd
 
@@ -111,14 +111,14 @@ function specPairPattern({ label, value }) {
   )
 }
 
-test('router registers the GPU Cloud page route and breadcrumb name', () => {
+test('router registers the GPU Platform page route and breadcrumb name', () => {
   assert.match(routerSource, /import \{ renderGpuCloud \} from '\.\/pages\/gpu-cloud\.js'/)
   assert.match(routerSource, /'\/gpu-cloud': renderGpuCloud/)
   assert.match(routerSource, /'\/gpu-cloud\.html': renderGpuCloud/)
-  assert.match(routerSource, /'\/gpu-cloud': 'GPU Cloud'/)
+  assert.match(routerSource, /'\/gpu-cloud': 'GPU Platform'/)
 })
 
-test('desktop and mobile app shell prioritize GPU Cloud after Home', () => {
+test('desktop and mobile app shell prioritize GPU Platform after AI Plus', () => {
   const desktopHomeIndex = mainSource.indexOf('class="rail-item" data-nav="home"')
   const desktopGpuIndex = mainSource.indexOf('class="rail-item" data-nav="gpu-cloud"')
   const desktopServicesIndex = mainSource.indexOf('class="rail-item" data-nav="services"')
@@ -132,15 +132,15 @@ test('desktop and mobile app shell prioritize GPU Cloud after Home', () => {
   assert.ok(mobileGpuIndex < mobileServicesIndex)
   const mobileGpuBlock = mainSource.slice(mobileGpuIndex, mobileServicesIndex)
 
-  assert.match(mainSource, /<span class="rail-item-label">GPU Cloud<\/span>/)
-  assert.match(mobileGpuBlock, /aria-label="GPU Cloud"/)
+  assert.match(mainSource, /<span class="rail-item-label">GPU Platform<\/span>/)
+  assert.match(mobileGpuBlock, /aria-label="GPU Platform"/)
   assert.match(mobileGpuBlock, /<span>GPUs<\/span>/)
   assert.doesNotMatch(mobileGpuBlock, /<span>GPU Cloud<\/span>/)
   assert.match(mainSource, /'\/gpu-cloud': 'gpu-cloud'/)
   assert.doesNotMatch(mainSource, /mobile-nav-item" data-nav="about"/)
 })
 
-test('GPU Cloud page presents the approved configurable SKU rows', () => {
+test('GPU Platform page presents the approved configurable SKU rows', () => {
   assert.match(gpuPageSource, /export function renderGpuCloud/)
 
   for (const system of expectedGpuSystems) {
@@ -158,7 +158,7 @@ test('GPU Cloud page presents the approved configurable SKU rows', () => {
 
   assert.equal((gpuPageSource.match(/name: '/g) || []).length, expectedGpuSystems.length)
   assert.match(gpuPageSource, /Configurable/)
-  assert.match(gpuPageSource, /Request for availability/)
+  assert.match(gpuPageSource, /Request Availability/)
   assert.match(gpuPageSource, /gpuSystems/)
   assert.match(gpuPageSource, /gpu-system-row/)
   assert.match(gpuPageSource, /gpu-system-subtitle/)
@@ -166,22 +166,22 @@ test('GPU Cloud page presents the approved configurable SKU rows', () => {
   assert.match(gpuPageSource, /Baseline configuration/)
   assert.match(gpuPageSource, /\/contact/)
   assert.doesNotMatch(gpuPageSource, /Deployment attributes|Baseline profile/)
-  assert.doesNotMatch(gpuPageSource, /Availability|Scoped by workload and deployment window/)
-  assert.doesNotMatch(gpuPageSource, /Request GPU Availability|Request availability/)
+  assert.doesNotMatch(gpuPageSource, /Scoped by workload and deployment window/)
+  assert.doesNotMatch(gpuPageSource, /Request for availability|Request GPU Availability/)
   assert.doesNotMatch(gpuPageSource, /Deploy now|Pricing|Checkout|Buy now|# GPUs|Price per GPU|inventory|quantity|notify/i)
 })
 
-test('homepage, Solutions page, and footer link users to GPU Cloud', () => {
+test('homepage, Solutions page, and footer link users to GPU Platform', () => {
   assert.match(homeSource, /href="\/gpu-cloud"/)
-  assert.match(solutionsSource, /href="\/gpu-cloud"/)
+  assert.match(solutionsSource, /href: '\/gpu-cloud'/)
   assert.match(mainSource, /href="\/gpu-cloud"/)
-  assert.match(homeSource, /configurable Nvidia and AMD GPU systems/i)
-  assert.match(solutionsSource, /configurable Nvidia and AMD GPU systems/i)
+  assert.match(homeSource, /NVIDIA and AMD systems/i)
+  assert.match(solutionsSource, /GPU Platform/)
   assert.doesNotMatch(homeSource, /H100, H200, and RTX Pro 6000/)
   assert.doesNotMatch(solutionsSource, /H100, H200, and RTX Pro 6000/)
 })
 
-test('GPU Cloud styles are scoped and responsive', () => {
+test('GPU Platform styles are scoped and responsive', () => {
   assert.match(styleSource, /\.page-gpu-cloud/)
   assert.match(styleSource, /\.gpu-card/)
   assert.match(styleSource, /\.gpu-system-grid/)
@@ -200,10 +200,10 @@ test('GPU Cloud styles are scoped and responsive', () => {
   assert.doesNotMatch(styleSource, /\.gpu-(?:[\w-]*(?:marketplace|pricing|quantity)[\w-]*)/)
 })
 
-test('GPU Cloud page follows peer subpage header, card, button, and CTA rhythm', () => {
+test('GPU Platform page follows peer subpage header, card, button, and CTA rhythm', () => {
   assert.match(styleSource, /\.page-content > \.page-gpu-cloud/)
   assert.match(gpuPageSource, /pageHeader\.className = 'page-header'/)
-  assert.match(gpuPageSource, /<h1>GPU Cloud<\/h1>/)
+  assert.match(gpuPageSource, /<h1>GPU systems for AI workloads that need real capacity<\/h1>/)
   assert.doesNotMatch(gpuPageSource, /gpu-cloud-hero|gpu-cloud-visual|gpu-visual-/)
   assert.match(gpuPageSource, /class="gpu-card solution-card card-elevated"/)
   assert.match(gpuPageSource, /class="solution-tag"/)
@@ -212,5 +212,5 @@ test('GPU Cloud page follows peer subpage header, card, button, and CTA rhythm',
   assert.match(gpuPageSource, /class="btn btn-tonal gpu-system-action"/)
   assert.match(gpuPageSource, /class="gpu-system-action-arrow"/)
   assert.match(gpuPageSource, /cta\.className = 'cta-section animate-on-scroll'/)
-  assert.match(mainSource, /href="\/gpu-cloud" class="sheet-link"[\s\S]*GPU Cloud/)
+  assert.match(mainSource, /href="\/gpu-cloud" class="sheet-link"[\s\S]*GPU Platform/)
 })

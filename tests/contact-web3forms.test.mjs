@@ -17,8 +17,20 @@ test('contact form submits through the JavaScript Web3Forms path', () => {
   assert.match(contactSource, /fetch\('https:\/\/api\.web3forms\.com\/submit'/)
   assert.match(
     contactSource,
-    /name="subject" value="New Contact Form Submission from Baytech\.cloud"/
+    /name="subject" value="New AI Plus Inquiry from Baytech\.cloud"/
   )
   assert.match(contactSource, /name="botcheck"/)
   assert.doesNotMatch(contactSource, /name="redirect"/)
+})
+
+test('contact form routes AI Plus inquiry topics', () => {
+  assert.match(contactSource, /<label for="service">AI Plus Topic<\/label>/)
+  assert.match(contactSource, /AI Plus Assessment/)
+  assert.match(contactSource, /Model Selection/)
+  assert.match(contactSource, /Private AI \/ RAG/)
+  assert.match(contactSource, /Managed Endpoint/)
+  assert.match(contactSource, /GPU Platform/)
+  assert.match(contactSource, /Production Operations/)
+  assert.match(contactSource, /Send AI Plus Inquiry/)
+  assert.doesNotMatch(contactSource, /Cloud Consulting|Network Architecture|Server Solutions|DevOps &amp; Automation/)
 })

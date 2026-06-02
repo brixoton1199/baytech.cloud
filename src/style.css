@@ -2920,7 +2920,8 @@ body.sheet-open .main-pane {
   gap: var(--space-6);
 }
 
-.footer-legal a {
+.footer-legal a,
+.footer-legal span {
   font-size: var(--md-body-small);
   color: var(--md-on-surface-variant);
   transition: color var(--md-duration-short3) var(--md-easing-standard);
@@ -3173,7 +3174,7 @@ body.sheet-open .main-pane {
   border-radius: var(--md-corner-full);
 }
 
-/* Case Studies */
+/* Proof Points */
 .case-card {
   background: var(--md-surface-container);
   border-radius: var(--md-corner-extra-large);
@@ -3235,7 +3236,7 @@ body.sheet-open .main-pane {
   text-transform: uppercase;
 }
 
-/* Insights */
+/* Resources */
 .insight-card {
   background: var(--md-surface-container);
   border-radius: var(--md-corner-extra-large);
@@ -4907,7 +4908,8 @@ body::before {
 .footer-links a,
 .footer-contact li,
 .footer-copy,
-.footer-legal a {
+.footer-legal a,
+.footer-legal span {
   color: var(--baytech-muted);
 }
 

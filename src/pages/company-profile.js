@@ -6,7 +6,7 @@ export const CompanyProfilePage = () => {
     <div class="company-profile-page">
       <div class="company-profile-header">
         <h1>Company Profile</h1>
-        <p class="section-subtitle">Baytech.cloud Strategy Presentation</p>
+        <p class="section-subtitle">Baytech.cloud strategy presentation for AI Plus, GPU platform, managed deployment, and practical technology partnership.</p>
       </div>
       
       <div class="presentation-container">

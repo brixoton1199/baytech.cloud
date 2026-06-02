@@ -38,14 +38,14 @@ let currentPath = null
 
 // Page name mappings for breadcrumbs
 const pageNames = {
-  '/': 'Home',
-  '/services': 'Services',
-  '/approach': 'Our Approach',
+  '/': 'AI Plus',
+  '/services': 'Managed AI',
+  '/approach': 'Method',
   '/solutions': 'Solutions',
-  '/gpu-cloud': 'GPU Cloud',
-  '/case': 'Case Studies',
-  '/insights': 'Insights',
-  '/about': 'About',
+  '/gpu-cloud': 'GPU Platform',
+  '/case': 'Proof Points',
+  '/insights': 'Resources',
+  '/about': 'Company',
   '/contact': 'Contact',
   '/company-profile': 'Company Profile'
 }

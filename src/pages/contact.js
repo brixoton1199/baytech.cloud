@@ -6,16 +6,16 @@ export function renderContact() {
   container.className = 'page-contact'
 
   // Breadcrumb
-  const breadcrumb = createBreadcrumb('Contact Us')
+  const breadcrumb = createBreadcrumb('Contact')
   container.appendChild(breadcrumb)
 
   // Page Header
   const pageHeader = document.createElement('section')
   pageHeader.className = 'page-header'
   pageHeader.innerHTML = `
-    <p class="section-label">Get in Touch</p>
-    <h1>Contact Us</h1>
-    <p>We're ready to help you with your cloud and IT infrastructure needs</p>
+    <p class="section-label">Contact</p>
+    <h1>Start your AI Plus conversation</h1>
+    <p>Share the model, data, GPU, deployment, or business workflow decision in front of you. Baytech will help shape a practical next step.</p>
   `
 
   // Contact Section with Form
@@ -24,8 +24,8 @@ export function renderContact() {
   contactSection.innerHTML = `
     <div class="contact-grid">
       <div class="contact-info">
-        <h2>Let's Discuss Your Project</h2>
-        <p>Whether you're looking to optimize your cloud spend, secure your network, or streamline your operations, our experts are here to provide tailored solutions.</p>
+        <h2>Share the AI decision in front of you</h2>
+        <p>Whether you are choosing a model, protecting private data, planning GPU capacity, launching a managed endpoint, or adapting AI to a business process, Baytech can help connect the pieces.</p>
         
         <div class="contact-details">
           <div class="contact-item">
@@ -61,15 +61,15 @@ export function renderContact() {
 
       <div class="contact-form">
         <div class="form-header">
-          <h3>Send us a message</h3>
-          <p>Fill out the form below and we'll get back to you shortly.</p>
+          <h3>Send an AI Plus inquiry</h3>
+          <p>Tell us what you are trying to evaluate, build, deploy, or operate.</p>
         </div>
         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
           <!-- Web3Forms Access Key -->
           <input type="hidden" name="access_key" value="0b606e81-3506-4d22-96e7-eaddf4219e38">
           
           <!-- Optional: Custom subject line -->
-          <input type="hidden" name="subject" value="New Contact Form Submission from Baytech.cloud">
+          <input type="hidden" name="subject" value="New AI Plus Inquiry from Baytech.cloud">
           
           <!-- Honeypot Spam Protection -->
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -89,25 +89,29 @@ export function renderContact() {
             <input type="text" id="company" name="company" placeholder="Your Company Name">
           </div>
           <div class="form-group">
-            <label for="service">Service of Interest</label>
+            <label for="service">AI Plus Topic</label>
             <select id="service" name="service">
-              <option value="">Select a Service</option>
-              <option value="cloud-consulting">Cloud Consulting</option>
-              <option value="network-architecture">Network Architecture</option>
-              <option value="server-solutions">Server Solutions</option>
-              <option value="devops-automation">DevOps & Automation</option>
+              <option value="">Select a Topic</option>
+              <option value="ai-plus-assessment">AI Plus Assessment</option>
+              <option value="model-selection">Model Selection</option>
+              <option value="private-ai-rag">Private AI / RAG</option>
+              <option value="managed-endpoint">Managed Endpoint</option>
+              <option value="gpu-platform">GPU Platform</option>
+              <option value="training-fine-tuning">Training or Fine-Tuning</option>
+              <option value="business-ai-solution">Business AI Solution</option>
+              <option value="production-operations">Production Operations</option>
               <option value="other">Other</option>
             </select>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or question..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about your model, data, workload, capacity, or business workflow..." required></textarea>
           </div>
           
           <div id="form-status" class="form-status" style="display: none;"></div>
           
           <button type="submit" id="submit-btn" class="btn btn-filled" style="width: 100%;">
-            <span class="btn-label">Send Message</span>
+            <span class="btn-label">Send AI Plus Inquiry</span>
             <span class="btn-loader" style="display: none;">Sending...</span>
           </button>
         </form>
@@ -120,8 +124,8 @@ export function renderContact() {
   cta.className = 'cta-section'
   cta.innerHTML = `
     <div class="cta-content">
-      <h2>Prefer a Direct Conversation?</h2>
-      <p>Reach out to us via phone or email, or connect with us on social media.</p>
+      <h2>Prefer a direct conversation?</h2>
+      <p>Reach Baytech by email or phone if the AI Plus question is already urgent or specific.</p>
       <div class="cta-buttons">
         <a href="mailto:support@baytech.cloud" class="btn btn-filled">Email Us</a>
         <a href="tel:+447886066968" class="btn btn-tonal">Call Us</a>
@@ -151,7 +155,7 @@ export function renderContact() {
           typeMismatch: 'Please enter a valid email address.'
         },
         message: {
-          valueMissing: 'Please tell us about your project or question...'
+          valueMissing: 'Please tell us about your AI Plus question...'
         }
       }
 
@@ -202,7 +206,7 @@ export function renderContact() {
             // Success message
             if (formStatus) {
               formStatus.className = 'form-status form-success'
-              formStatus.innerHTML = '✅ Message sent successfully! We\'ll get back to you soon.'
+              formStatus.innerHTML = 'AI Plus inquiry sent successfully. We\'ll get back to you soon.'
               formStatus.style.display = 'block'
             }
             form.reset()
@@ -214,7 +218,7 @@ export function renderContact() {
           // Error message
           if (formStatus) {
             formStatus.className = 'form-status form-error'
-            formStatus.innerHTML = '❌ Failed to send message. Please try again or email us directly.'
+            formStatus.innerHTML = 'Failed to send message. Please try again or email us directly.'
             formStatus.style.display = 'block'
           }
         } finally {

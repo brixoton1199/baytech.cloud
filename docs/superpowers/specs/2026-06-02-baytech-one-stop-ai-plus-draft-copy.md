@@ -6,6 +6,18 @@ This document turns the approved website blueprint and page-by-page outline into
 
 It is written as market-facing content, not an implementation plan. The copy can later be adapted into the existing Vite pages, but the goal here is to make the website message coherent first.
 
+## 文档写作约定
+
+Baytech.cloud 是英文网站，所以真正会上站的内容必须保持英文，包括页面标题、导航标签、正文、卡片文案、FAQ、表单选项和 CTA。
+
+但是我们的策略讨论、取舍说明、页面意图、实现前判断和 review notes 可以用中文写在 Markdown 里。后续内容文档推荐使用这种结构：
+
+- 中文用于解释：为什么这样设计、服务于哪个买方问题、参考 Verda 的哪种回答方式、有哪些 claim guardrails。
+- 英文用于上站文案：`H1`、section copy、card copy、FAQ answer、CTA text、form labels。
+- 如果同一段同时包含说明和文案，先用中文说明语境，再用英文代码块或英文列表给出最终候选文案。
+
+这样可以保证内部讨论足够清楚，同时避免英文网站最终 copy 被中文说明污染。
+
 ## Copy Direction
 
 Baytech should sound like a confident One-Stop AI Plus provider:

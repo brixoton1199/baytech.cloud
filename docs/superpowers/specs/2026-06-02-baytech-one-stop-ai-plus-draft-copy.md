@@ -1419,6 +1419,73 @@ Safe alternatives:
 4. Should the Case page become a quiet future-proof page, or should all case links be hidden until real content exists?
 5. Should Resources start as guide cards without full article pages, or should draft article pages be written before launch?
 
+## Recommended Decisions
+
+中文说明：这一节是我对上面 review questions 的推荐答案。目的不是替你最终拍板，而是先给出一个稳定版本，避免后面进入页面实现时还在导航、栏目和 CTA 上摇摆。
+
+### 1. Public service label
+
+中文推荐：主导航里保留 `AI Plus` 作为总分类和品牌类别；把原来的 Services 页面公开命名为 `Managed AI`。暂时不推荐把主服务页叫 `AI Cloud`，因为 `AI Cloud` 太接近 Verda 的平台类别，会弱化我们自己的 `One-Stop AI Plus` 品牌资产。
+
+Recommended final labels:
+
+- `AI Plus` for the category/homepage concept.
+- `Managed AI` for the service/capability page.
+- `GPU Platform` as a first-class product/platform page.
+
+### 2. Managed endpoints on homepage
+
+中文推荐：`Managed endpoints` 应该出现在首页，但只作为 deployment paths 里的一个选项，不要放到 hero 的第一层。原因是它能证明 Baytech 的回答接近 Verda 的完整 AI lifecycle，但首页第一屏仍然应该先讲 One-Stop AI Plus 的总概念。
+
+Recommended treatment:
+
+- Mention `Managed Endpoints` in the AI Plus Stack and Deployment Paths sections.
+- Keep hero tags broader: `Model Selection`, `Private AI`, `GPU Platform`, `Managed Deployment`.
+
+### 3. GPU row CTA
+
+中文推荐：GPU 系统行里的 CTA 用 `Request Availability` 更好；页面级 CTA 继续用 `Discuss GPU Capacity`。这样既能让 GPU rows 看起来像具体 platform/product item，又不暗示有公开自助下单或实时库存。
+
+Recommended CTA split:
+
+- GPU row CTA: `Request Availability`
+- Page primary CTA: `Discuss GPU Capacity`
+- Secondary CTA: `Plan an AI Deployment`
+
+### 4. Case page handling
+
+中文推荐：真实案例准备好之前，不要在主导航、首页 CTA 或 footer 中主动引导用户去 Case。保留 route 可以，但它应该是低调的 future-proof page，不能继续使用假公司名、假指标或像真实 case study 一样的内容。
+
+Recommended treatment:
+
+- Hide Case from primary navigation.
+- Remove high-profile `View Case Studies` CTAs until real cases exist.
+- If the route remains accessible, use the honest placeholder copy from this document.
+
+### 5. Resources launch scope
+
+中文推荐：Resources 先用 guide cards 启动，不需要等完整文章写完。关键是不要把 guide cards 伪装成已完成文章；按钮应导向 assessment/contact 或未来资源状态，而不是 `Read Article` 假链接。
+
+Recommended launch model:
+
+- Start with guide cards and FAQ.
+- Use CTAs such as `Discuss model selection`, `Plan private AI`, and `Discuss GPU sizing`.
+- Write full article pages later if Resources becomes a stronger acquisition channel.
+
+### Decision Summary
+
+中文总结：当前推荐版本是一个更稳的 One-Stop AI Plus 网站骨架：`AI Plus` 负责定义类别，`Managed AI` 负责模型/端点/私有部署/运维，`GPU Platform` 负责硬件平台能力，`Solutions` 负责业务用途，`Resources` 负责教育和信任，`Company` 负责公司可信度。
+
+Recommended nav:
+
+- `AI Plus`
+- `GPU Platform`
+- `Managed AI`
+- `Solutions`
+- `Resources`
+- `Company`
+- `Contact`
+
 ## Recommended Next Step
 
 中文说明：这一节说明下一步流程：先 review 文案，再把批准后的文案映射进现有页面，而不是边写代码边决定网站内容。

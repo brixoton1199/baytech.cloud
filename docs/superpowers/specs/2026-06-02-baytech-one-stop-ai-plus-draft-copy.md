@@ -2,11 +2,15 @@
 
 ## Purpose
 
+中文说明：这一节说明本文档的用途，它不是开发任务清单，而是把已经认可的网站骨架转成可讨论、可上站的英文文案草稿。
+
 This document turns the approved website blueprint and page-by-page outline into draft website copy.
 
 It is written as market-facing content, not an implementation plan. The copy can later be adapted into the existing Vite pages, but the goal here is to make the website message coherent first.
 
 ## 文档写作约定
+
+中文说明：这一节规定以后怎么写这类 MD：中文用于内部讨论和解释，英文用于最终网站内容。
 
 Baytech.cloud 是英文网站，所以真正会上站的内容必须保持英文，包括页面标题、导航标签、正文、卡片文案、FAQ、表单选项和 CTA。
 
@@ -19,6 +23,8 @@ Baytech.cloud 是英文网站，所以真正会上站的内容必须保持英文
 这样可以保证内部讨论足够清楚，同时避免英文网站最终 copy 被中文说明污染。
 
 ## Copy Direction
+
+中文说明：这一节定义整体语气。Baytech 需要听起来像完整 AI 生命周期提供方，而不是传统 IT 外包或空泛 AI 营销。
 
 Baytech should sound like a confident One-Stop AI Plus provider:
 
@@ -36,6 +42,8 @@ Supporting idea:
 `Model choice, private data, GPU platform, managed deployment, and business AI workflows in one path.`
 
 ## Global Navigation Copy
+
+中文说明：这一节定义全站导航、页脚和侧边快捷入口的命名。这里的重点是把网站从 generic services 改成 AI Plus / GPU Platform / Managed AI 这种平台化栏目。
 
 Recommended primary navigation:
 
@@ -59,12 +67,16 @@ Footer columns:
 
 ### AI Plus
 
+中文说明：页脚里的 AI Plus 栏目用于承接模型、私有 AI、端点和运维这些核心能力，帮助用户快速理解 Baytech 的主线。
+
 - Model Selection
 - Private AI
 - Managed Endpoints
 - Production Operations
 
 ### Platform
+
+中文说明：Platform 栏目突出硬件和部署基础，特别是 GPU、推理、训练和私有模型部署。
 
 - GPU Platform
 - Inference
@@ -73,12 +85,16 @@ Footer columns:
 
 ### Solutions
 
+中文说明：Solutions 栏目用业务用途表达 AI Plus 的价值，避免按传统行业模板堆内容。
+
 - Private Knowledge Assistant
 - Customer Support AI
 - Document AI
 - Operations Copilot
 
 ### Company
+
+中文说明：Company 栏目保留公司信任入口，包括公司介绍、资料、资源和联系方式。
 
 - About Baytech
 - Company Profile
@@ -103,7 +119,11 @@ Button:
 
 ## Homepage Copy
 
+中文说明：首页承担“定义 Baytech 是谁”的任务。它要像 Verda 一样先占住类别，再解释 stack、部署路径、GPU 平台、业务用途、信任和转化。
+
 ### Hero
+
+中文说明：Hero 是第一屏，目标是让 `Your One-Stop AI Plus` 不只是 slogan，而是用户马上能理解的完整类别。
 
 Label:
 
@@ -133,6 +153,8 @@ Secondary CTA:
 `Discuss GPU Capacity`
 
 ### Section: AI Plus Stack
+
+中文说明：这一节解释 AI Plus 到底包含哪些层。它是整站的核心结构，后面所有页面都应该回到这些层。
 
 Label:
 
@@ -173,6 +195,8 @@ Cards:
 `Plan monitoring, cost control, access, model updates, performance, incident response, and continuous improvement from the start.`
 
 ### Section: Deployment Paths
+
+中文说明：这一节回答用户最实际的问题：我到底应该用 hosted model、private model、managed endpoint、GPU training 还是 RAG？它把 Baytech 从“服务商”变成“帮你选路径的人”。
 
 Label:
 
@@ -226,6 +250,8 @@ CTA: `Design an AI platform`
 
 ### Section: GPU Platform Preview
 
+中文说明：这一节把 GPU 能力放进首页，但不让首页变成硬件清单。它的作用是告诉用户 Baytech 有真实 platform/capacity 讨论能力。
+
 Label:
 
 `GPU Platform`
@@ -262,6 +288,8 @@ CTA:
 
 ### Section: Managed AI
 
+中文说明：这一节强调 Baytech 不只是提供 GPU 或建议，而是能把模型变成可运行、可监控、可持续运维的 AI 服务。
+
 Label:
 
 `Managed AI`
@@ -288,6 +316,8 @@ CTA:
 `Plan a Managed AI Deployment`
 
 ### Section: Business Solutions
+
+中文说明：这一节把底层 AI 能力翻译成业务用途。用户不一定关心技术名词，但会关心知识库、客服、文档、运营和工程工作如何被改善。
 
 Label:
 
@@ -333,6 +363,8 @@ CTA:
 
 ### Section: Trust And Operating Model
 
+中文说明：这一节替代传统“trusted partner”空话，用更具体的生产化逻辑建立信任：平台清晰、规格透明、安全边界、运维规划。
+
 Label:
 
 `Why Baytech`
@@ -369,6 +401,8 @@ CTA:
 
 ### Homepage FAQ
 
+中文说明：FAQ 是购买问题区，直接回答用户心里的疑问。这里的口吻应该像在帮客户做判断，而不是像在推销。
+
 #### Which model should we use?
 
 `Baytech helps compare hosted APIs, open-source models, private deployments, fine-tuning, RAG, and managed endpoints against your data boundary, quality target, latency, and operating cost.`
@@ -395,6 +429,8 @@ CTA:
 
 ### Final CTA
 
+中文说明：最终 CTA 用来把用户分流到下一步行动：不确定的人做 assessment，有硬件需求的人谈 GPU，有私有部署需求的人谈 private AI。
+
 Heading:
 
 `Start your AI Plus path`
@@ -411,6 +447,8 @@ Buttons:
 
 ## Managed AI Page Copy
 
+中文说明：Managed AI 页面回答“Baytech 能帮我把模型真正部署和运营起来吗”。这页应该像平台能力页，而不是传统 services 页面。
+
 Public label:
 
 `Managed AI`
@@ -420,6 +458,8 @@ Route can remain:
 `/services`
 
 ### Page Header
+
+中文说明：页面头部要先明确 Managed AI 的范围：模型选择、私有数据、端点、GPU 工作负载、业务集成和生产运维。
 
 Label:
 
@@ -439,6 +479,8 @@ Buttons:
 - `Start an AI Plus Assessment`
 
 ### Section: Capability Pillars
+
+中文说明：这一节列出 Managed AI 的五个能力支柱，帮助用户理解 Baytech 管的是整套 AI service，而不只是某个模型或某台机器。
 
 Label:
 
@@ -475,6 +517,8 @@ Cards:
 `Monitor quality, latency, cost, usage, model changes, access, incidents, and performance after launch.`
 
 ### Section: Deployment Path Selector
+
+中文说明：这一节是自我识别工具。用户可以从自己的需求出发，找到对应路径和 Baytech 的作用。
 
 Label:
 
@@ -538,6 +582,8 @@ Baytech role:
 
 ### Section: What Continues After Launch
 
+中文说明：这一节强调上线之后才是真正的生产阶段，Baytech 的价值包括监控、成本、访问、模型变化和支持。
+
 Heading:
 
 `Production AI needs ownership`
@@ -557,6 +603,8 @@ Cards:
 
 ### CTA
 
+中文说明：Managed AI 页的 CTA 要把用户导向部署规划或 GPU 容量讨论，避免泛泛的 Get Started。
+
 Heading:
 
 `Know your workload. Choose your path. Operate with confidence.`
@@ -568,6 +616,8 @@ Buttons:
 
 ## GPU Platform Page Copy
 
+中文说明：GPU Platform 页面回答“Baytech 有什么硬件平台能力，以及这些 GPU 如何服务 AI workload”。它应该是产品/平台页，不是孤立库存页。
+
 Public label:
 
 `GPU Platform`
@@ -577,6 +627,8 @@ Route can remain:
 `/gpu-cloud`
 
 ### Page Header
+
+中文说明：页面头部要把 GPU 从“云资源”提升为 AI Platform 的一层，强调推理、训练、微调、渲染、多模态和私有模型部署。
 
 Label:
 
@@ -596,6 +648,8 @@ Buttons:
 - `Plan an AI Deployment`
 
 ### Section: Workload Fit
+
+中文说明：这一节先讲 workload，再讲硬件。这样用户不会只看型号，而是理解不同任务为什么需要不同 GPU、存储、网络和运维模式。
 
 Label:
 
@@ -629,6 +683,8 @@ Cards:
 
 ### Section: GPU Systems
 
+中文说明：这一节保留具体 GPU 系统和规格，这是建立技术可信度的关键；但文案要强调这些是 baseline profiles，需要根据模型和工作负载匹配。
+
 Label:
 
 `Available System Profiles`
@@ -650,6 +706,8 @@ Alternative row CTA:
 `Request availability`
 
 ### Section: Platform Decisions
+
+中文说明：这一节把 GPU 采购/容量讨论变成架构判断，解释 memory、storage、network、capacity、endpoint 和 monitoring 为什么重要。
 
 Label:
 
@@ -687,6 +745,8 @@ Cards:
 
 ### CTA
 
+中文说明：GPU 页的 CTA 应该让用户带着模型、workload 或 latency 目标来聊，而不是简单“买机器”。
+
 Heading:
 
 `Bring your model, workload, or target latency`
@@ -702,11 +762,15 @@ Buttons:
 
 ## Solutions Page Copy
 
+中文说明：Solutions 页面回答“AI Plus 能用于哪些真实业务工作”。这页不应该按行业模板写，而应该按用例和工作流写。
+
 Public label:
 
 `Solutions`
 
 ### Page Header
+
+中文说明：页面头部要告诉用户：Baytech 能把模型、数据、GPU 平台和托管部署组合成实际业务解决方案。
 
 Label:
 
@@ -725,6 +789,8 @@ Button:
 `Explore an AI Use Case`
 
 ### Use Case Cards
+
+中文说明：用例卡片要让用户看到自己的工作场景，而不是看到抽象技术名词。每张卡都要暗含 stack：模型、数据、平台、集成、运维。
 
 #### Private Knowledge Assistant
 
@@ -833,6 +899,8 @@ CTA:
 
 ### Section: How Every Solution Is Built
 
+中文说明：这一节说明所有解决方案背后的共同方法，保证 Solutions 不变成零散案例，而是统一回到 AI Plus 路径。
+
 Heading:
 
 `Every solution follows the AI Plus path`
@@ -852,6 +920,8 @@ Steps:
 
 ### CTA
 
+中文说明：Solutions 页的 CTA 要鼓励用户带着一个 AI 想法进入 assessment 或 private deployment 讨论。
+
 Heading:
 
 `Turn an AI idea into a working system`
@@ -863,6 +933,8 @@ Buttons:
 
 ## Resources Page Copy
 
+中文说明：Resources 页面回答“用户在联系 Baytech 前应该先理解哪些 AI 决策”。它的作用是教育买方、建立信任，而不是假装已有完整博客库。
+
 Public label:
 
 `Resources`
@@ -872,6 +944,8 @@ Route can remain:
 `/insights`
 
 ### Page Header
+
+中文说明：页面头部要把 Resources 定位为 AI 决策指南集合，覆盖模型、私有数据、GPU sizing、部署路径、端点和生产运维。
 
 Label:
 
@@ -886,6 +960,8 @@ Body:
 `Practical resources for model selection, private data, GPU sizing, deployment paths, managed endpoints, and production AI operations.`
 
 ### Guide Cards
+
+中文说明：Guide cards 可以先作为资源主题和咨询入口存在；如果还没有完整文章，不要写成假链接或假博客。
 
 #### Model Selection Guide
 
@@ -937,6 +1013,8 @@ CTA:
 
 ### FAQ Copy
 
+中文说明：Resources FAQ 比首页 FAQ 更偏教育，帮助用户理解基础概念，例如什么是 managed endpoint、什么时候需要 GPU、什么是 private AI。
+
 #### What is One-Stop AI Plus?
 
 `One-Stop AI Plus is Baytech's complete path for AI adoption: model selection, private data, GPU and cloud platform, managed deployment, business workflow adaptation, and production operations.`
@@ -967,6 +1045,8 @@ CTA:
 
 ### CTA
 
+中文说明：Resources 页的 CTA 应该让用户把读到的指南转化成下一步决策，而不是简单订阅 newsletter。
+
 Heading:
 
 `Use the guides to frame your next AI decision`
@@ -978,6 +1058,8 @@ Buttons:
 
 ## Company Page Copy
 
+中文说明：Company 页面回答“为什么 Baytech 值得托付 AI 平台和生产运维决策”。它不是另一个 services 页面，而是公司可信度和理念页面。
+
 Public label:
 
 `Company`
@@ -987,6 +1069,8 @@ Route can remain:
 `/about`
 
 ### Page Header
+
+中文说明：页面头部要把 Baytech 的公司身份和 One-Stop AI Plus 能力联系起来，同时保留 Dublin 这个真实业务身份。
 
 Label:
 
@@ -1002,6 +1086,8 @@ Body:
 
 ### Section: Belief
 
+中文说明：这一节讲 Baytech 的基本观点：AI 不只是模型，必须把数据、部署、算力、访问、工作流和运维一起考虑。
+
 Heading:
 
 `AI is only useful when the whole system works`
@@ -1011,6 +1097,8 @@ Body:
 `A model alone is not an AI system. The useful system includes private data, deployment architecture, compute capacity, access control, workflow integration, monitoring, support, and continuous improvement. Baytech brings these decisions into one AI Plus path.`
 
 ### Section: Operating Principles
+
+中文说明：Operating Principles 是公司价值观的替代写法，比 Excellence/Reliability 这种泛词更贴合 AI Plus。
 
 Cards:
 
@@ -1036,6 +1124,8 @@ Cards:
 
 ### Section: Company Proof
 
+中文说明：这一节区分“现在能安全说的 proof”和“未来有证据后可以补的 proof”，避免无证据夸大。
+
 Heading:
 
 `A practical partner for AI platform decisions`
@@ -1051,11 +1141,15 @@ Buttons:
 
 ## Contact Page Copy
 
+中文说明：Contact 页面回答“用户应该如何开始正确的 AI Plus 对话”。这里不能再让用户选择 Cloud Consulting 这类旧服务，而要按 AI 意图分流。
+
 Public label:
 
 `Contact`
 
 ### Page Header
+
+中文说明：页面头部要提醒用户可以带着模型、私有数据、GPU 容量或生产化问题来联系 Baytech。
 
 Label:
 
@@ -1071,6 +1165,8 @@ Body:
 
 ### Contact Info Copy
 
+中文说明：联系信息旁边的文案应该告诉用户要提供什么上下文：模型方向、数据边界、workload、硬件需求或业务流程目标。
+
 Heading:
 
 `Share the AI decision in front of you`
@@ -1080,6 +1176,8 @@ Body:
 `Bring your model direction, private data needs, workload profile, hardware requirements, or business workflow goal. Baytech will help map the next step.`
 
 ### Form Header
+
+中文说明：表单区域是最重要的分流点，service options 应该对应 AI Plus 的真实购买问题。
 
 Heading:
 
@@ -1111,6 +1209,8 @@ Submit button:
 
 ### Direct Contact CTA
 
+中文说明：直接联系 CTA 给不想填表的用户一个清晰入口，文案也要保持 AI Plus 语境。
+
 Heading:
 
 `Prefer a direct conversation?`
@@ -1126,6 +1226,8 @@ Buttons:
 
 ## Approach Page Copy
 
+中文说明：Approach 页面回答“Baytech 如何把一个 AI 问题推进成生产系统”。如果保留这个页面，它应该变成交付方法页。
+
 Public label:
 
 `Method`
@@ -1135,6 +1237,8 @@ Route can remain:
 `/approach`
 
 ### Page Header
+
+中文说明：页面头部要把方法论从传统 technology strategy 改成 AI 从评估到生产的过程。
 
 Label:
 
@@ -1149,6 +1253,8 @@ Body:
 `Baytech helps teams move through assessment, model and platform selection, prototype, secure deployment, business integration, and production operations.`
 
 ### Method Steps
+
+中文说明：方法步骤要覆盖 Assess、Select、Prototype、Deploy、Operate，和 Verda 式完整生命周期相呼应。
 
 #### 01 Assess
 
@@ -1172,6 +1278,8 @@ Body:
 
 ### CTA
 
+中文说明：Approach 页的 CTA 要鼓励用户从决策开始，而不是从某个工具或实现细节开始。
+
 Heading:
 
 `Start with the decision, not the tool`
@@ -1183,11 +1291,15 @@ Buttons:
 
 ## Case Page Copy
 
+中文说明：Case 页面目前要谨慎处理。没有真实案例和授权证明前，不应该继续放假公司名、假指标或假 quote。
+
 Public role:
 
 `Future proof page`
 
 ### Near-Term Page Header
+
+中文说明：短期方案是把 Case 页降级成“proof points are being prepared”的诚实状态，避免误导用户。
 
 Label:
 
@@ -1207,6 +1319,8 @@ CTA:
 
 ### Future Case Template
 
+中文说明：未来有真实案例时，必须按完整 AI lifecycle 写：问题、模型/数据、平台、部署、业务适配、运维和结果。
+
 Use this structure only when approved proof exists:
 
 - Customer context.
@@ -1220,11 +1334,15 @@ Use this structure only when approved proof exists:
 
 ## Company Profile Page Copy
 
+中文说明：Company Profile 页面目前只负责承载公司资料/演示文稿，不要在这个任务里改外部 iframe 或 PPTX 内容。
+
 Public label:
 
 `Company Profile`
 
 ### Page Header
+
+中文说明：页面头部可以给 embedded presentation 一个清楚语境，但不要改业务敏感链接。
 
 Label:
 
@@ -1243,6 +1361,8 @@ Note:
 `Keep the existing embedded presentation and external iframe URL unchanged unless explicitly requested.`
 
 ## CTA Copy Bank
+
+中文说明：这一节是全站按钮文案库。统一 CTA 能让用户明确下一步动作，也能避免 `Get Started` 这种模糊词。
 
 Use these consistently:
 
@@ -1265,6 +1385,8 @@ Avoid:
 - `Book Consultation` when a more specific AI Plus CTA fits.
 
 ## Claim Guardrails
+
+中文说明：这一节是防止网站写过头的红线。即使 Baytech 能做 Verda 类似事情，没有公开证据的 badge、认证、客户结果也不能写成事实。
 
 Do not write these unless Baytech has verified public evidence:
 
@@ -1289,6 +1411,8 @@ Safe alternatives:
 
 ## Review Questions Before Implementation
 
+中文说明：这一节列出进入实现前需要你拍板的命名和呈现问题。它们会影响导航、页面标题和 CTA 分流。
+
 1. Should the public service label be `Managed AI`, `AI Plus`, or `AI Cloud`?
 2. Should `Managed endpoints` appear on the homepage, or only on the Managed AI page?
 3. Should the GPU page use `Request availability` or `Discuss capacity` as the row CTA?
@@ -1296,5 +1420,7 @@ Safe alternatives:
 5. Should Resources start as guide cards without full article pages, or should draft article pages be written before launch?
 
 ## Recommended Next Step
+
+中文说明：这一节说明下一步流程：先 review 文案，再把批准后的文案映射进现有页面，而不是边写代码边决定网站内容。
 
 Review this copy draft at the website level. Once approved, the next step can finally become a controlled implementation plan that maps approved copy into the existing Vite pages and global navigation.

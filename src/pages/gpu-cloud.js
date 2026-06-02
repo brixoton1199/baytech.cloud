@@ -1,4 +1,4 @@
-// GPU Cloud Page - inquiry-led GPU capacity listing
+// GPU Platform Page - inquiry-led AI workload capacity listing
 import { createBreadcrumb } from '../router.js'
 
 const gpuSystems = [
@@ -82,18 +82,49 @@ const gpuSystems = [
   },
 ]
 
-const trustItems = [
+const workloadFit = [
   {
-    title: 'Architecture guidance',
-    text: 'Translate model, data, and team needs into a deployment plan before capacity decisions lock you in.',
+    title: 'Inference',
+    text: 'Plan serving capacity, latency, throughput, endpoint design, monitoring, and model update flow.',
   },
   {
-    title: 'Network and security readiness',
-    text: 'Plan secure access, identity boundaries, connectivity, and operational controls around GPU workloads.',
+    title: 'Training And Fine-Tuning',
+    text: 'Plan GPU memory, dataset flow, local storage, checkpointing, network design, and scaling behavior.',
   },
   {
-    title: 'Operational planning',
-    text: 'Coordinate capacity, observability, automation, and support paths for production AI infrastructure.',
+    title: 'Rendering And Multimodal',
+    text: 'Support image, video, rendering, simulation, and multimodal workloads with appropriate compute and storage profiles.',
+  },
+  {
+    title: 'Private Model Serving',
+    text: 'Run private models with deployment isolation, secure access, observability, and support planning.',
+  },
+]
+
+const platformDecisions = [
+  {
+    title: 'GPU Memory And Model Size',
+    text: 'Model size, context length, batch size, and precision all affect GPU memory requirements.',
+  },
+  {
+    title: 'Storage And Data Locality',
+    text: 'Training and multimodal workloads need the data path planned with local storage, throughput, and dataset movement in mind.',
+  },
+  {
+    title: 'Network And Distributed Workloads',
+    text: 'Clusters and multi-GPU workloads need network design that supports scale, synchronization, and reliability.',
+  },
+  {
+    title: 'Dedicated Or Shared Capacity',
+    text: 'Isolation, usage pattern, budget, security, and operational control all affect capacity strategy.',
+  },
+  {
+    title: 'Endpoint, Batch, Or Cluster',
+    text: 'Inference, batch processing, training, and fine-tuning each need different deployment shapes.',
+  },
+  {
+    title: 'Monitoring And Support',
+    text: 'Production AI workloads need visibility into usage, latency, errors, performance, and capacity over time.',
   },
 ]
 
@@ -137,7 +168,7 @@ function renderGpuSystem(system) {
         </div>
         <div class="gpu-system-summary-actions">
           <a href="/contact" class="btn btn-tonal gpu-system-action">
-            <span>Request for availability</span>
+            <span>Request Availability</span>
             <span class="gpu-system-action-arrow" aria-hidden="true">&gt;</span>
           </a>
         </div>
@@ -159,18 +190,36 @@ export function renderGpuCloud() {
   const container = document.createElement('div')
   container.className = 'page-gpu-cloud'
 
-  const breadcrumb = createBreadcrumb('GPU Cloud')
+  const breadcrumb = createBreadcrumb('GPU Platform')
   container.appendChild(breadcrumb)
 
   const pageHeader = document.createElement('section')
   pageHeader.className = 'page-header'
   pageHeader.innerHTML = `
-    <p class="section-label">AI Infrastructure</p>
-    <h1>GPU Cloud</h1>
-    <p>Inquiry-led access to configurable Nvidia and AMD GPU systems with architecture, security, and deployment guidance from Baytech.</p>
+    <p class="section-label">GPU Platform</p>
+    <h1>GPU systems for AI workloads that need real capacity</h1>
+    <p>Configurable NVIDIA and AMD systems for inference, training, fine-tuning, rendering, multimodal workloads, and private model deployment. Baytech helps match the system to the workload before capacity decisions are locked in.</p>
     <div class="page-header-actions">
-      <a href="/contact" class="btn btn-filled">Discuss GPU capacity</a>
-      <a href="/services" class="btn btn-outlined">Discuss Infrastructure</a>
+      <a href="/contact" class="btn btn-filled">Discuss GPU Capacity</a>
+      <a href="/services" class="btn btn-outlined">Plan an AI Deployment</a>
+    </div>
+  `
+
+  const workloadSection = document.createElement('section')
+  workloadSection.className = 'services-section animate-on-scroll'
+  workloadSection.innerHTML = `
+    <div class="section-header">
+      <p class="section-label">Workload Fit</p>
+      <h2 class="section-title">Start with the workload, then choose the system</h2>
+      <p class="section-subtitle">GPU decisions depend on model size, memory, storage, network, latency, throughput, isolation, and operations. Baytech helps translate those requirements into a platform path.</p>
+    </div>
+    <div class="solutions-grid gpu-trust-grid">
+      ${workloadFit.map((item) => `
+        <article class="gpu-trust-card solution-card card-elevated">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>
+      `).join('')}
     </div>
   `
 
@@ -178,25 +227,25 @@ export function renderGpuCloud() {
   cardsSection.className = 'services-section animate-on-scroll'
   cardsSection.innerHTML = `
     <div class="section-header">
-      <p class="section-label">GPU Systems</p>
-      <h2 class="section-title">Configurable systems for demanding AI workloads</h2>
-      <p class="section-subtitle gpu-system-subtitle">Compare configurable GPU system profiles by compute, memory, storage, and network.</p>
+      <p class="section-label">Available System Profiles</p>
+      <h2 class="section-title">Configurable NVIDIA and AMD GPU systems</h2>
+      <p class="section-subtitle gpu-system-subtitle">Use these baseline profiles as a starting point. Baytech helps match the system to model size, workload type, data flow, storage, network, deployment model, and production operation.</p>
     </div>
     <div class="solutions-grid gpu-card-grid">
       ${gpuSystems.map(renderGpuSystem).join('')}
     </div>
   `
 
-  const trustSection = document.createElement('section')
-  trustSection.className = 'services-section animate-on-scroll'
-  trustSection.innerHTML = `
+  const decisionSection = document.createElement('section')
+  decisionSection.className = 'services-section animate-on-scroll'
+  decisionSection.innerHTML = `
     <div class="section-header">
-      <p class="section-label">Why Baytech</p>
-      <h2 class="section-title">GPU infrastructure is more than hardware</h2>
-      <p class="section-subtitle">We connect capacity conversations with cloud architecture, security, networking, and operational planning.</p>
+      <p class="section-label">Platform Decisions</p>
+      <h2 class="section-title">The right GPU choice is an architecture decision</h2>
+      <p class="section-subtitle">Capacity conversations should include model size, storage, network, deployment shape, isolation, observability, and support.</p>
     </div>
     <div class="solutions-grid gpu-trust-grid">
-      ${trustItems.map((item) => `
+      ${platformDecisions.map((item) => `
         <article class="gpu-trust-card solution-card card-elevated">
           <h3>${item.title}</h3>
           <p>${item.text}</p>
@@ -210,17 +259,18 @@ export function renderGpuCloud() {
   cta.innerHTML = `
     <div class="cta-content">
       <h2>Discuss GPU capacity</h2>
-      <p>Share your workload, timeline, and preferred system profile. We will help you map the right next step.</p>
+      <p>Bring your model, workload, or target latency. Baytech can help translate AI workload requirements into GPU, storage, network, deployment, and support choices.</p>
       <div class="cta-buttons">
-        <a href="/contact" class="btn btn-filled">Contact Baytech</a>
-        <a href="/solutions" class="btn btn-tonal">Explore Solutions</a>
+        <a href="/contact" class="btn btn-filled">Discuss GPU Capacity</a>
+        <a href="/services" class="btn btn-tonal">Plan a Managed AI Deployment</a>
       </div>
     </div>
   `
 
   container.appendChild(pageHeader)
+  container.appendChild(workloadSection)
   container.appendChild(cardsSection)
-  container.appendChild(trustSection)
+  container.appendChild(decisionSection)
   container.appendChild(cta)
 
   return container

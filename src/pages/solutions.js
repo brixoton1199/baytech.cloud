@@ -1,144 +1,136 @@
-// Solutions Page - MD3 Panel Architecture
+// Solutions Page - AI Plus use cases
 import { createBreadcrumb } from '../router.js'
+
+const useCases = [
+  {
+    title: 'Private Knowledge Assistant',
+    text: 'Give teams controlled answers from internal documents, procedures, product knowledge, engineering notes, policies, and support content. Baytech helps plan retrieval, permissions, evaluation, deployment, and user workflow.',
+    tags: ['RAG', 'Private Data', 'Permissions', 'Managed Endpoint'],
+    cta: 'Plan knowledge AI',
+  },
+  {
+    title: 'Customer Support AI',
+    text: 'Assist support teams with triage, reply drafting, knowledge lookup, escalation, and quality review while keeping human review and operational control in the loop.',
+    tags: ['Model Selection', 'Knowledge Base', 'Support Workflow', 'Monitoring'],
+    cta: 'Improve support with AI',
+  },
+  {
+    title: 'Document AI',
+    text: 'Extract, validate, summarize, and route information from invoices, contracts, onboarding files, forms, reports, and operational documents.',
+    tags: ['Document Processing', 'Multimodal AI', 'Validation', 'Workflow Automation'],
+    cta: 'Plan document AI',
+  },
+  {
+    title: 'Operations Copilot',
+    text: 'Support finance, logistics, reporting, internal operations, and decision workflows with private data access and role-aware AI assistance.',
+    tags: ['Private Data', 'Operations', 'Reporting', 'Role-Based Access'],
+    cta: 'Map an operations workflow',
+  },
+  {
+    title: 'Engineering AI',
+    text: 'Help engineering teams search internal knowledge, improve documentation, support incident response, and automate technical workflows with controlled access to internal context.',
+    tags: ['Internal Knowledge', 'Engineering Workflow', 'Incident Support', 'Governance'],
+    cta: 'Plan engineering AI',
+  },
+  {
+    title: 'Multimodal And Rendering Workloads',
+    text: 'Support image, video, rendering, simulation, and AI media pipelines with the right model, storage, batch processing, and GPU platform path.',
+    tags: ['GPU Platform', 'Multimodal', 'Rendering', 'Batch Processing'],
+    cta: 'Discuss multimodal capacity',
+    href: '/gpu-cloud',
+  },
+  {
+    title: 'Private AI Platform',
+    text: 'Create a reusable internal AI foundation with model serving, managed endpoints, private data architecture, access controls, monitoring, and production support.',
+    tags: ['Private AI', 'Managed Endpoints', 'Platform', 'Operations'],
+    cta: 'Design a private AI platform',
+  },
+]
+
+const buildSteps = [
+  ['Select the model', 'Choose hosted, private, open-source, fine-tuned, RAG, or managed endpoint paths.'],
+  ['Define data boundaries', 'Map private data, access, retrieval, governance, and deployment isolation.'],
+  ['Choose the platform', 'Match workload needs to hosted APIs, managed endpoints, GPU systems, cloud, or dedicated capacity.'],
+  ['Integrate the workflow', 'Connect AI to the tools, processes, users, and review loops where work happens.'],
+  ['Operate and improve', 'Monitor quality, cost, latency, access, usage, updates, and production support.'],
+]
+
+function renderTags(tags) {
+  return tags.map((tag) => `<span class="solution-tag">${tag}</span>`).join('')
+}
 
 export function renderSolutions() {
   const container = document.createElement('div')
   container.className = 'page-solutions'
 
-  // Breadcrumb
   const breadcrumb = createBreadcrumb('Solutions')
   container.appendChild(breadcrumb)
 
-  // Page Header
   const pageHeader = document.createElement('section')
   pageHeader.className = 'page-header'
   pageHeader.innerHTML = `
-    <p class="section-label">Industry Solutions</p>
-    <h1>Solutions</h1>
-    <p>Tailored technology solutions for every industry and business size</p>
+    <p class="section-label">Solutions</p>
+    <h1>AI Plus solutions for real workflows</h1>
+    <p>Baytech adapts models, private data, GPU platform, and managed deployment to the workflows where AI can create practical leverage.</p>
+    <div class="page-header-actions">
+      <a href="/contact" class="btn btn-filled">Explore an AI Use Case</a>
+      <a href="/services" class="btn btn-outlined">Plan a Private AI Deployment</a>
+    </div>
   `
 
-  // Two-column layout with sidebar
-  const layoutWrapper = document.createElement('div')
-  layoutWrapper.className = 'page-with-sidebar'
-
-  // Main Content
-  const mainContent = document.createElement('div')
-  mainContent.className = 'page-main'
-  mainContent.innerHTML = `
+  const useCaseSection = document.createElement('section')
+  useCaseSection.className = 'services-section'
+  useCaseSection.innerHTML = `
+    <div class="section-header">
+      <p class="section-label">Use Cases</p>
+      <h2 class="section-title">Where One-Stop AI Plus creates leverage</h2>
+    </div>
     <div class="solutions-grid">
-      <div class="solution-card card-elevated">
-        <span class="solution-tag">Enterprise</span>
-        <h3>Enterprise Cloud Solutions</h3>
-        <p>Comprehensive cloud infrastructure designed for large-scale operations. Scalable, secure, and cost-effective solutions for enterprises.</p>
-        <ul class="feature-list">
-          <li>Custom cloud architecture</li>
-          <li>Advanced security & compliance</li>
-          <li>24/7 enterprise support</li>
-        </ul>
-        <a href="/contact" class="btn btn-filled">Get Started</a>
-      </div>
-
-      <div class="solution-card card-elevated">
-        <span class="solution-tag">SMB</span>
-        <h3>Small Business Solutions</h3>
-        <p>Affordable, scalable IT solutions designed to help small businesses compete with enterprise-level technology.</p>
-        <ul class="feature-list">
-          <li>Managed IT services</li>
-          <li>Cloud migration for SMBs</li>
-          <li>Cost-effective infrastructure</li>
-        </ul>
-        <a href="/contact" class="btn btn-outlined">Learn More</a>
-      </div>
-      
-      <div class="solution-card card-elevated">
-        <span class="solution-tag">Startup</span>
-        <h3>Startup Infrastructure</h3>
-        <p>Launch-ready cloud infrastructure that scales with your growth. Pay only for what you use, optimize as you grow.</p>
-        <ul class="feature-list">
-          <li>Rapid deployment</li>
-          <li>Scalable cloud resources</li>
-          <li>DevOps integration</li>
-        </ul>
-        <a href="/contact" class="btn btn-outlined">Learn More</a>
-      </div>
-      
-      <div class="solution-card card-elevated">
-        <span class="solution-tag">Healthcare</span>
-        <h3>Healthcare IT</h3>
-        <p>HIPAA-compliant solutions for healthcare providers. Secure patient data management and telehealth infrastructure.</p>
-        <ul class="feature-list">
-          <li>Data privacy & compliance</li>
-          <li>Secure telehealth platforms</li>
-          <li>Electronic health records</li>
-        </ul>
-        <a href="/contact" class="btn btn-outlined">Learn More</a>
-      </div>
-
-      <div class="solution-card card-elevated">
-        <span class="solution-tag">AI Infrastructure</span>
-        <h3>GPU Cloud Capacity</h3>
-        <p>Inquiry-led access to configurable Nvidia and AMD GPU systems with architecture, security, and deployment guidance from Baytech.</p>
-        <ul class="feature-list">
-          <li>GPU capacity planning</li>
-          <li>AI infrastructure architecture</li>
-          <li>Secure deployment readiness</li>
-        </ul>
-        <a href="/gpu-cloud" class="btn btn-outlined">Explore GPU Cloud</a>
-      </div>
+      ${useCases.map((item) => `
+        <article class="solution-card card-elevated">
+          <div class="gpu-system-meta">${renderTags(item.tags)}</div>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+          <a href="${item.href || '/contact'}" class="btn btn-outlined">${item.cta}</a>
+        </article>
+      `).join('')}
     </div>
   `
 
-  // Sidebar
-  const sidebar = document.createElement('aside')
-  sidebar.className = 'page-sidebar'
-  sidebar.innerHTML = `
-    <div class="sidebar-card">
-      <h3>Industry Solutions</h3>
-      <div class="sidebar-links">
-        <a href="#" class="active">🏢 Enterprise</a>
-        <a href="#">💼 Small Business</a>
-        <a href="#">🚀 Startup</a>
-        <a href="#">🏥 Healthcare</a>
-      </div>
+  const buildSection = document.createElement('section')
+  buildSection.className = 'services-section'
+  buildSection.innerHTML = `
+    <div class="section-header">
+      <p class="section-label">AI Plus Method</p>
+      <h2 class="section-title">Every solution follows the AI Plus path</h2>
     </div>
-    
-    <div class="sidebar-card">
-      <h3>Related Services</h3>
-      <div class="sidebar-links">
-        <a href="/services">☁️ Cloud Consulting</a>
-        <a href="/services">🔗 Network Architecture</a>
-        <a href="/services">🖥️ Server Solutions</a>
-        <a href="/gpu-cloud">▦ GPU Cloud</a>
-      </div>
-    </div>
-    
-    <div class="sidebar-card sidebar-cta">
-      <h3>Get Started</h3>
-      <p>Find the right solution for your industry</p>
-      <a href="/contact" class="btn">Request Consultation</a>
+    <div class="solutions-grid">
+      ${buildSteps.map(([title, text], index) => `
+        <article class="solution-card card-elevated">
+          <span class="solution-tag">0${index + 1}</span>
+          <h3>${title}</h3>
+          <p>${text}</p>
+        </article>
+      `).join('')}
     </div>
   `
 
-  layoutWrapper.appendChild(mainContent)
-  layoutWrapper.appendChild(sidebar)
-
-  // CTA Section
   const cta = document.createElement('section')
   cta.className = 'cta-section'
   cta.innerHTML = `
     <div class="cta-content">
-      <h2>Don't See Your Industry?</h2>
-      <p>We create custom solutions for businesses across all sectors. Let's discuss your specific needs.</p>
+      <h2>Turn an AI idea into a working system</h2>
+      <p>Bring a workflow, model question, data boundary, or GPU need. Baytech will map the AI Plus path.</p>
       <div class="cta-buttons">
-        <a href="/contact" class="btn btn-filled">Book Consultation</a>
-        <a href="/case" class="btn btn-tonal">View Case Studies</a>
+        <a href="/contact" class="btn btn-filled">Start an AI Plus Assessment</a>
+        <a href="/services" class="btn btn-tonal">Plan a Private AI Deployment</a>
       </div>
     </div>
   `
 
   container.appendChild(pageHeader)
-  container.appendChild(layoutWrapper)
+  container.appendChild(useCaseSection)
+  container.appendChild(buildSection)
   container.appendChild(cta)
 
   return container

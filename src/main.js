@@ -19,17 +19,17 @@ navRail.innerHTML = `
   </div>
   
   <div class="nav-rail-items">
-    <a href="/" class="rail-item" data-nav="home" aria-label="Home">
+    <a href="/" class="rail-item" data-nav="home" aria-label="AI Plus">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
       </span>
-      <span class="rail-item-label">Home</span>
+      <span class="rail-item-label">AI Plus</span>
     </a>
 
-    <a href="/gpu-cloud" class="rail-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
+    <a href="/gpu-cloud" class="rail-item" data-nav="gpu-cloud" aria-label="GPU Platform">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="4" y="4" width="16" height="16" rx="3"></rect>
@@ -44,25 +44,25 @@ navRail.innerHTML = `
           <path d="M20 15h3"></path>
         </svg>
       </span>
-      <span class="rail-item-label">GPU Cloud</span>
+      <span class="rail-item-label">GPU Platform</span>
     </a>
 
-    <a href="/services" class="rail-item" data-nav="services" aria-label="Services">
+    <a href="/services" class="rail-item" data-nav="services" aria-label="Managed AI">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
         </svg>
       </span>
-      <span class="rail-item-label">Services</span>
+      <span class="rail-item-label">Managed AI</span>
     </a>
-    
-    <a href="/approach" class="rail-item" data-nav="approach" aria-label="Our Approach">
+
+    <a href="/approach" class="rail-item" data-nav="approach" aria-label="Method">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
         </svg>
       </span>
-      <span class="rail-item-label">Approach</span>
+      <span class="rail-item-label">Method</span>
     </a>
     
     <a href="/solutions" class="rail-item" data-nav="solutions" aria-label="Solutions">
@@ -76,7 +76,7 @@ navRail.innerHTML = `
       <span class="rail-item-label">Solutions</span>
     </a>
 
-    <span class="rail-item rail-item-disabled" aria-label="Case Studies (Coming Soon)" title="Coming Soon">
+    <span class="rail-item rail-item-disabled" aria-label="Proof Points (Coming Soon)" title="Coming Soon">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -84,10 +84,10 @@ navRail.innerHTML = `
           <line x1="12" y1="22.08" x2="12" y2="12"></line>
         </svg>
       </span>
-      <span class="rail-item-label">Case</span>
+      <span class="rail-item-label">Proof</span>
     </span>
-    
-    <a href="/insights" class="rail-item" data-nav="insights" aria-label="Insights">
+
+    <a href="/insights" class="rail-item" data-nav="insights" aria-label="Resources">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
@@ -97,10 +97,10 @@ navRail.innerHTML = `
           <line x1="10" y1="9" x2="8" y2="9"></line>
         </svg>
       </span>
-      <span class="rail-item-label">Insights</span>
+      <span class="rail-item-label">Resources</span>
     </a>
-    
-    <a href="/about" class="rail-item" data-nav="about" aria-label="About">
+
+    <a href="/about" class="rail-item" data-nav="about" aria-label="Company">
       <span class="rail-item-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"></circle>
@@ -108,7 +108,7 @@ navRail.innerHTML = `
           <path d="M12 8h.01"></path>
         </svg>
       </span>
-      <span class="rail-item-label">About</span>
+      <span class="rail-item-label">Company</span>
     </a>
     
     <span class="rail-item rail-item-disabled" aria-label="Live Status (Coming Soon)" title="Coming Soon">
@@ -128,7 +128,7 @@ navRail.innerHTML = `
       <span class="rail-item-label">Live Status</span>
     </span>
   </div>
-  
+
   <div class="nav-rail-fab">
     <a href="/contact" class="rail-fab" aria-label="Contact">
       <span class="rail-fab-icon">
@@ -137,7 +137,7 @@ navRail.innerHTML = `
           <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       </span>
-      <span class="rail-fab-text">Contact Us</span>
+      <span class="rail-fab-text">Contact</span>
     </a>
   </div>
 `
@@ -165,32 +165,32 @@ footer.className = 'footer'
 footer.innerHTML = `
   <div class="footer-grid">
     <div class="footer-column">
-      <h4>Services</h4>
+      <h4>AI Plus</h4>
       <ul class="footer-links">
-        <li><a href="/services">Cloud Consulting</a></li>
-        <li><a href="/services">Network Architecture</a></li>
-        <li><a href="/services">Server Solutions</a></li>
-        <li><a href="/gpu-cloud">GPU Cloud</a></li>
-        <li><a href="/services">DevOps & Automation</a></li>
+        <li><a href="/services">Model Selection</a></li>
+        <li><a href="/services">Private AI</a></li>
+        <li><a href="/services">Managed Endpoints</a></li>
+        <li><a href="/services">Production Operations</a></li>
       </ul>
     </div>
-    
+
     <div class="footer-column">
-      <h4>Company</h4>
+      <h4>Platform</h4>
       <ul class="footer-links">
-        <li><a href="/approach">Our Approach</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/insights">Insights</a></li>
+        <li><a href="/gpu-cloud">GPU Platform</a></li>
+        <li><a href="/gpu-cloud">Inference</a></li>
+        <li><a href="/gpu-cloud">Training and Fine-Tuning</a></li>
+        <li><a href="/services">Private Model Deployment</a></li>
       </ul>
     </div>
-    
-    <div class="footer-column footer-live-status">
-      <h4>Live Status</h4>
-      <ul class="footer-status">
-        <li>Locations</li>
-        <li>Models</li>
-        <li>Speed</li>
-        <li>Analysis</li>
+
+    <div class="footer-column">
+      <h4>Solutions</h4>
+      <ul class="footer-links">
+        <li><a href="/solutions">Private Knowledge Assistant</a></li>
+        <li><a href="/solutions">Customer Support AI</a></li>
+        <li><a href="/solutions">Document AI</a></li>
+        <li><a href="/solutions">Operations Copilot</a></li>
       </ul>
     </div>
     
@@ -213,16 +213,16 @@ footer.innerHTML = `
       ${renderBaytechLogo({ className: 'footer-logo-image', label: 'Baytech Logo' })}
     </div>
     <div class="footer-description-full">
-      <p class="footer-description">We specialize in transforming complex technology challenges into opportunities for growth. Our services span from Technology Strategy & Advisory and Cloud & Infrastructure Architecture to Enterprise Network Security and DevOps.</p>
-      <p class="footer-description" style="margin-top: var(--space-3);">By partnering with us, you gain more than a service provider—you gain a strategic ally committed to building a secure, scalable, and efficient foundation for your long-term success.</p>
+      <p class="footer-description">Baytech is a One-Stop AI Plus provider helping teams choose models, protect private data, run AI workloads on the right GPU and cloud platform, adapt AI to business workflows, and operate production AI systems.</p>
+      <p class="footer-description" style="margin-top: var(--space-3);">Bring a model question, data boundary, workload, or business process. Baytech will help map the next AI Plus step.</p>
     </div>
   </div>
   
   <div class="footer-bottom">
     <p class="footer-copy">© ${new Date().getFullYear()} baytech.cloud</p>
     <div class="footer-legal">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
+      <span>Privacy</span>
+      <span>Terms</span>
     </div>
   </div>
 `
@@ -237,7 +237,7 @@ const sideSheet = document.createElement('aside')
 sideSheet.className = 'side-sheet'
 sideSheet.innerHTML = `
   <div class="side-sheet-header">
-    <h3 class="side-sheet-title">Quick Links</h3>
+    <h3 class="side-sheet-title">AI Plus Quick Links</h3>
     <button class="side-sheet-close" aria-label="Close side sheet">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -247,27 +247,23 @@ sideSheet.innerHTML = `
   </div>
   
   <div class="sheet-card">
-    <h4 class="sheet-card-title">Services</h4>
+    <h4 class="sheet-card-title">AI Plus</h4>
     <div class="sheet-links">
-      <a href="/services#cloud-consulting" class="sheet-link">
-        <span class="sheet-link-icon">☁️</span>
-        Cloud Consulting
+      <a href="/services" class="sheet-link">
+        <span class="sheet-link-icon">▣</span>
+        Model Selection
       </a>
-      <a href="/services#network-architecture" class="sheet-link">
-        <span class="sheet-link-icon">🔗</span>
-        Network Architecture
+      <a href="/services" class="sheet-link">
+        <span class="sheet-link-icon">◇</span>
+        Private AI
       </a>
-      <a href="/services#server-solutions" class="sheet-link">
-        <span class="sheet-link-icon">🖥️</span>
-        Server Solutions
+      <a href="/services" class="sheet-link">
+        <span class="sheet-link-icon">↔</span>
+        Managed Endpoints
       </a>
       <a href="/gpu-cloud" class="sheet-link">
         <span class="sheet-link-icon">▦</span>
-        GPU Cloud
-      </a>
-      <a href="/services#devops-automation" class="sheet-link">
-        <span class="sheet-link-icon">⚙️</span>
-        DevOps & Automation
+        GPU Platform
       </a>
     </div>
   </div>
@@ -277,23 +273,23 @@ sideSheet.innerHTML = `
     <div class="sheet-links">
       <a href="/approach" class="sheet-link">
         <span class="sheet-link-icon">📈</span>
-        Our Approach
+        Method
       </a>
       <a href="/insights" class="sheet-link">
-        <span class="sheet-link-icon">📰</span>
-        Blog & Insights
+        <span class="sheet-link-icon">□</span>
+        Resources
       </a>
       <a href="/about" class="sheet-link">
-        <span class="sheet-link-icon">ℹ️</span>
-        About Us
+        <span class="sheet-link-icon">○</span>
+        Company
       </a>
     </div>
   </div>
-  
+
   <div class="sheet-cta">
-    <h4 class="sheet-cta-title">Need Help?</h4>
-    <p class="sheet-cta-text">Book a free consultation with our cloud experts</p>
-    <a href="/contact" class="sheet-cta-btn">Get Started</a>
+    <h4 class="sheet-cta-title">Start with your AI question</h4>
+    <p class="sheet-cta-text">Start with your model, data, workload, or business goal. Baytech will help map the right AI Plus path.</p>
+    <a href="/contact" class="sheet-cta-btn">Start an Assessment</a>
   </div>
 `
 
@@ -309,9 +305,9 @@ mobileNav.innerHTML = `
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
         <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
-      <span>Home</span>
+      <span>AI Plus</span>
     </a>
-    <a href="/gpu-cloud" class="mobile-nav-item" data-nav="gpu-cloud" aria-label="GPU Cloud">
+    <a href="/gpu-cloud" class="mobile-nav-item" data-nav="gpu-cloud" aria-label="GPU Platform">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="4" y="4" width="16" height="16" rx="3"></rect>
         <rect x="9" y="9" width="6" height="6" rx="1"></rect>
@@ -330,7 +326,7 @@ mobileNav.innerHTML = `
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
       </svg>
-      <span>Services</span>
+      <span>Managed</span>
     </a>
     <a href="/approach" class="mobile-nav-item" data-nav="approach">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

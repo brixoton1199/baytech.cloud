@@ -8,7 +8,7 @@ const styleSource = await readFile(new URL('../src/style.css', import.meta.url),
 
 test('homepage opts into a restrained scroll handoff for the first viewport', () => {
   assert.match(homeSource, /hero\.className = 'hero hero-with-map hero-motion-stage'/)
-  assert.match(homeSource, /chipsSection\.id = 'home-next'/)
+  assert.match(homeSource, /stackSection\.id = 'home-next'/)
   assert.match(mainSource, /querySelector\('\.hero-motion-stage'\)/)
   assert.match(mainSource, /--hero-copy-y/)
   assert.match(mainSource, /--hero-map-y/)

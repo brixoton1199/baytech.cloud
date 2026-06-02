@@ -111,7 +111,7 @@ export function renderHome() {
         <div class="hero-logo">
           ${renderBaytechLogo({ className: 'hero-logo-image', label: 'Baytech Logo' })}
         </div>
-        <p class="section-label">One-Stop AI Plus</p>
+        <p class="section-label">Built For Real AI Workloads</p>
         <h1>Your <span class="hero-slogan-nowrap">One-Stop</span> AI Plus</h1>
         <p class="hero-subtitle">Model choice, private data, GPU platform, managed deployment, and business AI workflows in one path. Baytech helps teams plan, run, and operate AI workloads from first decision to production.</p>
         <div class="hero-service-tags" aria-label="Baytech focus areas">

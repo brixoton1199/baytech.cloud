@@ -23,6 +23,8 @@ test('homepage keeps One-Stop together in responsive slogan wrapping', () => {
 })
 
 test('homepage hero explains Baytech in concise first-time visitor language', () => {
+  assert.match(homeSource, /<p class="section-label">Built For Real AI Workloads<\/p>/)
+  assert.doesNotMatch(homeSource, /<p class="section-label">One-Stop AI Plus<\/p>/)
   assert.match(
     homeSource,
     /Model choice, private data, GPU platform, managed deployment, and business AI workflows in one path\./

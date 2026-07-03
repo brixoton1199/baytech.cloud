@@ -5,9 +5,7 @@ param(
   [switch]$UseCurrentBranch,
   [switch]$SkipInstall,
   [switch]$SkipValidation,
-  [switch]$SkipCommit,
-  [switch]$Push,
-  [switch]$CreatePr
+  [switch]$SkipCommit
 )
 
 $ErrorActionPreference = "Stop"
@@ -85,64 +83,11 @@ function Invoke-CheckedCommand {
   }
 }
 
-function Assert-SecretValue {
-  param(
-    [object]$Secret,
-    [string]$Name,
-    [string]$Expected
-  )
-
-  $property = $Secret.PSObject.Properties[$Name]
-  if (-not $property -or $property.Value -ne $Expected) {
-    throw ".secret.json must set $Name to '$Expected'."
-  }
-}
-
-function Read-GitHubSecret {
-  param([string]$TargetRoot)
-
-  $secretPath = Join-Path $TargetRoot ".secret.json"
-  if (-not (Test-Path -LiteralPath $secretPath)) {
-    throw "GitHub operations require .secret.json in $TargetRoot."
-  }
-
-  $secret = Get-Content -Raw -LiteralPath $secretPath | ConvertFrom-Json
-  Assert-SecretValue -Secret $secret -Name 'github_repo' -Expected 'baytech.cloud'
-
-  if (-not $secret.github_owner) {
-    throw ".secret.json must set github_owner."
-  }
-
-  if (-not $secret.github_pat) {
-    throw ".secret.json must set github_pat."
-  }
-
-  return $secret
-}
-
-function Invoke-GitWithPat {
-  param(
-    [string]$Repo,
-    [object]$Secret,
-    [string[]]$GitArgs
-  )
-
-  $basic = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("x-access-token:$($Secret.github_pat)"))
-  git -C $Repo -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $basic" @GitArgs
-  if ($LASTEXITCODE -ne 0) {
-    throw "git $($GitArgs -join ' ') failed with exit code $LASTEXITCODE."
-  }
-}
-
 $TargetRepo = Resolve-FullPath (Join-Path $PSScriptRoot "..")
 $SourceRepo = Resolve-FullPath $SourceRepo
 
 if (-not $BranchName) {
   $BranchName = "zhiyi/import-genesis-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-}
-
-if ($CreatePr) {
-  $Push = $true
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $TargetRepo ".git"))) {
@@ -213,8 +158,6 @@ $pathsToCopy = @(
 $preservedTargetLocalPaths = @(
   ".git",
   ".github",
-  ".secret.json",
-  ".secret.example.json",
   "AGENTS.md",
   "README.md",
   "docs",
@@ -311,31 +254,6 @@ try {
       }
     } else {
       throw "git diff --cached --quiet failed with exit code $diffExit."
-    }
-  }
-
-  if ($Push) {
-    $secret = Read-GitHubSecret -TargetRoot $TargetRepo
-    $repoUrl = "https://github.com/$($secret.github_owner)/$($secret.github_repo).git"
-    Invoke-GitWithPat -Repo $TargetRepo -Secret $secret -GitArgs @("push", "-u", $repoUrl, "HEAD:$BranchName")
-  }
-
-  if ($CreatePr) {
-    $secret = Read-GitHubSecret -TargetRoot $TargetRepo
-    $previousGhToken = $env:GH_TOKEN
-    try {
-      $env:GH_TOKEN = $secret.github_pat
-      gh pr create `
-        --repo "$($secret.github_owner)/$($secret.github_repo)" `
-        --base main `
-        --head $BranchName `
-        --title "Import Baytech Genesis source" `
-        --body "Imports baytech-genesis source ref $SourceRef at $sourceCommit into the publishing repository. Validation is performed locally by this script before PR creation."
-      if ($LASTEXITCODE -ne 0) {
-        throw "gh pr create failed."
-      }
-    } finally {
-      $env:GH_TOKEN = $previousGhToken
     }
   }
 

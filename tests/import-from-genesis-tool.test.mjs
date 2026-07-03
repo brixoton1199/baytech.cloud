@@ -15,7 +15,7 @@ test('import tool is driven from baytech.cloud and creates a PR branch', () => {
 })
 
 test('import tool preserves publishing-repo local files and tooling', () => {
-  for (const preservedPath of ['.secret.json', '.secret.example.json', 'AGENTS.md', 'tools', '.github']) {
+  for (const preservedPath of ['AGENTS.md', 'README.md', 'docs', 'tools', '.github']) {
     assert.match(scriptSource, new RegExp(`"${preservedPath.replace('.', '\\.')}"`))
   }
 
@@ -25,10 +25,12 @@ test('import tool preserves publishing-repo local files and tooling', () => {
   assert.doesNotMatch(pathsToCopyBlock, /"tools"/)
 })
 
-test('import tool uses source worktree snapshots and .secret.json for GitHub operations', () => {
+test('import tool uses source worktree snapshots without publishing to GitHub', () => {
   assert.match(scriptSource, /git -C \$SourceRepo worktree add --detach \$snapshotRepo \$sourceCommit/)
-  assert.match(scriptSource, /-Name 'github_repo' -Expected 'baytech\.cloud'/)
-  assert.match(scriptSource, /\$env:GH_TOKEN = \$secret\.github_pat/)
-  assert.match(scriptSource, /gh pr create/)
-  assert.match(scriptSource, /AUTHORIZATION: basic \$basic/)
+  assert.doesNotMatch(scriptSource, /\[switch\]\$Push/)
+  assert.doesNotMatch(scriptSource, /\[switch\]\$CreatePr/)
+  assert.doesNotMatch(scriptSource, /\.secret\.json/)
+  assert.doesNotMatch(scriptSource, /\$env:GH_TOKEN/)
+  assert.doesNotMatch(scriptSource, /gh pr create/)
+  assert.doesNotMatch(scriptSource, /AUTHORIZATION: basic/)
 })

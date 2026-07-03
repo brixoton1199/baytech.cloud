@@ -83,6 +83,29 @@ function Invoke-CheckedCommand {
   }
 }
 
+function Get-DeletedGitPaths {
+  param(
+    [string]$Repo,
+    [string[]]$Pathspecs
+  )
+
+  $deletedPaths = @()
+  foreach ($pathspec in $Pathspecs) {
+    $paths = git -C $Repo ls-files --deleted -- $pathspec
+    if ($LASTEXITCODE -ne 0) {
+      throw "Unable to read deleted git paths for $pathspec."
+    }
+
+    foreach ($path in $paths) {
+      if ($path) {
+        $deletedPaths += $path
+      }
+    }
+  }
+
+  return @($deletedPaths | Select-Object -Unique)
+}
+
 $TargetRepo = Resolve-FullPath (Join-Path $PSScriptRoot "..")
 $SourceRepo = Resolve-FullPath $SourceRepo
 
@@ -176,7 +199,13 @@ $conflictingTargetPaths = @(
   ".tanstack",
   ".wrangler",
   "node_modules",
-  "tests"
+  "tests/contact-web3forms.test.mjs",
+  "tests/favicon.test.mjs",
+  "tests/gpu-cloud-page.test.mjs",
+  "tests/logo-svg-compatibility.test.mjs",
+  "tests/motion-language.test.mjs",
+  "tests/silver-infrastructure-design.test.mjs",
+  "tests/slogan.test.mjs"
 )
 
 try {
@@ -237,9 +266,21 @@ try {
   }
 
   if (-not $SkipCommit) {
-    git -C $TargetRepo add .
-    if ($LASTEXITCODE -ne 0) {
-      throw "git add failed."
+    $stagePaths = @()
+    foreach ($relativePath in $pathsToCopy) {
+      if (Test-Path -LiteralPath (Join-Path $TargetRepo $relativePath)) {
+        $stagePaths += $relativePath
+      }
+    }
+
+    $stagePaths += Get-DeletedGitPaths -Repo $TargetRepo -Pathspecs $conflictingTargetPaths
+    $stagePaths = @($stagePaths | Select-Object -Unique)
+
+    if ($stagePaths.Count -gt 0) {
+      git -C $TargetRepo add -- $stagePaths
+      if ($LASTEXITCODE -ne 0) {
+        throw "git add failed."
+      }
     }
 
     $diffExit = 0

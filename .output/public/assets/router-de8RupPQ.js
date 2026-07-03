@@ -1,0 +1,1 @@
+function e(e,t=null,n=null){let r=document.createElement(`nav`);r.className=`breadcrumb`,r.setAttribute(`aria-label`,`Breadcrumb`);let i=`<a href="/">Home</a>`;return t&&n&&(i+=`<span class="separator">›</span><a href="${t}">${n}</a>`),i+=`<span class="separator">›</span><span class="current">${e}</span>`,r.innerHTML=i,r}export{e as t};

@@ -26,6 +26,19 @@ This repository is a small Vite static SPA for the Baytech.cloud website. Keep c
 - PR descriptions should summarize the user-facing change, list verification performed, and call out any known gaps or follow-up work.
 - Do not include generated `baytech.cloud/` build output in a PR unless the user explicitly asks to commit deploy artifacts.
 
+## GitHub Account And Token
+
+- All GitHub operations for this project must use the account and token in `.secret.json`.
+- Do not rely on the globally logged-in `gh` account.
+- Before creating, deleting, pushing to, opening PRs for, or otherwise modifying any GitHub repository, read `.secret.json` and confirm:
+  - `github_owner` is the expected GitHub owner or organization.
+  - `github_repo` is `baytech.cloud`.
+  - `github_pat` exists.
+- When using GitHub CLI commands, set the token only for that command environment by mapping `github_pat` to `GH_TOKEN`.
+- Never commit `.secret.json`, and never print the full `github_pat` in logs or chat.
+- `.secret.example.json` is only a template and must not contain real credentials.
+- Unless a GitHub operation requires it, do not read or print `.secret.json`.
+
 ## App Architecture
 
 - The app shell is built in `src/main.js`: navigation rail, footer, side sheet, mobile nav, back-to-top button, scroll animations, and router initialization.

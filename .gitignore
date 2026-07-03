@@ -12,6 +12,11 @@ build/
 .env.local
 .env.production
 
+# Local secrets
+.secret
+.secret.*
+!.secret.example.json
+
 # Editor directories and files
 .vscode/
 .idea/

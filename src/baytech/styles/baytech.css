@@ -784,6 +784,7 @@ button {
 /* Initial page load animation */
 .page-content > .page-home,
 .page-content > .page-services,
+.page-content > .page-aidc,
 .page-content > .page-solutions,
 .page-content > .page-gpu-cloud,
 .page-content > .page-case,
@@ -5434,6 +5435,7 @@ body::before {
 
 /* ===== BAYTECH-13: WIDE SCREEN CONTENT RAIL ===== */
 .page-content > .page-services,
+.page-content > .page-aidc,
 .page-content > .page-approach,
 .page-content > .page-solutions,
 .page-content > .page-gpu-cloud,
@@ -5460,4 +5462,219 @@ body::before {
 .hero-with-map .hero-content-left,
 .hero-with-map .hero-content-left h1 {
   max-width: 640px;
+}
+
+/* ==================================================================
+   BAYTECH DESIGN POLISH v3.1 — P2 品牌张力 + 技术感 + P3 细节
+   （追加于文件末尾以覆盖前置规则；改动集中，便于回滚）
+   ================================================================== */
+
+/* ---- 卡片：更明确的边框 / 更硬的阴影 / hover 顶部 accent 条 ---- */
+.card-elevated,
+.service-card,
+.solution-card,
+.case-card,
+.insight-card,
+.approach-card {
+  position: relative;
+  border: 1px solid rgba(32, 34, 37, 0.09);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 12px 28px -14px rgba(31, 41, 55, 0.16),
+    0 2px 6px -2px rgba(31, 41, 55, 0.06);
+  overflow: hidden;
+}
+
+.card-elevated::after,
+.service-card::after,
+.solution-card::after,
+.case-card::after,
+.insight-card::after,
+.approach-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--baytech-signal), rgba(38, 184, 106, 0));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s var(--md-easing-emphasized);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-elevated:hover::after,
+.service-card:hover::after,
+.solution-card:hover::after,
+.case-card:hover::after,
+.insight-card:hover::after,
+.approach-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---- section-label：加一根前置短线，加强品牌绿信号 ---- */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.section-label::before {
+  content: "";
+  width: 1.5rem;
+  height: 2px;
+  background: var(--baytech-signal);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ---- solution-tag / step badge：更硬核的胶囊 ---- */
+.solution-tag {
+  background: rgba(38, 184, 106, 0.12);
+  color: #10623a;
+  border: 1px solid rgba(38, 184, 106, 0.28);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---- 技术感 monospace 工具类 ---- */
+.tech-mono,
+.gpu-system-spec dd,
+.gpu-system-spec dt {
+  font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.gpu-system-spec {
+  background: linear-gradient(180deg, rgba(16, 20, 25, 0.02), rgba(38, 184, 106, 0.04));
+  border-color: rgba(32, 34, 37, 0.12);
+}
+.gpu-system-spec dt { color: #6f7883; font-weight: 700; }
+.gpu-system-spec dd { color: #111417; font-weight: 700; }
+
+/* ---- 通用暗色 section（用于 GPU 引流 / AIDC 引流等对比区块）---- */
+.section-dark {
+  --baytech-ink: #f5f7f4;
+  --baytech-muted: rgba(214, 220, 208, 0.78);
+  background:
+    radial-gradient(ellipse 40rem 22rem at 90% 10%, rgba(38, 184, 106, 0.18), transparent 60%),
+    radial-gradient(ellipse 32rem 20rem at 8% 90%, rgba(70, 183, 255, 0.08), transparent 60%),
+    linear-gradient(160deg, #0e1114 0%, #14181c 55%, #0f1418 100%);
+  color: #e6ebe4;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 3.25rem);
+  margin: var(--space-12) 0;
+}
+.section-dark .section-label { color: #7bf0a6; }
+.section-dark .section-label::before { background: #7bf0a6; }
+.section-dark .section-title,
+.section-dark h2,
+.section-dark h3 { color: #f5f7f4; }
+.section-dark .section-subtitle,
+.section-dark p { color: rgba(214, 220, 208, 0.82); }
+.section-dark .btn.btn-filled {
+  --btn-bg: var(--baytech-signal);
+  --btn-fg: #06170d;
+  border: none;
+}
+.section-dark .btn.btn-outlined {
+  --btn-bg: transparent;
+  --btn-fg: #e6ebe4;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+/* ---- 资源流程条（AIDC 页可视化）---- */
+.resource-pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+  padding: var(--space-4);
+  border: 1px solid rgba(32, 34, 37, 0.08);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+  box-shadow: 0 12px 28px -18px rgba(31, 41, 55, 0.18);
+  margin: var(--space-8) 0;
+}
+
+.aidc-intro-section .resource-pipeline {
+  max-width: min(100%, 1000px);
+  margin-inline: auto;
+}
+
+.resource-pipeline .pipeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex: 1 1 120px;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+}
+.resource-pipeline .pipeline-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(38, 184, 106, 0.12);
+  color: var(--baytech-signal);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid rgba(38, 184, 106, 0.28);
+}
+.resource-pipeline .pipeline-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--baytech-ink);
+}
+.resource-pipeline .pipeline-arrow {
+  align-self: center;
+  color: rgba(38, 184, 106, 0.55);
+  font-size: 0.9rem;
+  padding: 0 0.15rem;
+}
+@media (max-width: 720px) {
+  .resource-pipeline .pipeline-arrow { display: none; }
+  .resource-pipeline .pipeline-node { flex-basis: 40%; }
+}
+
+/* ---- P3：Hero slogan 移动端不再强制 nowrap ---- */
+@media (max-width: 640px) {
+  .hero-with-map .hero-slogan-nowrap {
+    white-space: normal;
+  }
+  .hero-with-map .hero-content-left h1 {
+    font-size: clamp(2rem, 8.5vw, 2.75rem);
+    line-height: 1.08;
+  }
+}
+
+/* ---- P3：Footer BAYTECH 大标缩小 ---- */
+.footer-mega-logo,
+.footer .baytech-logo-svg[data-role="footer"],
+footer .baytech-logo-svg {
+  max-width: min(60%, 520px);
+  height: auto;
+}
+
+/* ---- P3：Rail 灰掉的 Proof / Live Status 更收敛 ---- */
+.rail-item-disabled {
+  opacity: 0.35;
+  filter: saturate(0.6);
+  pointer-events: none;
+}
+.rail-item-disabled .rail-item-label::after {
+  content: "· soon";
+  margin-left: 0.35rem;
+  font-size: 0.72em;
+  font-weight: 500;
+  color: var(--baytech-muted);
+  letter-spacing: 0.02em;
 }

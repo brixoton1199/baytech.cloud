@@ -143,6 +143,19 @@ export function renderHome() {
     </div>
   `
 
+  const aidcHighlight = document.createElement('section')
+  aidcHighlight.className = 'gpu-discovery-section section-dark animate-on-scroll'
+  aidcHighlight.innerHTML = `
+    <div class="gpu-discovery-content">
+      <div>
+        <p class="section-label">New · AI Data Centers</p>
+        <h2 class="section-title">AI Data Center Site & Resource Integration</h2>
+        <p class="section-subtitle">Connecting powered land, energy access, permits, capital, and operating partners for AI data center development in Europe. Baytech screens sites, maps resources, and coordinates the counterparties needed to move AIDC opportunities forward.</p>
+      </div>
+      <a href="/aidc" class="btn btn-filled">Explore AIDC Services</a>
+    </div>
+  `
+
   const stackSection = document.createElement('section')
   stackSection.className = 'services-section animate-on-scroll'
   stackSection.id = 'home-next'

@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompanyProfileRouteImport } from './routes/company-profile'
 import { Route as CaseRouteImport } from './routes/case'
 import { Route as ApproachRouteImport } from './routes/approach'
+import { Route as AidcRouteImport } from './routes/aidc'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -60,6 +61,11 @@ const ApproachRoute = ApproachRouteImport.update({
   path: '/approach',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AidcRoute = AidcRouteImport.update({
+  id: '/aidc',
+  path: '/aidc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -74,6 +80,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aidc': typeof AidcRoute
   '/approach': typeof ApproachRoute
   '/case': typeof CaseRoute
   '/company-profile': typeof CompanyProfileRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aidc': typeof AidcRoute
   '/approach': typeof ApproachRoute
   '/case': typeof CaseRoute
   '/company-profile': typeof CompanyProfileRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aidc': typeof AidcRoute
   '/approach': typeof ApproachRoute
   '/case': typeof CaseRoute
   '/company-profile': typeof CompanyProfileRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/aidc'
     | '/approach'
     | '/case'
     | '/company-profile'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/aidc'
     | '/approach'
     | '/case'
     | '/company-profile'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/aidc'
     | '/approach'
     | '/case'
     | '/company-profile'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AidcRoute: typeof AidcRoute
   ApproachRoute: typeof ApproachRoute
   CaseRoute: typeof CaseRoute
   CompanyProfileRoute: typeof CompanyProfileRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApproachRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aidc': {
+      id: '/aidc'
+      path: '/aidc'
+      fullPath: '/aidc'
+      preLoaderRoute: typeof AidcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AidcRoute: AidcRoute,
   ApproachRoute: ApproachRoute,
   CaseRoute: CaseRoute,
   CompanyProfileRoute: CompanyProfileRoute,

@@ -198,7 +198,6 @@ $conflictingTargetPaths = @(
   ".vinxi",
   ".tanstack",
   ".wrangler",
-  "node_modules",
   "tests/contact-web3forms.test.mjs",
   "tests/favicon.test.mjs",
   "tests/gpu-cloud-page.test.mjs",

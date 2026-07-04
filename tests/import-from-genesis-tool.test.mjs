@@ -29,6 +29,7 @@ test('import tool preserves publishing-repo local files and tooling', () => {
   assert.doesNotMatch(conflictingPathsBlock, /"tests"/)
   assert.doesNotMatch(conflictingPathsBlock, /"tests\/import-from-genesis-tool\.test\.mjs"/)
   assert.match(conflictingPathsBlock, /"tests\/gpu-cloud-page\.test\.mjs"/)
+  assert.doesNotMatch(conflictingPathsBlock, /"node_modules"/)
 })
 
 test('import tool uses source worktree snapshots without publishing to GitHub', () => {

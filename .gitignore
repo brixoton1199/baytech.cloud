@@ -4,7 +4,13 @@ node_modules/
 # Build output
 baytech.cloud/
 dist/
+dist-ssr/
 build/
+.output/
+.wrangler/
+.vinxi/
+.tanstack/
+.nitro/
 *.local
 
 # Environment variables

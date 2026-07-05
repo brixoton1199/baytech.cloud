@@ -7,6 +7,8 @@ const scriptSource = await readFile(
   'utf8',
 )
 
+const gitignoreSource = await readFile(new URL('../.gitignore', import.meta.url), 'utf8')
+
 test('import tool is driven from baytech.cloud and creates a PR branch', () => {
   assert.match(scriptSource, /\$TargetRepo\s*=\s*Resolve-FullPath\s*\(Join-Path \$PSScriptRoot "\.\."\)/)
   assert.match(scriptSource, /git -C \$TargetRepo switch -c \$BranchName/)
@@ -20,9 +22,14 @@ test('import tool preserves publishing-repo local files and tooling', () => {
   }
 
   const pathsToCopyBlock = scriptSource.match(/\$pathsToCopy = @\([\s\S]*?\r?\n\)/)?.[0] ?? ''
+  const conflictingPathsBlock = scriptSource.match(/\$conflictingTargetPaths = @\([\s\S]*?\r?\n\)/)?.[0] ?? ''
 
   assert.match(scriptSource, /Remove-TargetPath -TargetRoot \$TargetRepo -RelativePath \$relativePath/)
   assert.doesNotMatch(pathsToCopyBlock, /"tools"/)
+  assert.doesNotMatch(conflictingPathsBlock, /"tests"/)
+  assert.doesNotMatch(conflictingPathsBlock, /"tests\/import-from-genesis-tool\.test\.mjs"/)
+  assert.match(conflictingPathsBlock, /"tests\/gpu-cloud-page\.test\.mjs"/)
+  assert.doesNotMatch(conflictingPathsBlock, /"node_modules"/)
 })
 
 test('import tool uses source worktree snapshots without publishing to GitHub', () => {
@@ -33,4 +40,14 @@ test('import tool uses source worktree snapshots without publishing to GitHub', 
   assert.doesNotMatch(scriptSource, /\$env:GH_TOKEN/)
   assert.doesNotMatch(scriptSource, /gh pr create/)
   assert.doesNotMatch(scriptSource, /AUTHORIZATION: basic/)
+})
+
+test('generated TanStack and Cloudflare output stays out of import commits', () => {
+  for (const ignoredPath of ['.output/', '.wrangler/', '.vinxi/', '.tanstack/', '.nitro/', 'dist-ssr/']) {
+    assert.match(gitignoreSource, new RegExp(`^${ignoredPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'm'))
+  }
+
+  assert.doesNotMatch(scriptSource, /git -C \$TargetRepo add \./)
+  assert.match(scriptSource, /\$stagePaths = @\(/)
+  assert.match(scriptSource, /git -C \$TargetRepo add -- \$stagePaths/)
 })

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Baytech Genesis"
+  short_description: "Sync Baytech Genesis into baytech.cloud"
+  default_prompt: "Use the Sync Baytech Genesis skill to import the Baytech Genesis source into baytech.cloud, validate build artifacts, run visual parity checks, and publish the branch through the project GitHub workflow."

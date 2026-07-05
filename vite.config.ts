@@ -6,6 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+process.env.NITRO_COMPATIBILITY_DATE ??= "2026-07-05";
+
 export default defineConfig({
   nitro: {
     preset: "cloudflare-pages",

@@ -2,7 +2,7 @@ export const navItems = [
   { to: "/", key: "home", label: "AI Plus", mobileLabel: "AI Plus", icon: "home" },
   { to: "/gpu-cloud", key: "gpu-cloud", label: "GPU Platform", mobileLabel: "GPUs", icon: "gpu" },
   { to: "/services", key: "services", label: "Managed AI", mobileLabel: "Managed", icon: "cloud" },
-  { to: "/aidc", key: "aidc", label: "AI Data Centers", mobileLabel: "AIDC", icon: "layers" },
+  { to: "/aidc", key: "aidc", label: "AI Data Centers", mobileLabel: "AIDC", icon: "server" },
   { to: "/solutions", key: "solutions", label: "Solutions", mobileLabel: "Solutions", icon: "layers" },
   { to: "/approach", key: "approach", label: "Method", mobileLabel: "Approach", icon: "pulse" },
   { to: "/insights", key: "insights", label: "Resources", mobileLabel: "Resources", icon: "doc" },

@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+    "deploy:cloudflare": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/deploy-cloudflare.ps1",
     "test": "node --test",
     "lint": "eslint .",
     "format": "prettier --write ."

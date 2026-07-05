@@ -47,6 +47,17 @@ function Icon({ name }: { name: IconName }) {
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
         </svg>
       );
+    case "server":
+      return (
+        <svg {...common}>
+          <rect x="4" y="4" width="16" height="6" rx="2" />
+          <rect x="4" y="14" width="16" height="6" rx="2" />
+          <path d="M7 7h.01" />
+          <path d="M7 17h.01" />
+          <path d="M11 7h6" />
+          <path d="M11 17h6" />
+        </svg>
+      );
     case "pulse":
       return (
         <svg {...common}>
